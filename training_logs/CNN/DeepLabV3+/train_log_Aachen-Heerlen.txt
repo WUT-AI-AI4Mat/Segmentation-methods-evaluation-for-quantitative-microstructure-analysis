@@ -1,0 +1,902 @@
+nohup: ignoring input
+<conda-envs>/sam/lib/python3.9/site-packages/albumentations/check_version.py:147: UserWarning: Error fetching version info The read operation timed out
+  data = fetch_version_info()
+🚀 启动 DeepLabV3+ 训练脚本...
+使用设备: cuda
+<conda-envs>/sam/lib/python3.9/site-packages/segmentation_models_pytorch/encoders/__init__.py:136: UserWarning: Error loading resnet50 `imagenet` weights from Hugging Face Hub, trying loading from original url...
+  warnings.warn(message, UserWarning)
+<conda-envs>/sam/lib/python3.9/site-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+<workspace>/CNN/Deeplabv3+/train.py:146: UserWarning: Argument(s) 'shift_limit' are not valid for transform OpticalDistortion
+  albu.OpticalDistortion(distort_limit=0.05, shift_limit=0.05, p=0.5),
+正在扫描 train 集匹配关系...
+[train] 加载完成: 1278 张
+正在扫描 val 集匹配关系...
+[val] 加载完成: 85 张
+🚑 正在进行数据体检...
+✅ 体检通过！检查图已保存至: <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/sanity_check.png
+开始训练，最大 Epochs: 500，早停耐心值: 50...
+
+========== Epoch 1/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.5451
+   [Batch 40/80] Loss: 0.4565
+   [Batch 60/80] Loss: 0.4449
+   [Batch 80/80] Loss: 0.4246
+📊 Train Loss: 0.5069 | Val Loss: 0.3735 | Val Dice: 0.5661
+🎉 发现更优模型! Best Dice 更新为: 0.5661，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 2/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.3794
+   [Batch 40/80] Loss: 0.3729
+   [Batch 60/80] Loss: 0.3041
+   [Batch 80/80] Loss: 0.3536
+📊 Train Loss: 0.3696 | Val Loss: 0.3289 | Val Dice: 0.5843
+🎉 发现更优模型! Best Dice 更新为: 0.5843，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 3/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.3903
+   [Batch 40/80] Loss: 0.3411
+   [Batch 60/80] Loss: 0.3583
+   [Batch 80/80] Loss: 0.3541
+📊 Train Loss: 0.3392 | Val Loss: 0.3306 | Val Dice: 0.5735
+⚠️ 验证集 Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 4/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.4282
+   [Batch 40/80] Loss: 0.3084
+   [Batch 60/80] Loss: 0.2955
+   [Batch 80/80] Loss: 0.3611
+📊 Train Loss: 0.3260 | Val Loss: 0.3206 | Val Dice: 0.5965
+🎉 发现更优模型! Best Dice 更新为: 0.5965，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 5/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2715
+   [Batch 40/80] Loss: 0.3200
+   [Batch 60/80] Loss: 0.3380
+   [Batch 80/80] Loss: 0.3474
+📊 Train Loss: 0.3163 | Val Loss: 0.3075 | Val Dice: 0.6134
+🎉 发现更优模型! Best Dice 更新为: 0.6134，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 6/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2971
+   [Batch 40/80] Loss: 0.3045
+   [Batch 60/80] Loss: 0.3506
+   [Batch 80/80] Loss: 0.2605
+📊 Train Loss: 0.3096 | Val Loss: 0.3084 | Val Dice: 0.6124
+⚠️ 验证集 Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 7/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.3072
+   [Batch 40/80] Loss: 0.3220
+   [Batch 60/80] Loss: 0.2904
+   [Batch 80/80] Loss: 0.3136
+📊 Train Loss: 0.3053 | Val Loss: 0.3117 | Val Dice: 0.6066
+⚠️ 验证集 Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 8/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.3024
+   [Batch 40/80] Loss: 0.2915
+   [Batch 60/80] Loss: 0.2806
+   [Batch 80/80] Loss: 0.3136
+📊 Train Loss: 0.3024 | Val Loss: 0.2980 | Val Dice: 0.6221
+🎉 发现更优模型! Best Dice 更新为: 0.6221，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 9/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2718
+   [Batch 40/80] Loss: 0.3009
+   [Batch 60/80] Loss: 0.2984
+   [Batch 80/80] Loss: 0.2681
+📊 Train Loss: 0.2960 | Val Loss: 0.2934 | Val Dice: 0.6291
+🎉 发现更优模型! Best Dice 更新为: 0.6291，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 10/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.3171
+   [Batch 40/80] Loss: 0.3046
+   [Batch 60/80] Loss: 0.2821
+   [Batch 80/80] Loss: 0.3474
+📊 Train Loss: 0.2946 | Val Loss: 0.2825 | Val Dice: 0.6415
+🎉 发现更优模型! Best Dice 更新为: 0.6415，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 11/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2646
+   [Batch 40/80] Loss: 0.3383
+   [Batch 60/80] Loss: 0.2901
+   [Batch 80/80] Loss: 0.3592
+📊 Train Loss: 0.2962 | Val Loss: 0.3047 | Val Dice: 0.6150
+⚠️ 验证集 Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 12/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2635
+   [Batch 40/80] Loss: 0.2967
+   [Batch 60/80] Loss: 0.2472
+   [Batch 80/80] Loss: 0.2974
+📊 Train Loss: 0.2852 | Val Loss: 0.2932 | Val Dice: 0.6336
+⚠️ 验证集 Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 13/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2979
+   [Batch 40/80] Loss: 0.2850
+   [Batch 60/80] Loss: 0.3026
+   [Batch 80/80] Loss: 0.2974
+📊 Train Loss: 0.2898 | Val Loss: 0.2917 | Val Dice: 0.6277
+⚠️ 验证集 Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 14/500 [LR: 3.00e-04] ==========
+   [Batch 20/80] Loss: 0.2143
+   [Batch 40/80] Loss: 0.3052
+   [Batch 60/80] Loss: 0.2423
+   [Batch 80/80] Loss: 0.3312
+📊 Train Loss: 0.2858 | Val Loss: 0.2872 | Val Dice: 0.6325
+⚠️ 验证集 Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 15/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.2841
+   [Batch 40/80] Loss: 0.2528
+   [Batch 60/80] Loss: 0.3246
+   [Batch 80/80] Loss: 0.2808
+📊 Train Loss: 0.2874 | Val Loss: 0.2892 | Val Dice: 0.6233
+⚠️ 验证集 Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 16/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.3020
+   [Batch 40/80] Loss: 0.2919
+   [Batch 60/80] Loss: 0.3056
+   [Batch 80/80] Loss: 0.2829
+📊 Train Loss: 0.2870 | Val Loss: 0.2748 | Val Dice: 0.6496
+🎉 发现更优模型! Best Dice 更新为: 0.6496，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 17/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.2660
+   [Batch 40/80] Loss: 0.3120
+   [Batch 60/80] Loss: 0.3035
+   [Batch 80/80] Loss: 0.2853
+📊 Train Loss: 0.2838 | Val Loss: 0.2883 | Val Dice: 0.6303
+⚠️ 验证集 Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 18/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.2639
+   [Batch 40/80] Loss: 0.2934
+   [Batch 60/80] Loss: 0.2613
+   [Batch 80/80] Loss: 0.3549
+📊 Train Loss: 0.2830 | Val Loss: 0.2929 | Val Dice: 0.6204
+⚠️ 验证集 Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 19/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.3270
+   [Batch 40/80] Loss: 0.3148
+   [Batch 60/80] Loss: 0.2695
+   [Batch 80/80] Loss: 0.3564
+📊 Train Loss: 0.2803 | Val Loss: 0.2850 | Val Dice: 0.6348
+⚠️ 验证集 Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 20/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.3043
+   [Batch 40/80] Loss: 0.2642
+   [Batch 60/80] Loss: 0.3260
+   [Batch 80/80] Loss: 0.2885
+📊 Train Loss: 0.2784 | Val Loss: 0.2919 | Val Dice: 0.6226
+⚠️ 验证集 Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 21/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.2889
+   [Batch 40/80] Loss: 0.2779
+   [Batch 60/80] Loss: 0.2899
+   [Batch 80/80] Loss: 0.3735
+📊 Train Loss: 0.2815 | Val Loss: 0.2853 | Val Dice: 0.6372
+⚠️ 验证集 Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 22/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.3042
+   [Batch 40/80] Loss: 0.3272
+   [Batch 60/80] Loss: 0.2527
+   [Batch 80/80] Loss: 0.2441
+📊 Train Loss: 0.2775 | Val Loss: 0.2842 | Val Dice: 0.6422
+⚠️ 验证集 Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 23/500 [LR: 2.99e-04] ==========
+   [Batch 20/80] Loss: 0.2803
+   [Batch 40/80] Loss: 0.2582
+   [Batch 60/80] Loss: 0.2864
+   [Batch 80/80] Loss: 0.2611
+📊 Train Loss: 0.2773 | Val Loss: 0.2739 | Val Dice: 0.6452
+⚠️ 验证集 Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 24/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.3227
+   [Batch 40/80] Loss: 0.3007
+   [Batch 60/80] Loss: 0.3176
+   [Batch 80/80] Loss: 0.3439
+📊 Train Loss: 0.2730 | Val Loss: 0.2859 | Val Dice: 0.6405
+⚠️ 验证集 Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 25/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.2727
+   [Batch 40/80] Loss: 0.2642
+   [Batch 60/80] Loss: 0.2780
+   [Batch 80/80] Loss: 0.2766
+📊 Train Loss: 0.2732 | Val Loss: 0.2755 | Val Dice: 0.6477
+⚠️ 验证集 Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 26/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.2852
+   [Batch 40/80] Loss: 0.3220
+   [Batch 60/80] Loss: 0.2723
+   [Batch 80/80] Loss: 0.2935
+📊 Train Loss: 0.2745 | Val Loss: 0.2757 | Val Dice: 0.6533
+🎉 发现更优模型! Best Dice 更新为: 0.6533，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 27/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.2415
+   [Batch 40/80] Loss: 0.2786
+   [Batch 60/80] Loss: 0.2978
+   [Batch 80/80] Loss: 0.2756
+📊 Train Loss: 0.2728 | Val Loss: 0.2847 | Val Dice: 0.6377
+⚠️ 验证集 Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 28/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.2705
+   [Batch 40/80] Loss: 0.2585
+   [Batch 60/80] Loss: 0.3016
+   [Batch 80/80] Loss: 0.3314
+📊 Train Loss: 0.2744 | Val Loss: 0.2902 | Val Dice: 0.6347
+⚠️ 验证集 Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 29/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.2743
+   [Batch 40/80] Loss: 0.2428
+   [Batch 60/80] Loss: 0.2345
+   [Batch 80/80] Loss: 0.3116
+📊 Train Loss: 0.2724 | Val Loss: 0.2784 | Val Dice: 0.6443
+⚠️ 验证集 Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 30/500 [LR: 2.98e-04] ==========
+   [Batch 20/80] Loss: 0.2622
+   [Batch 40/80] Loss: 0.2714
+   [Batch 60/80] Loss: 0.2814
+   [Batch 80/80] Loss: 0.2856
+📊 Train Loss: 0.2676 | Val Loss: 0.2819 | Val Dice: 0.6463
+⚠️ 验证集 Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 31/500 [LR: 2.97e-04] ==========
+   [Batch 20/80] Loss: 0.2737
+   [Batch 40/80] Loss: 0.2993
+   [Batch 60/80] Loss: 0.2660
+   [Batch 80/80] Loss: 0.3059
+📊 Train Loss: 0.2689 | Val Loss: 0.2837 | Val Dice: 0.6362
+⚠️ 验证集 Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 32/500 [LR: 2.97e-04] ==========
+   [Batch 20/80] Loss: 0.2618
+   [Batch 40/80] Loss: 0.2535
+   [Batch 60/80] Loss: 0.2359
+   [Batch 80/80] Loss: 0.2417
+📊 Train Loss: 0.2671 | Val Loss: 0.2798 | Val Dice: 0.6441
+⚠️ 验证集 Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 33/500 [LR: 2.97e-04] ==========
+   [Batch 20/80] Loss: 0.2763
+   [Batch 40/80] Loss: 0.2315
+   [Batch 60/80] Loss: 0.2341
+   [Batch 80/80] Loss: 0.3003
+📊 Train Loss: 0.2656 | Val Loss: 0.2829 | Val Dice: 0.6400
+⚠️ 验证集 Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 34/500 [LR: 2.97e-04] ==========
+   [Batch 20/80] Loss: 0.1960
+   [Batch 40/80] Loss: 0.3200
+   [Batch 60/80] Loss: 0.2654
+   [Batch 80/80] Loss: 0.2637
+📊 Train Loss: 0.2702 | Val Loss: 0.2743 | Val Dice: 0.6462
+⚠️ 验证集 Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 35/500 [LR: 2.97e-04] ==========
+   [Batch 20/80] Loss: 0.2719
+   [Batch 40/80] Loss: 0.2797
+   [Batch 60/80] Loss: 0.2340
+   [Batch 80/80] Loss: 0.2284
+📊 Train Loss: 0.2667 | Val Loss: 0.2887 | Val Dice: 0.6329
+⚠️ 验证集 Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 36/500 [LR: 2.96e-04] ==========
+   [Batch 20/80] Loss: 0.2527
+   [Batch 40/80] Loss: 0.2474
+   [Batch 60/80] Loss: 0.3279
+   [Batch 80/80] Loss: 0.2691
+📊 Train Loss: 0.2649 | Val Loss: 0.2874 | Val Dice: 0.6336
+⚠️ 验证集 Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 37/500 [LR: 2.96e-04] ==========
+   [Batch 20/80] Loss: 0.2344
+   [Batch 40/80] Loss: 0.2255
+   [Batch 60/80] Loss: 0.2776
+   [Batch 80/80] Loss: 0.2486
+📊 Train Loss: 0.2675 | Val Loss: 0.2749 | Val Dice: 0.6462
+⚠️ 验证集 Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 38/500 [LR: 2.96e-04] ==========
+   [Batch 20/80] Loss: 0.2817
+   [Batch 40/80] Loss: 0.2449
+   [Batch 60/80] Loss: 0.2404
+   [Batch 80/80] Loss: 0.2647
+📊 Train Loss: 0.2628 | Val Loss: 0.2868 | Val Dice: 0.6321
+⚠️ 验证集 Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 39/500 [LR: 2.96e-04] ==========
+   [Batch 20/80] Loss: 0.2474
+   [Batch 40/80] Loss: 0.2513
+   [Batch 60/80] Loss: 0.2723
+   [Batch 80/80] Loss: 0.2743
+📊 Train Loss: 0.2629 | Val Loss: 0.2895 | Val Dice: 0.6272
+⚠️ 验证集 Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 40/500 [LR: 2.96e-04] ==========
+   [Batch 20/80] Loss: 0.2375
+   [Batch 40/80] Loss: 0.2289
+   [Batch 60/80] Loss: 0.2727
+   [Batch 80/80] Loss: 0.2592
+📊 Train Loss: 0.2625 | Val Loss: 0.2775 | Val Dice: 0.6463
+⚠️ 验证集 Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 41/500 [LR: 2.95e-04] ==========
+   [Batch 20/80] Loss: 0.2476
+   [Batch 40/80] Loss: 0.2280
+   [Batch 60/80] Loss: 0.2801
+   [Batch 80/80] Loss: 0.3128
+📊 Train Loss: 0.2655 | Val Loss: 0.2822 | Val Dice: 0.6374
+⚠️ 验证集 Dice 未提升。早停计数: 15 / 50
+
+========== Epoch 42/500 [LR: 2.95e-04] ==========
+   [Batch 20/80] Loss: 0.2467
+   [Batch 40/80] Loss: 0.2613
+   [Batch 60/80] Loss: 0.2749
+   [Batch 80/80] Loss: 0.3014
+📊 Train Loss: 0.2595 | Val Loss: 0.2847 | Val Dice: 0.6332
+⚠️ 验证集 Dice 未提升。早停计数: 16 / 50
+
+========== Epoch 43/500 [LR: 2.95e-04] ==========
+   [Batch 20/80] Loss: 0.2420
+   [Batch 40/80] Loss: 0.3087
+   [Batch 60/80] Loss: 0.3374
+   [Batch 80/80] Loss: 0.2350
+📊 Train Loss: 0.2605 | Val Loss: 0.2777 | Val Dice: 0.6461
+⚠️ 验证集 Dice 未提升。早停计数: 17 / 50
+
+========== Epoch 44/500 [LR: 2.95e-04] ==========
+   [Batch 20/80] Loss: 0.2209
+   [Batch 40/80] Loss: 0.2790
+   [Batch 60/80] Loss: 0.2996
+   [Batch 80/80] Loss: 0.2600
+📊 Train Loss: 0.2601 | Val Loss: 0.2780 | Val Dice: 0.6390
+⚠️ 验证集 Dice 未提升。早停计数: 18 / 50
+
+========== Epoch 45/500 [LR: 2.94e-04] ==========
+   [Batch 20/80] Loss: 0.2444
+   [Batch 40/80] Loss: 0.2232
+   [Batch 60/80] Loss: 0.2568
+   [Batch 80/80] Loss: 0.3085
+📊 Train Loss: 0.2589 | Val Loss: 0.2972 | Val Dice: 0.6064
+⚠️ 验证集 Dice 未提升。早停计数: 19 / 50
+
+========== Epoch 46/500 [LR: 2.94e-04] ==========
+   [Batch 20/80] Loss: 0.2963
+   [Batch 40/80] Loss: 0.2930
+   [Batch 60/80] Loss: 0.2617
+   [Batch 80/80] Loss: 0.2576
+📊 Train Loss: 0.2592 | Val Loss: 0.2829 | Val Dice: 0.6419
+⚠️ 验证集 Dice 未提升。早停计数: 20 / 50
+
+========== Epoch 47/500 [LR: 2.94e-04] ==========
+   [Batch 20/80] Loss: 0.2447
+   [Batch 40/80] Loss: 0.2985
+   [Batch 60/80] Loss: 0.2587
+   [Batch 80/80] Loss: 0.3066
+📊 Train Loss: 0.2585 | Val Loss: 0.2816 | Val Dice: 0.6378
+⚠️ 验证集 Dice 未提升。早停计数: 21 / 50
+
+========== Epoch 48/500 [LR: 2.94e-04] ==========
+   [Batch 20/80] Loss: 0.3089
+   [Batch 40/80] Loss: 0.2415
+   [Batch 60/80] Loss: 0.2282
+   [Batch 80/80] Loss: 0.3369
+📊 Train Loss: 0.2567 | Val Loss: 0.2770 | Val Dice: 0.6491
+⚠️ 验证集 Dice 未提升。早停计数: 22 / 50
+
+========== Epoch 49/500 [LR: 2.93e-04] ==========
+   [Batch 20/80] Loss: 0.2322
+   [Batch 40/80] Loss: 0.2157
+   [Batch 60/80] Loss: 0.2196
+   [Batch 80/80] Loss: 0.2924
+📊 Train Loss: 0.2539 | Val Loss: 0.2939 | Val Dice: 0.6250
+⚠️ 验证集 Dice 未提升。早停计数: 23 / 50
+
+========== Epoch 50/500 [LR: 2.93e-04] ==========
+   [Batch 20/80] Loss: 0.2394
+   [Batch 40/80] Loss: 0.2263
+   [Batch 60/80] Loss: 0.2572
+   [Batch 80/80] Loss: 0.2605
+📊 Train Loss: 0.2559 | Val Loss: 0.2748 | Val Dice: 0.6460
+⚠️ 验证集 Dice 未提升。早停计数: 24 / 50
+
+========== Epoch 51/500 [LR: 2.93e-04] ==========
+   [Batch 20/80] Loss: 0.2512
+   [Batch 40/80] Loss: 0.2655
+   [Batch 60/80] Loss: 0.2543
+   [Batch 80/80] Loss: 0.2282
+📊 Train Loss: 0.2560 | Val Loss: 0.2877 | Val Dice: 0.6331
+⚠️ 验证集 Dice 未提升。早停计数: 25 / 50
+
+========== Epoch 52/500 [LR: 2.92e-04] ==========
+   [Batch 20/80] Loss: 0.3405
+   [Batch 40/80] Loss: 0.2972
+   [Batch 60/80] Loss: 0.2695
+   [Batch 80/80] Loss: 0.2408
+📊 Train Loss: 0.2541 | Val Loss: 0.2881 | Val Dice: 0.6381
+⚠️ 验证集 Dice 未提升。早停计数: 26 / 50
+
+========== Epoch 53/500 [LR: 2.92e-04] ==========
+   [Batch 20/80] Loss: 0.2151
+   [Batch 40/80] Loss: 0.2408
+   [Batch 60/80] Loss: 0.2562
+   [Batch 80/80] Loss: 0.2077
+📊 Train Loss: 0.2564 | Val Loss: 0.2814 | Val Dice: 0.6450
+⚠️ 验证集 Dice 未提升。早停计数: 27 / 50
+
+========== Epoch 54/500 [LR: 2.92e-04] ==========
+   [Batch 20/80] Loss: 0.2575
+   [Batch 40/80] Loss: 0.2319
+   [Batch 60/80] Loss: 0.2894
+   [Batch 80/80] Loss: 0.2674
+📊 Train Loss: 0.2554 | Val Loss: 0.2807 | Val Dice: 0.6449
+⚠️ 验证集 Dice 未提升。早停计数: 28 / 50
+
+========== Epoch 55/500 [LR: 2.91e-04] ==========
+   [Batch 20/80] Loss: 0.2753
+   [Batch 40/80] Loss: 0.2678
+   [Batch 60/80] Loss: 0.2576
+   [Batch 80/80] Loss: 0.2373
+📊 Train Loss: 0.2534 | Val Loss: 0.2814 | Val Dice: 0.6442
+⚠️ 验证集 Dice 未提升。早停计数: 29 / 50
+
+========== Epoch 56/500 [LR: 2.91e-04] ==========
+   [Batch 20/80] Loss: 0.2513
+   [Batch 40/80] Loss: 0.2866
+   [Batch 60/80] Loss: 0.2285
+   [Batch 80/80] Loss: 0.3295
+📊 Train Loss: 0.2539 | Val Loss: 0.2916 | Val Dice: 0.6270
+⚠️ 验证集 Dice 未提升。早停计数: 30 / 50
+
+========== Epoch 57/500 [LR: 2.91e-04] ==========
+   [Batch 20/80] Loss: 0.2807
+   [Batch 40/80] Loss: 0.2436
+   [Batch 60/80] Loss: 0.2825
+   [Batch 80/80] Loss: 0.2976
+📊 Train Loss: 0.2516 | Val Loss: 0.2988 | Val Dice: 0.6132
+⚠️ 验证集 Dice 未提升。早停计数: 31 / 50
+
+========== Epoch 58/500 [LR: 2.91e-04] ==========
+   [Batch 20/80] Loss: 0.2846
+   [Batch 40/80] Loss: 0.2248
+   [Batch 60/80] Loss: 0.2615
+   [Batch 80/80] Loss: 0.2125
+📊 Train Loss: 0.2493 | Val Loss: 0.2834 | Val Dice: 0.6377
+⚠️ 验证集 Dice 未提升。早停计数: 32 / 50
+
+========== Epoch 59/500 [LR: 2.90e-04] ==========
+   [Batch 20/80] Loss: 0.2596
+   [Batch 40/80] Loss: 0.2191
+   [Batch 60/80] Loss: 0.2414
+   [Batch 80/80] Loss: 0.1902
+📊 Train Loss: 0.2482 | Val Loss: 0.2977 | Val Dice: 0.6377
+⚠️ 验证集 Dice 未提升。早停计数: 33 / 50
+
+========== Epoch 60/500 [LR: 2.90e-04] ==========
+   [Batch 20/80] Loss: 0.2671
+   [Batch 40/80] Loss: 0.2188
+   [Batch 60/80] Loss: 0.2366
+   [Batch 80/80] Loss: 0.2665
+📊 Train Loss: 0.2502 | Val Loss: 0.2777 | Val Dice: 0.6536
+🎉 发现更优模型! Best Dice 更新为: 0.6536，已保存至 <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/DeepLabV3P_Best_Model.pth
+
+========== Epoch 61/500 [LR: 2.90e-04] ==========
+   [Batch 20/80] Loss: 0.2972
+   [Batch 40/80] Loss: 0.2702
+   [Batch 60/80] Loss: 0.3044
+   [Batch 80/80] Loss: 0.2567
+📊 Train Loss: 0.2484 | Val Loss: 0.2819 | Val Dice: 0.6432
+⚠️ 验证集 Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 62/500 [LR: 2.89e-04] ==========
+   [Batch 20/80] Loss: 0.2647
+   [Batch 40/80] Loss: 0.2384
+   [Batch 60/80] Loss: 0.2593
+   [Batch 80/80] Loss: 0.2867
+📊 Train Loss: 0.2470 | Val Loss: 0.2843 | Val Dice: 0.6375
+⚠️ 验证集 Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 63/500 [LR: 2.89e-04] ==========
+   [Batch 20/80] Loss: 0.2390
+   [Batch 40/80] Loss: 0.2350
+   [Batch 60/80] Loss: 0.2313
+   [Batch 80/80] Loss: 0.2618
+📊 Train Loss: 0.2486 | Val Loss: 0.2813 | Val Dice: 0.6393
+⚠️ 验证集 Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 64/500 [LR: 2.88e-04] ==========
+   [Batch 20/80] Loss: 0.2577
+   [Batch 40/80] Loss: 0.2525
+   [Batch 60/80] Loss: 0.2516
+   [Batch 80/80] Loss: 0.2008
+📊 Train Loss: 0.2433 | Val Loss: 0.2927 | Val Dice: 0.6290
+⚠️ 验证集 Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 65/500 [LR: 2.88e-04] ==========
+   [Batch 20/80] Loss: 0.2891
+   [Batch 40/80] Loss: 0.2161
+   [Batch 60/80] Loss: 0.2285
+   [Batch 80/80] Loss: 0.3087
+📊 Train Loss: 0.2458 | Val Loss: 0.3077 | Val Dice: 0.6286
+⚠️ 验证集 Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 66/500 [LR: 2.88e-04] ==========
+   [Batch 20/80] Loss: 0.2755
+   [Batch 40/80] Loss: 0.2198
+   [Batch 60/80] Loss: 0.2600
+   [Batch 80/80] Loss: 0.2192
+📊 Train Loss: 0.2439 | Val Loss: 0.2795 | Val Dice: 0.6441
+⚠️ 验证集 Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 67/500 [LR: 2.87e-04] ==========
+   [Batch 20/80] Loss: 0.2823
+   [Batch 40/80] Loss: 0.2252
+   [Batch 60/80] Loss: 0.2648
+   [Batch 80/80] Loss: 0.2462
+📊 Train Loss: 0.2401 | Val Loss: 0.2776 | Val Dice: 0.6418
+⚠️ 验证集 Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 68/500 [LR: 2.87e-04] ==========
+   [Batch 20/80] Loss: 0.1945
+   [Batch 40/80] Loss: 0.2691
+   [Batch 60/80] Loss: 0.2252
+   [Batch 80/80] Loss: 0.2528
+📊 Train Loss: 0.2440 | Val Loss: 0.2815 | Val Dice: 0.6394
+⚠️ 验证集 Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 69/500 [LR: 2.87e-04] ==========
+   [Batch 20/80] Loss: 0.2653
+   [Batch 40/80] Loss: 0.2438
+   [Batch 60/80] Loss: 0.2927
+   [Batch 80/80] Loss: 0.2845
+📊 Train Loss: 0.2454 | Val Loss: 0.2827 | Val Dice: 0.6335
+⚠️ 验证集 Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 70/500 [LR: 2.86e-04] ==========
+   [Batch 20/80] Loss: 0.2696
+   [Batch 40/80] Loss: 0.1911
+   [Batch 60/80] Loss: 0.2319
+   [Batch 80/80] Loss: 0.2726
+📊 Train Loss: 0.2402 | Val Loss: 0.2862 | Val Dice: 0.6404
+⚠️ 验证集 Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 71/500 [LR: 2.86e-04] ==========
+   [Batch 20/80] Loss: 0.2402
+   [Batch 40/80] Loss: 0.2521
+   [Batch 60/80] Loss: 0.1977
+   [Batch 80/80] Loss: 0.2336
+📊 Train Loss: 0.2379 | Val Loss: 0.2882 | Val Dice: 0.6396
+⚠️ 验证集 Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 72/500 [LR: 2.85e-04] ==========
+   [Batch 20/80] Loss: 0.1983
+   [Batch 40/80] Loss: 0.2123
+   [Batch 60/80] Loss: 0.3075
+   [Batch 80/80] Loss: 0.2756
+📊 Train Loss: 0.2398 | Val Loss: 0.2854 | Val Dice: 0.6418
+⚠️ 验证集 Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 73/500 [LR: 2.85e-04] ==========
+   [Batch 20/80] Loss: 0.2606
+   [Batch 40/80] Loss: 0.2634
+   [Batch 60/80] Loss: 0.2165
+   [Batch 80/80] Loss: 0.2551
+📊 Train Loss: 0.2416 | Val Loss: 0.2857 | Val Dice: 0.6327
+⚠️ 验证集 Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 74/500 [LR: 2.85e-04] ==========
+   [Batch 20/80] Loss: 0.2524
+   [Batch 40/80] Loss: 0.1858
+   [Batch 60/80] Loss: 0.2425
+   [Batch 80/80] Loss: 0.2492
+📊 Train Loss: 0.2404 | Val Loss: 0.2804 | Val Dice: 0.6482
+⚠️ 验证集 Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 75/500 [LR: 2.84e-04] ==========
+   [Batch 20/80] Loss: 0.2879
+   [Batch 40/80] Loss: 0.2999
+   [Batch 60/80] Loss: 0.3286
+   [Batch 80/80] Loss: 0.1983
+📊 Train Loss: 0.2341 | Val Loss: 0.2880 | Val Dice: 0.6341
+⚠️ 验证集 Dice 未提升。早停计数: 15 / 50
+
+========== Epoch 76/500 [LR: 2.84e-04] ==========
+   [Batch 20/80] Loss: 0.2181
+   [Batch 40/80] Loss: 0.2373
+   [Batch 60/80] Loss: 0.2196
+   [Batch 80/80] Loss: 0.2449
+📊 Train Loss: 0.2373 | Val Loss: 0.2906 | Val Dice: 0.6389
+⚠️ 验证集 Dice 未提升。早停计数: 16 / 50
+
+========== Epoch 77/500 [LR: 2.83e-04] ==========
+   [Batch 20/80] Loss: 0.2121
+   [Batch 40/80] Loss: 0.2388
+   [Batch 60/80] Loss: 0.2611
+   [Batch 80/80] Loss: 0.2402
+📊 Train Loss: 0.2324 | Val Loss: 0.2926 | Val Dice: 0.6314
+⚠️ 验证集 Dice 未提升。早停计数: 17 / 50
+
+========== Epoch 78/500 [LR: 2.83e-04] ==========
+   [Batch 20/80] Loss: 0.2164
+   [Batch 40/80] Loss: 0.2110
+   [Batch 60/80] Loss: 0.3053
+   [Batch 80/80] Loss: 0.2313
+📊 Train Loss: 0.2334 | Val Loss: 0.2867 | Val Dice: 0.6413
+⚠️ 验证集 Dice 未提升。早停计数: 18 / 50
+
+========== Epoch 79/500 [LR: 2.82e-04] ==========
+   [Batch 20/80] Loss: 0.2063
+   [Batch 40/80] Loss: 0.2616
+   [Batch 60/80] Loss: 0.3198
+   [Batch 80/80] Loss: 0.2604
+📊 Train Loss: 0.2329 | Val Loss: 0.2886 | Val Dice: 0.6427
+⚠️ 验证集 Dice 未提升。早停计数: 19 / 50
+
+========== Epoch 80/500 [LR: 2.82e-04] ==========
+   [Batch 20/80] Loss: 0.2563
+   [Batch 40/80] Loss: 0.2229
+   [Batch 60/80] Loss: 0.2702
+   [Batch 80/80] Loss: 0.2276
+📊 Train Loss: 0.2299 | Val Loss: 0.2886 | Val Dice: 0.6427
+⚠️ 验证集 Dice 未提升。早停计数: 20 / 50
+
+========== Epoch 81/500 [LR: 2.82e-04] ==========
+   [Batch 20/80] Loss: 0.2436
+   [Batch 40/80] Loss: 0.2517
+   [Batch 60/80] Loss: 0.2726
+   [Batch 80/80] Loss: 0.2168
+📊 Train Loss: 0.2298 | Val Loss: 0.2948 | Val Dice: 0.6305
+⚠️ 验证集 Dice 未提升。早停计数: 21 / 50
+
+========== Epoch 82/500 [LR: 2.81e-04] ==========
+   [Batch 20/80] Loss: 0.2747
+   [Batch 40/80] Loss: 0.1827
+   [Batch 60/80] Loss: 0.2251
+   [Batch 80/80] Loss: 0.2021
+📊 Train Loss: 0.2341 | Val Loss: 0.2928 | Val Dice: 0.6293
+⚠️ 验证集 Dice 未提升。早停计数: 22 / 50
+
+========== Epoch 83/500 [LR: 2.81e-04] ==========
+   [Batch 20/80] Loss: 0.2387
+   [Batch 40/80] Loss: 0.2422
+   [Batch 60/80] Loss: 0.1997
+   [Batch 80/80] Loss: 0.2378
+📊 Train Loss: 0.2309 | Val Loss: 0.2849 | Val Dice: 0.6461
+⚠️ 验证集 Dice 未提升。早停计数: 23 / 50
+
+========== Epoch 84/500 [LR: 2.80e-04] ==========
+   [Batch 20/80] Loss: 0.2218
+   [Batch 40/80] Loss: 0.2135
+   [Batch 60/80] Loss: 0.2232
+   [Batch 80/80] Loss: 0.2027
+📊 Train Loss: 0.2268 | Val Loss: 0.2857 | Val Dice: 0.6388
+⚠️ 验证集 Dice 未提升。早停计数: 24 / 50
+
+========== Epoch 85/500 [LR: 2.80e-04] ==========
+   [Batch 20/80] Loss: 0.2619
+   [Batch 40/80] Loss: 0.1973
+   [Batch 60/80] Loss: 0.2455
+   [Batch 80/80] Loss: 0.2362
+📊 Train Loss: 0.2293 | Val Loss: 0.3024 | Val Dice: 0.6296
+⚠️ 验证集 Dice 未提升。早停计数: 25 / 50
+
+========== Epoch 86/500 [LR: 2.79e-04] ==========
+   [Batch 20/80] Loss: 0.2490
+   [Batch 40/80] Loss: 0.2157
+   [Batch 60/80] Loss: 0.2466
+   [Batch 80/80] Loss: 0.1974
+📊 Train Loss: 0.2283 | Val Loss: 0.2879 | Val Dice: 0.6322
+⚠️ 验证集 Dice 未提升。早停计数: 26 / 50
+
+========== Epoch 87/500 [LR: 2.79e-04] ==========
+   [Batch 20/80] Loss: 0.2379
+   [Batch 40/80] Loss: 0.2006
+   [Batch 60/80] Loss: 0.2359
+   [Batch 80/80] Loss: 0.2472
+📊 Train Loss: 0.2264 | Val Loss: 0.2924 | Val Dice: 0.6250
+⚠️ 验证集 Dice 未提升。早停计数: 27 / 50
+
+========== Epoch 88/500 [LR: 2.78e-04] ==========
+   [Batch 20/80] Loss: 0.2403
+   [Batch 40/80] Loss: 0.2349
+   [Batch 60/80] Loss: 0.2315
+   [Batch 80/80] Loss: 0.2606
+📊 Train Loss: 0.2274 | Val Loss: 0.2808 | Val Dice: 0.6470
+⚠️ 验证集 Dice 未提升。早停计数: 28 / 50
+
+========== Epoch 89/500 [LR: 2.78e-04] ==========
+   [Batch 20/80] Loss: 0.2380
+   [Batch 40/80] Loss: 0.2395
+   [Batch 60/80] Loss: 0.2317
+   [Batch 80/80] Loss: 0.2935
+📊 Train Loss: 0.2247 | Val Loss: 0.2875 | Val Dice: 0.6431
+⚠️ 验证集 Dice 未提升。早停计数: 29 / 50
+
+========== Epoch 90/500 [LR: 2.77e-04] ==========
+   [Batch 20/80] Loss: 0.2006
+   [Batch 40/80] Loss: 0.2490
+   [Batch 60/80] Loss: 0.1904
+   [Batch 80/80] Loss: 0.2437
+📊 Train Loss: 0.2305 | Val Loss: 0.2902 | Val Dice: 0.6315
+⚠️ 验证集 Dice 未提升。早停计数: 30 / 50
+
+========== Epoch 91/500 [LR: 2.77e-04] ==========
+   [Batch 20/80] Loss: 0.2500
+   [Batch 40/80] Loss: 0.2394
+   [Batch 60/80] Loss: 0.2285
+   [Batch 80/80] Loss: 0.2405
+📊 Train Loss: 0.2270 | Val Loss: 0.2945 | Val Dice: 0.6300
+⚠️ 验证集 Dice 未提升。早停计数: 31 / 50
+
+========== Epoch 92/500 [LR: 2.76e-04] ==========
+   [Batch 20/80] Loss: 0.2648
+   [Batch 40/80] Loss: 0.2173
+   [Batch 60/80] Loss: 0.2213
+   [Batch 80/80] Loss: 0.1942
+📊 Train Loss: 0.2264 | Val Loss: 0.2800 | Val Dice: 0.6498
+⚠️ 验证集 Dice 未提升。早停计数: 32 / 50
+
+========== Epoch 93/500 [LR: 2.76e-04] ==========
+   [Batch 20/80] Loss: 0.2168
+   [Batch 40/80] Loss: 0.2524
+   [Batch 60/80] Loss: 0.2800
+   [Batch 80/80] Loss: 0.2161
+📊 Train Loss: 0.2229 | Val Loss: 0.2907 | Val Dice: 0.6391
+⚠️ 验证集 Dice 未提升。早停计数: 33 / 50
+
+========== Epoch 94/500 [LR: 2.75e-04] ==========
+   [Batch 20/80] Loss: 0.1895
+   [Batch 40/80] Loss: 0.1868
+   [Batch 60/80] Loss: 0.2578
+   [Batch 80/80] Loss: 0.1968
+📊 Train Loss: 0.2259 | Val Loss: 0.2944 | Val Dice: 0.6303
+⚠️ 验证集 Dice 未提升。早停计数: 34 / 50
+
+========== Epoch 95/500 [LR: 2.75e-04] ==========
+   [Batch 20/80] Loss: 0.2383
+   [Batch 40/80] Loss: 0.2108
+   [Batch 60/80] Loss: 0.1926
+   [Batch 80/80] Loss: 0.3065
+📊 Train Loss: 0.2221 | Val Loss: 0.2910 | Val Dice: 0.6389
+⚠️ 验证集 Dice 未提升。早停计数: 35 / 50
+
+========== Epoch 96/500 [LR: 2.74e-04] ==========
+   [Batch 20/80] Loss: 0.2060
+   [Batch 40/80] Loss: 0.2055
+   [Batch 60/80] Loss: 0.2354
+   [Batch 80/80] Loss: 0.1994
+📊 Train Loss: 0.2222 | Val Loss: 0.2990 | Val Dice: 0.6288
+⚠️ 验证集 Dice 未提升。早停计数: 36 / 50
+
+========== Epoch 97/500 [LR: 2.74e-04] ==========
+   [Batch 20/80] Loss: 0.2199
+   [Batch 40/80] Loss: 0.2665
+   [Batch 60/80] Loss: 0.2484
+   [Batch 80/80] Loss: 0.2190
+📊 Train Loss: 0.2249 | Val Loss: 0.2941 | Val Dice: 0.6325
+⚠️ 验证集 Dice 未提升。早停计数: 37 / 50
+
+========== Epoch 98/500 [LR: 2.73e-04] ==========
+   [Batch 20/80] Loss: 0.2749
+   [Batch 40/80] Loss: 0.2188
+   [Batch 60/80] Loss: 0.2047
+   [Batch 80/80] Loss: 0.2232
+📊 Train Loss: 0.2167 | Val Loss: 0.2973 | Val Dice: 0.6316
+⚠️ 验证集 Dice 未提升。早停计数: 38 / 50
+
+========== Epoch 99/500 [LR: 2.73e-04] ==========
+   [Batch 20/80] Loss: 0.3239
+   [Batch 40/80] Loss: 0.1776
+   [Batch 60/80] Loss: 0.2364
+   [Batch 80/80] Loss: 0.1687
+📊 Train Loss: 0.2185 | Val Loss: 0.2994 | Val Dice: 0.6272
+⚠️ 验证集 Dice 未提升。早停计数: 39 / 50
+
+========== Epoch 100/500 [LR: 2.72e-04] ==========
+   [Batch 20/80] Loss: 0.2540
+   [Batch 40/80] Loss: 0.1808
+   [Batch 60/80] Loss: 0.1858
+   [Batch 80/80] Loss: 0.2225
+📊 Train Loss: 0.2182 | Val Loss: 0.3009 | Val Dice: 0.6205
+⚠️ 验证集 Dice 未提升。早停计数: 40 / 50
+
+========== Epoch 101/500 [LR: 2.71e-04] ==========
+   [Batch 20/80] Loss: 0.2668
+   [Batch 40/80] Loss: 0.2157
+   [Batch 60/80] Loss: 0.2258
+   [Batch 80/80] Loss: 0.2147
+📊 Train Loss: 0.2220 | Val Loss: 0.2952 | Val Dice: 0.6343
+⚠️ 验证集 Dice 未提升。早停计数: 41 / 50
+
+========== Epoch 102/500 [LR: 2.71e-04] ==========
+   [Batch 20/80] Loss: 0.2169
+   [Batch 40/80] Loss: 0.2074
+   [Batch 60/80] Loss: 0.2207
+   [Batch 80/80] Loss: 0.2182
+📊 Train Loss: 0.2166 | Val Loss: 0.2945 | Val Dice: 0.6320
+⚠️ 验证集 Dice 未提升。早停计数: 42 / 50
+
+========== Epoch 103/500 [LR: 2.70e-04] ==========
+   [Batch 20/80] Loss: 0.2314
+   [Batch 40/80] Loss: 0.2002
+   [Batch 60/80] Loss: 0.2671
+   [Batch 80/80] Loss: 0.2161
+📊 Train Loss: 0.2134 | Val Loss: 0.3054 | Val Dice: 0.6196
+⚠️ 验证集 Dice 未提升。早停计数: 43 / 50
+
+========== Epoch 104/500 [LR: 2.70e-04] ==========
+   [Batch 20/80] Loss: 0.1865
+   [Batch 40/80] Loss: 0.1896
+   [Batch 60/80] Loss: 0.2209
+   [Batch 80/80] Loss: 0.1766
+📊 Train Loss: 0.2112 | Val Loss: 0.3119 | Val Dice: 0.6020
+⚠️ 验证集 Dice 未提升。早停计数: 44 / 50
+
+========== Epoch 105/500 [LR: 2.69e-04] ==========
+   [Batch 20/80] Loss: 0.1889
+   [Batch 40/80] Loss: 0.2051
+   [Batch 60/80] Loss: 0.2509
+   [Batch 80/80] Loss: 0.2306
+📊 Train Loss: 0.2108 | Val Loss: 0.3144 | Val Dice: 0.6041
+⚠️ 验证集 Dice 未提升。早停计数: 45 / 50
+
+========== Epoch 106/500 [LR: 2.69e-04] ==========
+   [Batch 20/80] Loss: 0.1978
+   [Batch 40/80] Loss: 0.2322
+   [Batch 60/80] Loss: 0.1684
+   [Batch 80/80] Loss: 0.2739
+📊 Train Loss: 0.2175 | Val Loss: 0.2959 | Val Dice: 0.6344
+⚠️ 验证集 Dice 未提升。早停计数: 46 / 50
+
+========== Epoch 107/500 [LR: 2.68e-04] ==========
+   [Batch 20/80] Loss: 0.2344
+   [Batch 40/80] Loss: 0.1851
+   [Batch 60/80] Loss: 0.2429
+   [Batch 80/80] Loss: 0.2146
+📊 Train Loss: 0.2140 | Val Loss: 0.3106 | Val Dice: 0.6097
+⚠️ 验证集 Dice 未提升。早停计数: 47 / 50
+
+========== Epoch 108/500 [LR: 2.67e-04] ==========
+   [Batch 20/80] Loss: 0.2074
+   [Batch 40/80] Loss: 0.2490
+   [Batch 60/80] Loss: 0.2138
+   [Batch 80/80] Loss: 0.2408
+📊 Train Loss: 0.2135 | Val Loss: 0.3016 | Val Dice: 0.6300
+⚠️ 验证集 Dice 未提升。早停计数: 48 / 50
+
+========== Epoch 109/500 [LR: 2.67e-04] ==========
+   [Batch 20/80] Loss: 0.2480
+   [Batch 40/80] Loss: 0.2048
+   [Batch 60/80] Loss: 0.2106
+   [Batch 80/80] Loss: 0.2565
+📊 Train Loss: 0.2125 | Val Loss: 0.3136 | Val Dice: 0.6135
+⚠️ 验证集 Dice 未提升。早停计数: 49 / 50
+
+========== Epoch 110/500 [LR: 2.66e-04] ==========
+   [Batch 20/80] Loss: 0.1963
+   [Batch 40/80] Loss: 0.1774
+   [Batch 60/80] Loss: 0.2454
+   [Batch 80/80] Loss: 0.2030
+📊 Train Loss: 0.2117 | Val Loss: 0.2991 | Val Dice: 0.6288
+⚠️ 验证集 Dice 未提升。早停计数: 50 / 50
+
+🛑 连续 50 个 epoch 验证集性能无提升，触发早停机制，训练提前结束！
+📊 训练曲线图已保存至: <workspace>/CNN/Deeplabv3+/train/Aachen-Heerlen_2/deeplab_training_curve.png
+✅ 所有训练任务结束！

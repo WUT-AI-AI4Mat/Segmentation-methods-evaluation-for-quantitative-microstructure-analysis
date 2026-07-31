@@ -1,0 +1,107 @@
+nohup: ignoring input
+<workspace>/matsam/utils/segment_anything_/build_sam.py:105: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state_dict = torch.load(f)
+✅ MatSAM 库加载成功
+🚀 启动 MatSAM 纯净对照组微调...
+⏳ 加载 MatSAM 基础权重...
+🧬 冻结 Image Encoder 与 Prompt Encoder，解冻 Mask Decoder...
+✅ Epoch 1 | Train Loss: 0.5557 | Val Loss: 0.4723 🌟 [NEW BEST]
+✅ Epoch 2 | Train Loss: 0.4949 | Val Loss: 0.4229 🌟 [NEW BEST]
+✅ Epoch 3 | Train Loss: 0.4619 | Val Loss: 0.4562
+✅ Epoch 4 | Train Loss: 0.4521 | Val Loss: 0.4221 🌟 [NEW BEST]
+✅ Epoch 5 | Train Loss: 0.4406 | Val Loss: 0.4179 🌟 [NEW BEST]
+✅ Epoch 6 | Train Loss: 0.4325 | Val Loss: 0.4144 🌟 [NEW BEST]
+✅ Epoch 7 | Train Loss: 0.4299 | Val Loss: 0.3957 🌟 [NEW BEST]
+✅ Epoch 8 | Train Loss: 0.4194 | Val Loss: 0.4013
+✅ Epoch 9 | Train Loss: 0.4153 | Val Loss: 0.3772 🌟 [NEW BEST]
+✅ Epoch 10 | Train Loss: 0.4154 | Val Loss: 0.3780
+✅ Epoch 11 | Train Loss: 0.4047 | Val Loss: 0.3597 🌟 [NEW BEST]
+✅ Epoch 12 | Train Loss: 0.3939 | Val Loss: 0.3728
+✅ Epoch 13 | Train Loss: 0.3962 | Val Loss: 0.3771
+✅ Epoch 14 | Train Loss: 0.3923 | Val Loss: 0.3871
+✅ Epoch 15 | Train Loss: 0.3881 | Val Loss: 0.3393 🌟 [NEW BEST]
+✅ Epoch 16 | Train Loss: 0.3861 | Val Loss: 0.3527
+✅ Epoch 17 | Train Loss: 0.3881 | Val Loss: 0.3555
+✅ Epoch 18 | Train Loss: 0.3863 | Val Loss: 0.3746
+✅ Epoch 19 | Train Loss: 0.3944 | Val Loss: 0.3601
+✅ Epoch 20 | Train Loss: 0.3722 | Val Loss: 0.3323 🌟 [NEW BEST]
+✅ Epoch 21 | Train Loss: 0.3813 | Val Loss: 0.3444
+✅ Epoch 22 | Train Loss: 0.3821 | Val Loss: 0.3382
+✅ Epoch 23 | Train Loss: 0.3715 | Val Loss: 0.3465
+✅ Epoch 24 | Train Loss: 0.3784 | Val Loss: 0.3398
+✅ Epoch 25 | Train Loss: 0.3693 | Val Loss: 0.3578
+✅ Epoch 26 | Train Loss: 0.3705 | Val Loss: 0.3298 🌟 [NEW BEST]
+✅ Epoch 27 | Train Loss: 0.3668 | Val Loss: 0.3257 🌟 [NEW BEST]
+✅ Epoch 28 | Train Loss: 0.3639 | Val Loss: 0.3554
+✅ Epoch 29 | Train Loss: 0.3702 | Val Loss: 0.3423
+✅ Epoch 30 | Train Loss: 0.3679 | Val Loss: 0.3414
+✅ Epoch 31 | Train Loss: 0.3702 | Val Loss: 0.3393
+✅ Epoch 32 | Train Loss: 0.3620 | Val Loss: 0.3314
+✅ Epoch 33 | Train Loss: 0.3550 | Val Loss: 0.3639
+✅ Epoch 34 | Train Loss: 0.3605 | Val Loss: 0.3247 🌟 [NEW BEST]
+✅ Epoch 35 | Train Loss: 0.3532 | Val Loss: 0.3126 🌟 [NEW BEST]
+✅ Epoch 36 | Train Loss: 0.3580 | Val Loss: 0.3224
+✅ Epoch 37 | Train Loss: 0.3591 | Val Loss: 0.3443
+✅ Epoch 38 | Train Loss: 0.3527 | Val Loss: 0.3300
+✅ Epoch 39 | Train Loss: 0.3572 | Val Loss: 0.3312
+✅ Epoch 40 | Train Loss: 0.3522 | Val Loss: 0.3187
+✅ Epoch 41 | Train Loss: 0.3481 | Val Loss: 0.3133
+✅ Epoch 42 | Train Loss: 0.3459 | Val Loss: 0.3249
+✅ Epoch 43 | Train Loss: 0.3461 | Val Loss: 0.3229
+✅ Epoch 44 | Train Loss: 0.3496 | Val Loss: 0.3303
+✅ Epoch 45 | Train Loss: 0.3393 | Val Loss: 0.3122 🌟 [NEW BEST]
+✅ Epoch 46 | Train Loss: 0.3498 | Val Loss: 0.3187
+✅ Epoch 47 | Train Loss: 0.3443 | Val Loss: 0.3329
+✅ Epoch 48 | Train Loss: 0.3460 | Val Loss: 0.3161
+✅ Epoch 49 | Train Loss: 0.3455 | Val Loss: 0.3189
+✅ Epoch 50 | Train Loss: 0.3403 | Val Loss: 0.3213
+✅ Epoch 51 | Train Loss: 0.3424 | Val Loss: 0.3353
+✅ Epoch 52 | Train Loss: 0.3507 | Val Loss: 0.2965 🌟 [NEW BEST]
+✅ Epoch 53 | Train Loss: 0.3464 | Val Loss: 0.3103
+✅ Epoch 54 | Train Loss: 0.3353 | Val Loss: 0.3361
+✅ Epoch 55 | Train Loss: 0.3436 | Val Loss: 0.3360
+✅ Epoch 56 | Train Loss: 0.3426 | Val Loss: 0.3179
+✅ Epoch 57 | Train Loss: 0.3355 | Val Loss: 0.3053
+✅ Epoch 58 | Train Loss: 0.3336 | Val Loss: 0.3271
+✅ Epoch 59 | Train Loss: 0.3369 | Val Loss: 0.3049
+✅ Epoch 60 | Train Loss: 0.3318 | Val Loss: 0.3170
+✅ Epoch 61 | Train Loss: 0.3321 | Val Loss: 0.3027
+✅ Epoch 62 | Train Loss: 0.3333 | Val Loss: 0.3069
+✅ Epoch 63 | Train Loss: 0.3269 | Val Loss: 0.3024
+✅ Epoch 64 | Train Loss: 0.3280 | Val Loss: 0.2958 🌟 [NEW BEST]
+✅ Epoch 65 | Train Loss: 0.3294 | Val Loss: 0.3115
+✅ Epoch 66 | Train Loss: 0.3248 | Val Loss: 0.3072
+✅ Epoch 67 | Train Loss: 0.3278 | Val Loss: 0.3088
+✅ Epoch 68 | Train Loss: 0.3313 | Val Loss: 0.3158
+✅ Epoch 69 | Train Loss: 0.3326 | Val Loss: 0.3127
+✅ Epoch 70 | Train Loss: 0.3278 | Val Loss: 0.3114
+✅ Epoch 71 | Train Loss: 0.3232 | Val Loss: 0.3013
+✅ Epoch 72 | Train Loss: 0.3297 | Val Loss: 0.3119
+✅ Epoch 73 | Train Loss: 0.3236 | Val Loss: 0.3094
+✅ Epoch 74 | Train Loss: 0.3301 | Val Loss: 0.3052
+✅ Epoch 75 | Train Loss: 0.3261 | Val Loss: 0.2889 🌟 [NEW BEST]
+✅ Epoch 76 | Train Loss: 0.3247 | Val Loss: 0.2961
+✅ Epoch 77 | Train Loss: 0.3309 | Val Loss: 0.3164
+✅ Epoch 78 | Train Loss: 0.3239 | Val Loss: 0.2959
+✅ Epoch 79 | Train Loss: 0.3221 | Val Loss: 0.2981
+✅ Epoch 80 | Train Loss: 0.3292 | Val Loss: 0.3158
+✅ Epoch 81 | Train Loss: 0.3163 | Val Loss: 0.3030
+✅ Epoch 82 | Train Loss: 0.3254 | Val Loss: 0.3080
+✅ Epoch 83 | Train Loss: 0.3191 | Val Loss: 0.3144
+✅ Epoch 84 | Train Loss: 0.3193 | Val Loss: 0.3026
+✅ Epoch 85 | Train Loss: 0.3166 | Val Loss: 0.3163
+✅ Epoch 86 | Train Loss: 0.3205 | Val Loss: 0.2845 🌟 [NEW BEST]
+✅ Epoch 87 | Train Loss: 0.3194 | Val Loss: 0.3061
+✅ Epoch 88 | Train Loss: 0.3231 | Val Loss: 0.3031
+✅ Epoch 89 | Train Loss: 0.3185 | Val Loss: 0.3139
+✅ Epoch 90 | Train Loss: 0.3252 | Val Loss: 0.3033
+✅ Epoch 91 | Train Loss: 0.3240 | Val Loss: 0.2827 🌟 [NEW BEST]
+✅ Epoch 92 | Train Loss: 0.3252 | Val Loss: 0.2958
+✅ Epoch 93 | Train Loss: 0.3209 | Val Loss: 0.3074
+✅ Epoch 94 | Train Loss: 0.3117 | Val Loss: 0.3286
+✅ Epoch 95 | Train Loss: 0.3196 | Val Loss: 0.3152
+✅ Epoch 96 | Train Loss: 0.3129 | Val Loss: 0.3056
+✅ Epoch 97 | Train Loss: 0.3201 | Val Loss: 0.3124
+✅ Epoch 98 | Train Loss: 0.3175 | Val Loss: 0.2936
+✅ Epoch 99 | Train Loss: 0.3176 | Val Loss: 0.3045
+✅ Epoch 100 | Train Loss: 0.3178 | Val Loss: 0.3024

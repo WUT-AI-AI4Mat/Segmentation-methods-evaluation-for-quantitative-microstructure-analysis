@@ -1,0 +1,664 @@
+nohup: ignoring input
+<conda-envs>/sam/lib/python3.9/site-packages/albumentations/check_version.py:147: UserWarning: Error fetching version info The read operation timed out
+  data = fetch_version_info()
+🚀 启动 DeepLabV3+ 多分类训练脚本...
+使用设备: cuda
+<conda-envs>/sam/lib/python3.9/site-packages/segmentation_models_pytorch/encoders/__init__.py:136: UserWarning: Error loading resnet50 `imagenet` weights from Hugging Face Hub, trying loading from original url...
+  warnings.warn(message, UserWarning)
+<conda-envs>/sam/lib/python3.9/site-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+<workspace>/CNN/Deeplabv3+/train_mutil.py:140: UserWarning: Argument(s) 'shift_limit' are not valid for transform OpticalDistortion
+  albu.OpticalDistortion(distort_limit=0.05, shift_limit=0.05, p=0.5),
+正在扫描 train 集匹配关系...
+[train] 加载完成: 13 张
+正在扫描 val 集匹配关系...
+[val] 加载完成: 4 张
+🚑 正在进行数据体检...
+<workspace>/CNN/Deeplabv3+/train_mutil.py:124: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  return image, torch.tensor(mask, dtype=torch.long)
+✅ 体检通过！检查图已保存至: <workspace>/CNN/Deeplabv3+/train/Super_multiclass/sanity_check.png
+开始训练，最大 Epochs: 500，早停耐心值: 50...
+
+========== Epoch 1/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.9237
+📊 Train Loss: 0.9237 | Val Loss: 0.9156 | Val Macro Dice: 0.0421
+🎉 发现更优模型! Best Macro Dice 更新为: 0.0421，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 2/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.8675
+📊 Train Loss: 0.8675 | Val Loss: 0.9145 | Val Macro Dice: 0.2298
+🎉 发现更优模型! Best Macro Dice 更新为: 0.2298，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 3/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.8109
+📊 Train Loss: 0.8109 | Val Loss: 0.9127 | Val Macro Dice: 0.2235
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 4/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.7624
+📊 Train Loss: 0.7624 | Val Loss: 0.9101 | Val Macro Dice: 0.2190
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 5/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.7193
+📊 Train Loss: 0.7193 | Val Loss: 0.9063 | Val Macro Dice: 0.2190
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 6/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.6843
+📊 Train Loss: 0.6843 | Val Loss: 0.9007 | Val Macro Dice: 0.2484
+🎉 发现更优模型! Best Macro Dice 更新为: 0.2484，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 7/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.6531
+📊 Train Loss: 0.6531 | Val Loss: 0.8938 | Val Macro Dice: 0.2966
+🎉 发现更优模型! Best Macro Dice 更新为: 0.2966，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 8/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.6229
+📊 Train Loss: 0.6229 | Val Loss: 0.8861 | Val Macro Dice: 0.3405
+🎉 发现更优模型! Best Macro Dice 更新为: 0.3405，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 9/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.5899
+📊 Train Loss: 0.5899 | Val Loss: 0.8781 | Val Macro Dice: 0.3843
+🎉 发现更优模型! Best Macro Dice 更新为: 0.3843，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 10/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.5652
+📊 Train Loss: 0.5652 | Val Loss: 0.8687 | Val Macro Dice: 0.4427
+🎉 发现更优模型! Best Macro Dice 更新为: 0.4427，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 11/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.5301
+📊 Train Loss: 0.5301 | Val Loss: 0.8572 | Val Macro Dice: 0.5008
+🎉 发现更优模型! Best Macro Dice 更新为: 0.5008，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 12/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.5096
+📊 Train Loss: 0.5096 | Val Loss: 0.8436 | Val Macro Dice: 0.5520
+🎉 发现更优模型! Best Macro Dice 更新为: 0.5520，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 13/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.4833
+📊 Train Loss: 0.4833 | Val Loss: 0.8284 | Val Macro Dice: 0.5802
+🎉 发现更优模型! Best Macro Dice 更新为: 0.5802，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 14/500 [LR: 3.00e-04] ==========
+   [Batch 1/1] Loss: 0.4642
+📊 Train Loss: 0.4642 | Val Loss: 0.8106 | Val Macro Dice: 0.5929
+🎉 发现更优模型! Best Macro Dice 更新为: 0.5929，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 15/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.4349
+📊 Train Loss: 0.4349 | Val Loss: 0.7909 | Val Macro Dice: 0.5981
+🎉 发现更优模型! Best Macro Dice 更新为: 0.5981，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 16/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.4100
+📊 Train Loss: 0.4100 | Val Loss: 0.7688 | Val Macro Dice: 0.6004
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6004，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 17/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.4030
+📊 Train Loss: 0.4030 | Val Loss: 0.7437 | Val Macro Dice: 0.6023
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6023，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 18/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.3746
+📊 Train Loss: 0.3746 | Val Loss: 0.7157 | Val Macro Dice: 0.6045
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6045，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 19/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.3778
+📊 Train Loss: 0.3778 | Val Loss: 0.6851 | Val Macro Dice: 0.6091
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6091，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 20/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.3606
+📊 Train Loss: 0.3606 | Val Loss: 0.6539 | Val Macro Dice: 0.6213
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6213，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 21/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.3519
+📊 Train Loss: 0.3519 | Val Loss: 0.6221 | Val Macro Dice: 0.6430
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6430，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 22/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.3416
+📊 Train Loss: 0.3416 | Val Loss: 0.5896 | Val Macro Dice: 0.6633
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6633，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 23/500 [LR: 2.99e-04] ==========
+   [Batch 1/1] Loss: 0.3336
+📊 Train Loss: 0.3336 | Val Loss: 0.5556 | Val Macro Dice: 0.6760
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6760，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 24/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.3275
+📊 Train Loss: 0.3275 | Val Loss: 0.5209 | Val Macro Dice: 0.6821
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6821，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 25/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.3171
+📊 Train Loss: 0.3171 | Val Loss: 0.4870 | Val Macro Dice: 0.6878
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6878，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 26/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.3125
+📊 Train Loss: 0.3125 | Val Loss: 0.4556 | Val Macro Dice: 0.6948
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6948，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 27/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.3005
+📊 Train Loss: 0.3005 | Val Loss: 0.4276 | Val Macro Dice: 0.7071
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7071，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 28/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.2958
+📊 Train Loss: 0.2958 | Val Loss: 0.4027 | Val Macro Dice: 0.7234
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7234，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 29/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.2929
+📊 Train Loss: 0.2929 | Val Loss: 0.3797 | Val Macro Dice: 0.7445
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7445，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 30/500 [LR: 2.98e-04] ==========
+   [Batch 1/1] Loss: 0.2845
+📊 Train Loss: 0.2845 | Val Loss: 0.3605 | Val Macro Dice: 0.7611
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7611，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 31/500 [LR: 2.97e-04] ==========
+   [Batch 1/1] Loss: 0.2797
+📊 Train Loss: 0.2797 | Val Loss: 0.3411 | Val Macro Dice: 0.7782
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7782，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 32/500 [LR: 2.97e-04] ==========
+   [Batch 1/1] Loss: 0.2757
+📊 Train Loss: 0.2757 | Val Loss: 0.3232 | Val Macro Dice: 0.7909
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7909，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 33/500 [LR: 2.97e-04] ==========
+   [Batch 1/1] Loss: 0.2666
+📊 Train Loss: 0.2666 | Val Loss: 0.3081 | Val Macro Dice: 0.7996
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7996，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 34/500 [LR: 2.97e-04] ==========
+   [Batch 1/1] Loss: 0.2640
+📊 Train Loss: 0.2640 | Val Loss: 0.2945 | Val Macro Dice: 0.8075
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8075，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 35/500 [LR: 2.97e-04] ==========
+   [Batch 1/1] Loss: 0.2667
+📊 Train Loss: 0.2667 | Val Loss: 0.2814 | Val Macro Dice: 0.8135
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8135，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 36/500 [LR: 2.96e-04] ==========
+   [Batch 1/1] Loss: 0.2585
+📊 Train Loss: 0.2585 | Val Loss: 0.2711 | Val Macro Dice: 0.8182
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8182，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 37/500 [LR: 2.96e-04] ==========
+   [Batch 1/1] Loss: 0.2582
+📊 Train Loss: 0.2582 | Val Loss: 0.2638 | Val Macro Dice: 0.8222
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8222，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 38/500 [LR: 2.96e-04] ==========
+   [Batch 1/1] Loss: 0.2430
+📊 Train Loss: 0.2430 | Val Loss: 0.2583 | Val Macro Dice: 0.8258
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8258，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 39/500 [LR: 2.96e-04] ==========
+   [Batch 1/1] Loss: 0.2428
+📊 Train Loss: 0.2428 | Val Loss: 0.2531 | Val Macro Dice: 0.8316
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8316，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 40/500 [LR: 2.96e-04] ==========
+   [Batch 1/1] Loss: 0.2457
+📊 Train Loss: 0.2457 | Val Loss: 0.2476 | Val Macro Dice: 0.8387
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8387，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 41/500 [LR: 2.95e-04] ==========
+   [Batch 1/1] Loss: 0.2373
+📊 Train Loss: 0.2373 | Val Loss: 0.2410 | Val Macro Dice: 0.8446
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8446，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 42/500 [LR: 2.95e-04] ==========
+   [Batch 1/1] Loss: 0.2364
+📊 Train Loss: 0.2364 | Val Loss: 0.2314 | Val Macro Dice: 0.8538
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8538，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 43/500 [LR: 2.95e-04] ==========
+   [Batch 1/1] Loss: 0.2277
+📊 Train Loss: 0.2277 | Val Loss: 0.2225 | Val Macro Dice: 0.8594
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8594，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 44/500 [LR: 2.95e-04] ==========
+   [Batch 1/1] Loss: 0.2267
+📊 Train Loss: 0.2267 | Val Loss: 0.2147 | Val Macro Dice: 0.8609
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8609，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 45/500 [LR: 2.94e-04] ==========
+   [Batch 1/1] Loss: 0.2180
+📊 Train Loss: 0.2180 | Val Loss: 0.2088 | Val Macro Dice: 0.8586
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 46/500 [LR: 2.94e-04] ==========
+   [Batch 1/1] Loss: 0.2123
+📊 Train Loss: 0.2123 | Val Loss: 0.2038 | Val Macro Dice: 0.8554
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 47/500 [LR: 2.94e-04] ==========
+   [Batch 1/1] Loss: 0.2137
+📊 Train Loss: 0.2137 | Val Loss: 0.2008 | Val Macro Dice: 0.8531
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 48/500 [LR: 2.94e-04] ==========
+   [Batch 1/1] Loss: 0.2160
+📊 Train Loss: 0.2160 | Val Loss: 0.1979 | Val Macro Dice: 0.8530
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 49/500 [LR: 2.93e-04] ==========
+   [Batch 1/1] Loss: 0.1946
+📊 Train Loss: 0.1946 | Val Loss: 0.1943 | Val Macro Dice: 0.8576
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 50/500 [LR: 2.93e-04] ==========
+   [Batch 1/1] Loss: 0.1939
+📊 Train Loss: 0.1939 | Val Loss: 0.1911 | Val Macro Dice: 0.8630
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8630，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 51/500 [LR: 2.93e-04] ==========
+   [Batch 1/1] Loss: 0.2004
+📊 Train Loss: 0.2004 | Val Loss: 0.1856 | Val Macro Dice: 0.8682
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8682，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 52/500 [LR: 2.92e-04] ==========
+   [Batch 1/1] Loss: 0.1840
+📊 Train Loss: 0.1840 | Val Loss: 0.1816 | Val Macro Dice: 0.8729
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8729，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 53/500 [LR: 2.92e-04] ==========
+   [Batch 1/1] Loss: 0.1930
+📊 Train Loss: 0.1930 | Val Loss: 0.1791 | Val Macro Dice: 0.8757
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8757，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 54/500 [LR: 2.92e-04] ==========
+   [Batch 1/1] Loss: 0.1836
+📊 Train Loss: 0.1836 | Val Loss: 0.1796 | Val Macro Dice: 0.8747
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 55/500 [LR: 2.91e-04] ==========
+   [Batch 1/1] Loss: 0.1806
+📊 Train Loss: 0.1806 | Val Loss: 0.1776 | Val Macro Dice: 0.8727
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 56/500 [LR: 2.91e-04] ==========
+   [Batch 1/1] Loss: 0.1796
+📊 Train Loss: 0.1796 | Val Loss: 0.1783 | Val Macro Dice: 0.8680
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 57/500 [LR: 2.91e-04] ==========
+   [Batch 1/1] Loss: 0.1871
+📊 Train Loss: 0.1871 | Val Loss: 0.1761 | Val Macro Dice: 0.8656
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 58/500 [LR: 2.91e-04] ==========
+   [Batch 1/1] Loss: 0.1681
+📊 Train Loss: 0.1681 | Val Loss: 0.1761 | Val Macro Dice: 0.8646
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 59/500 [LR: 2.90e-04] ==========
+   [Batch 1/1] Loss: 0.1777
+📊 Train Loss: 0.1777 | Val Loss: 0.1762 | Val Macro Dice: 0.8662
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 60/500 [LR: 2.90e-04] ==========
+   [Batch 1/1] Loss: 0.1731
+📊 Train Loss: 0.1731 | Val Loss: 0.1766 | Val Macro Dice: 0.8678
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 61/500 [LR: 2.90e-04] ==========
+   [Batch 1/1] Loss: 0.1728
+📊 Train Loss: 0.1728 | Val Loss: 0.1773 | Val Macro Dice: 0.8688
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 62/500 [LR: 2.89e-04] ==========
+   [Batch 1/1] Loss: 0.1661
+📊 Train Loss: 0.1661 | Val Loss: 0.1756 | Val Macro Dice: 0.8701
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 63/500 [LR: 2.89e-04] ==========
+   [Batch 1/1] Loss: 0.1611
+📊 Train Loss: 0.1611 | Val Loss: 0.1718 | Val Macro Dice: 0.8725
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 64/500 [LR: 2.88e-04] ==========
+   [Batch 1/1] Loss: 0.1572
+📊 Train Loss: 0.1572 | Val Loss: 0.1656 | Val Macro Dice: 0.8753
+⚠️ 验证集 Macro Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 65/500 [LR: 2.88e-04] ==========
+   [Batch 1/1] Loss: 0.1584
+📊 Train Loss: 0.1584 | Val Loss: 0.1566 | Val Macro Dice: 0.8795
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8795，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 66/500 [LR: 2.88e-04] ==========
+   [Batch 1/1] Loss: 0.1618
+📊 Train Loss: 0.1618 | Val Loss: 0.1497 | Val Macro Dice: 0.8829
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8829，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 67/500 [LR: 2.87e-04] ==========
+   [Batch 1/1] Loss: 0.1492
+📊 Train Loss: 0.1492 | Val Loss: 0.1451 | Val Macro Dice: 0.8846
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8846，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 68/500 [LR: 2.87e-04] ==========
+   [Batch 1/1] Loss: 0.1518
+📊 Train Loss: 0.1518 | Val Loss: 0.1426 | Val Macro Dice: 0.8854
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8854，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 69/500 [LR: 2.87e-04] ==========
+   [Batch 1/1] Loss: 0.1589
+📊 Train Loss: 0.1589 | Val Loss: 0.1399 | Val Macro Dice: 0.8852
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 70/500 [LR: 2.86e-04] ==========
+   [Batch 1/1] Loss: 0.1426
+📊 Train Loss: 0.1426 | Val Loss: 0.1391 | Val Macro Dice: 0.8836
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 71/500 [LR: 2.86e-04] ==========
+   [Batch 1/1] Loss: 0.1548
+📊 Train Loss: 0.1548 | Val Loss: 0.1425 | Val Macro Dice: 0.8815
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 72/500 [LR: 2.85e-04] ==========
+   [Batch 1/1] Loss: 0.1456
+📊 Train Loss: 0.1456 | Val Loss: 0.1468 | Val Macro Dice: 0.8805
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 73/500 [LR: 2.85e-04] ==========
+   [Batch 1/1] Loss: 0.1549
+📊 Train Loss: 0.1549 | Val Loss: 0.1509 | Val Macro Dice: 0.8801
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 74/500 [LR: 2.85e-04] ==========
+   [Batch 1/1] Loss: 0.1457
+📊 Train Loss: 0.1457 | Val Loss: 0.1535 | Val Macro Dice: 0.8819
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 75/500 [LR: 2.84e-04] ==========
+   [Batch 1/1] Loss: 0.1484
+📊 Train Loss: 0.1484 | Val Loss: 0.1529 | Val Macro Dice: 0.8840
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 76/500 [LR: 2.84e-04] ==========
+   [Batch 1/1] Loss: 0.1420
+📊 Train Loss: 0.1420 | Val Loss: 0.1536 | Val Macro Dice: 0.8854
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8854，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 77/500 [LR: 2.83e-04] ==========
+   [Batch 1/1] Loss: 0.1461
+📊 Train Loss: 0.1461 | Val Loss: 0.1533 | Val Macro Dice: 0.8878
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8878，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 78/500 [LR: 2.83e-04] ==========
+   [Batch 1/1] Loss: 0.1367
+📊 Train Loss: 0.1367 | Val Loss: 0.1532 | Val Macro Dice: 0.8888
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8888，已保存至 <workspace>/CNN/Deeplabv3+/train/Super_multiclass/DeepLabV3P_Best_Model.pth
+
+========== Epoch 79/500 [LR: 2.82e-04] ==========
+   [Batch 1/1] Loss: 0.1371
+📊 Train Loss: 0.1371 | Val Loss: 0.1539 | Val Macro Dice: 0.8886
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 80/500 [LR: 2.82e-04] ==========
+   [Batch 1/1] Loss: 0.1378
+📊 Train Loss: 0.1378 | Val Loss: 0.1552 | Val Macro Dice: 0.8877
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 81/500 [LR: 2.82e-04] ==========
+   [Batch 1/1] Loss: 0.1315
+📊 Train Loss: 0.1315 | Val Loss: 0.1571 | Val Macro Dice: 0.8851
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 82/500 [LR: 2.81e-04] ==========
+   [Batch 1/1] Loss: 0.1363
+📊 Train Loss: 0.1363 | Val Loss: 0.1549 | Val Macro Dice: 0.8845
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 83/500 [LR: 2.81e-04] ==========
+   [Batch 1/1] Loss: 0.1287
+📊 Train Loss: 0.1287 | Val Loss: 0.1544 | Val Macro Dice: 0.8827
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 84/500 [LR: 2.80e-04] ==========
+   [Batch 1/1] Loss: 0.1325
+📊 Train Loss: 0.1325 | Val Loss: 0.1536 | Val Macro Dice: 0.8820
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 85/500 [LR: 2.80e-04] ==========
+   [Batch 1/1] Loss: 0.1374
+📊 Train Loss: 0.1374 | Val Loss: 0.1552 | Val Macro Dice: 0.8815
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 86/500 [LR: 2.79e-04] ==========
+   [Batch 1/1] Loss: 0.1317
+📊 Train Loss: 0.1317 | Val Loss: 0.1578 | Val Macro Dice: 0.8815
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 87/500 [LR: 2.79e-04] ==========
+   [Batch 1/1] Loss: 0.1265
+📊 Train Loss: 0.1265 | Val Loss: 0.1596 | Val Macro Dice: 0.8815
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 88/500 [LR: 2.78e-04] ==========
+   [Batch 1/1] Loss: 0.1267
+📊 Train Loss: 0.1267 | Val Loss: 0.1620 | Val Macro Dice: 0.8817
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 89/500 [LR: 2.78e-04] ==========
+   [Batch 1/1] Loss: 0.1332
+📊 Train Loss: 0.1332 | Val Loss: 0.1625 | Val Macro Dice: 0.8819
+⚠️ 验证集 Macro Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 90/500 [LR: 2.77e-04] ==========
+   [Batch 1/1] Loss: 0.1282
+📊 Train Loss: 0.1282 | Val Loss: 0.1556 | Val Macro Dice: 0.8840
+⚠️ 验证集 Macro Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 91/500 [LR: 2.77e-04] ==========
+   [Batch 1/1] Loss: 0.1275
+📊 Train Loss: 0.1275 | Val Loss: 0.1509 | Val Macro Dice: 0.8846
+⚠️ 验证集 Macro Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 92/500 [LR: 2.76e-04] ==========
+   [Batch 1/1] Loss: 0.1305
+📊 Train Loss: 0.1305 | Val Loss: 0.1501 | Val Macro Dice: 0.8832
+⚠️ 验证集 Macro Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 93/500 [LR: 2.76e-04] ==========
+   [Batch 1/1] Loss: 0.1274
+📊 Train Loss: 0.1274 | Val Loss: 0.1490 | Val Macro Dice: 0.8815
+⚠️ 验证集 Macro Dice 未提升。早停计数: 15 / 50
+
+========== Epoch 94/500 [LR: 2.75e-04] ==========
+   [Batch 1/1] Loss: 0.1259
+📊 Train Loss: 0.1259 | Val Loss: 0.1483 | Val Macro Dice: 0.8790
+⚠️ 验证集 Macro Dice 未提升。早停计数: 16 / 50
+
+========== Epoch 95/500 [LR: 2.75e-04] ==========
+   [Batch 1/1] Loss: 0.1242
+📊 Train Loss: 0.1242 | Val Loss: 0.1477 | Val Macro Dice: 0.8767
+⚠️ 验证集 Macro Dice 未提升。早停计数: 17 / 50
+
+========== Epoch 96/500 [LR: 2.74e-04] ==========
+   [Batch 1/1] Loss: 0.1240
+📊 Train Loss: 0.1240 | Val Loss: 0.1453 | Val Macro Dice: 0.8761
+⚠️ 验证集 Macro Dice 未提升。早停计数: 18 / 50
+
+========== Epoch 97/500 [LR: 2.74e-04] ==========
+   [Batch 1/1] Loss: 0.1199
+📊 Train Loss: 0.1199 | Val Loss: 0.1462 | Val Macro Dice: 0.8746
+⚠️ 验证集 Macro Dice 未提升。早停计数: 19 / 50
+
+========== Epoch 98/500 [LR: 2.73e-04] ==========
+   [Batch 1/1] Loss: 0.1225
+📊 Train Loss: 0.1225 | Val Loss: 0.1492 | Val Macro Dice: 0.8743
+⚠️ 验证集 Macro Dice 未提升。早停计数: 20 / 50
+
+========== Epoch 99/500 [LR: 2.73e-04] ==========
+   [Batch 1/1] Loss: 0.1205
+📊 Train Loss: 0.1205 | Val Loss: 0.1519 | Val Macro Dice: 0.8744
+⚠️ 验证集 Macro Dice 未提升。早停计数: 21 / 50
+
+========== Epoch 100/500 [LR: 2.72e-04] ==========
+   [Batch 1/1] Loss: 0.1183
+📊 Train Loss: 0.1183 | Val Loss: 0.1553 | Val Macro Dice: 0.8742
+⚠️ 验证集 Macro Dice 未提升。早停计数: 22 / 50
+
+========== Epoch 101/500 [LR: 2.71e-04] ==========
+   [Batch 1/1] Loss: 0.1197
+📊 Train Loss: 0.1197 | Val Loss: 0.1592 | Val Macro Dice: 0.8736
+⚠️ 验证集 Macro Dice 未提升。早停计数: 23 / 50
+
+========== Epoch 102/500 [LR: 2.71e-04] ==========
+   [Batch 1/1] Loss: 0.1170
+📊 Train Loss: 0.1170 | Val Loss: 0.1630 | Val Macro Dice: 0.8729
+⚠️ 验证集 Macro Dice 未提升。早停计数: 24 / 50
+
+========== Epoch 103/500 [LR: 2.70e-04] ==========
+   [Batch 1/1] Loss: 0.1164
+📊 Train Loss: 0.1164 | Val Loss: 0.1634 | Val Macro Dice: 0.8728
+⚠️ 验证集 Macro Dice 未提升。早停计数: 25 / 50
+
+========== Epoch 104/500 [LR: 2.70e-04] ==========
+   [Batch 1/1] Loss: 0.1151
+📊 Train Loss: 0.1151 | Val Loss: 0.1632 | Val Macro Dice: 0.8733
+⚠️ 验证集 Macro Dice 未提升。早停计数: 26 / 50
+
+========== Epoch 105/500 [LR: 2.69e-04] ==========
+   [Batch 1/1] Loss: 0.1208
+📊 Train Loss: 0.1208 | Val Loss: 0.1618 | Val Macro Dice: 0.8742
+⚠️ 验证集 Macro Dice 未提升。早停计数: 27 / 50
+
+========== Epoch 106/500 [LR: 2.69e-04] ==========
+   [Batch 1/1] Loss: 0.1205
+📊 Train Loss: 0.1205 | Val Loss: 0.1596 | Val Macro Dice: 0.8756
+⚠️ 验证集 Macro Dice 未提升。早停计数: 28 / 50
+
+========== Epoch 107/500 [LR: 2.68e-04] ==========
+   [Batch 1/1] Loss: 0.1130
+📊 Train Loss: 0.1130 | Val Loss: 0.1563 | Val Macro Dice: 0.8767
+⚠️ 验证集 Macro Dice 未提升。早停计数: 29 / 50
+
+========== Epoch 108/500 [LR: 2.67e-04] ==========
+   [Batch 1/1] Loss: 0.1170
+📊 Train Loss: 0.1170 | Val Loss: 0.1532 | Val Macro Dice: 0.8784
+⚠️ 验证集 Macro Dice 未提升。早停计数: 30 / 50
+
+========== Epoch 109/500 [LR: 2.67e-04] ==========
+   [Batch 1/1] Loss: 0.1155
+📊 Train Loss: 0.1155 | Val Loss: 0.1518 | Val Macro Dice: 0.8791
+⚠️ 验证集 Macro Dice 未提升。早停计数: 31 / 50
+
+========== Epoch 110/500 [LR: 2.66e-04] ==========
+   [Batch 1/1] Loss: 0.1160
+📊 Train Loss: 0.1160 | Val Loss: 0.1492 | Val Macro Dice: 0.8804
+⚠️ 验证集 Macro Dice 未提升。早停计数: 32 / 50
+
+========== Epoch 111/500 [LR: 2.66e-04] ==========
+   [Batch 1/1] Loss: 0.1146
+📊 Train Loss: 0.1146 | Val Loss: 0.1469 | Val Macro Dice: 0.8816
+⚠️ 验证集 Macro Dice 未提升。早停计数: 33 / 50
+
+========== Epoch 112/500 [LR: 2.65e-04] ==========
+   [Batch 1/1] Loss: 0.1140
+📊 Train Loss: 0.1140 | Val Loss: 0.1446 | Val Macro Dice: 0.8826
+⚠️ 验证集 Macro Dice 未提升。早停计数: 34 / 50
+
+========== Epoch 113/500 [LR: 2.64e-04] ==========
+   [Batch 1/1] Loss: 0.1190
+📊 Train Loss: 0.1190 | Val Loss: 0.1435 | Val Macro Dice: 0.8828
+⚠️ 验证集 Macro Dice 未提升。早停计数: 35 / 50
+
+========== Epoch 114/500 [LR: 2.64e-04] ==========
+   [Batch 1/1] Loss: 0.1128
+📊 Train Loss: 0.1128 | Val Loss: 0.1437 | Val Macro Dice: 0.8822
+⚠️ 验证集 Macro Dice 未提升。早停计数: 36 / 50
+
+========== Epoch 115/500 [LR: 2.63e-04] ==========
+   [Batch 1/1] Loss: 0.1131
+📊 Train Loss: 0.1131 | Val Loss: 0.1418 | Val Macro Dice: 0.8818
+⚠️ 验证集 Macro Dice 未提升。早停计数: 37 / 50
+
+========== Epoch 116/500 [LR: 2.63e-04] ==========
+   [Batch 1/1] Loss: 0.1105
+📊 Train Loss: 0.1105 | Val Loss: 0.1412 | Val Macro Dice: 0.8818
+⚠️ 验证集 Macro Dice 未提升。早停计数: 38 / 50
+
+========== Epoch 117/500 [LR: 2.62e-04] ==========
+   [Batch 1/1] Loss: 0.1124
+📊 Train Loss: 0.1124 | Val Loss: 0.1407 | Val Macro Dice: 0.8815
+⚠️ 验证集 Macro Dice 未提升。早停计数: 39 / 50
+
+========== Epoch 118/500 [LR: 2.61e-04] ==========
+   [Batch 1/1] Loss: 0.1115
+📊 Train Loss: 0.1115 | Val Loss: 0.1398 | Val Macro Dice: 0.8818
+⚠️ 验证集 Macro Dice 未提升。早停计数: 40 / 50
+
+========== Epoch 119/500 [LR: 2.61e-04] ==========
+   [Batch 1/1] Loss: 0.1132
+📊 Train Loss: 0.1132 | Val Loss: 0.1398 | Val Macro Dice: 0.8834
+⚠️ 验证集 Macro Dice 未提升。早停计数: 41 / 50
+
+========== Epoch 120/500 [LR: 2.60e-04] ==========
+   [Batch 1/1] Loss: 0.1077
+📊 Train Loss: 0.1077 | Val Loss: 0.1394 | Val Macro Dice: 0.8850
+⚠️ 验证集 Macro Dice 未提升。早停计数: 42 / 50
+
+========== Epoch 121/500 [LR: 2.59e-04] ==========
+   [Batch 1/1] Loss: 0.1083
+📊 Train Loss: 0.1083 | Val Loss: 0.1390 | Val Macro Dice: 0.8855
+⚠️ 验证集 Macro Dice 未提升。早停计数: 43 / 50
+
+========== Epoch 122/500 [LR: 2.59e-04] ==========
+   [Batch 1/1] Loss: 0.1101
+📊 Train Loss: 0.1101 | Val Loss: 0.1391 | Val Macro Dice: 0.8863
+⚠️ 验证集 Macro Dice 未提升。早停计数: 44 / 50
+
+========== Epoch 123/500 [LR: 2.58e-04] ==========
+   [Batch 1/1] Loss: 0.1079
+📊 Train Loss: 0.1079 | Val Loss: 0.1390 | Val Macro Dice: 0.8855
+⚠️ 验证集 Macro Dice 未提升。早停计数: 45 / 50
+
+========== Epoch 124/500 [LR: 2.58e-04] ==========
+   [Batch 1/1] Loss: 0.1077
+📊 Train Loss: 0.1077 | Val Loss: 0.1379 | Val Macro Dice: 0.8848
+⚠️ 验证集 Macro Dice 未提升。早停计数: 46 / 50
+
+========== Epoch 125/500 [LR: 2.57e-04] ==========
+   [Batch 1/1] Loss: 0.1046
+📊 Train Loss: 0.1046 | Val Loss: 0.1375 | Val Macro Dice: 0.8837
+⚠️ 验证集 Macro Dice 未提升。早停计数: 47 / 50
+
+========== Epoch 126/500 [LR: 2.56e-04] ==========
+   [Batch 1/1] Loss: 0.1096
+📊 Train Loss: 0.1096 | Val Loss: 0.1376 | Val Macro Dice: 0.8824
+⚠️ 验证集 Macro Dice 未提升。早停计数: 48 / 50
+
+========== Epoch 127/500 [LR: 2.56e-04] ==========
+   [Batch 1/1] Loss: 0.1074
+📊 Train Loss: 0.1074 | Val Loss: 0.1367 | Val Macro Dice: 0.8814
+⚠️ 验证集 Macro Dice 未提升。早停计数: 49 / 50
+
+========== Epoch 128/500 [LR: 2.55e-04] ==========
+   [Batch 1/1] Loss: 0.1098
+📊 Train Loss: 0.1098 | Val Loss: 0.1363 | Val Macro Dice: 0.8811
+⚠️ 验证集 Macro Dice 未提升。早停计数: 50 / 50
+
+🛑 连续 50 个 epoch 验证集性能无提升，触发早停机制，训练提前结束！
+📊 训练曲线图已保存至: <workspace>/CNN/Deeplabv3+/train/Super_multiclass/deeplab_training_curve.png
+✅ 所有训练任务结束！

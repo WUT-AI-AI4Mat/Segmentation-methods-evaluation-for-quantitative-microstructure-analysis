@@ -1,0 +1,13 @@
+torch
+torchvision
+opencv-python
+numpy
+pandas
+matplotlib
+tqdm
+Pillow
+tifffile
+peft
+openpyxl
+timm
+pycocotools

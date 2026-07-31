@@ -1,0 +1,305 @@
+{
+  "moved_count": 60,
+  "logs": [
+    {
+      "from": "CNN\\DeepLabV3+\\train_log_Aachen-Heerlen.txt",
+      "to": "training_logs\\CNN\\DeepLabV3+\\train_log_Aachen-Heerlen.txt",
+      "size_kb": 33.47
+    },
+    {
+      "from": "CNN\\DeepLabV3+\\train_log_EMPS.txt",
+      "to": "training_logs\\CNN\\DeepLabV3+\\train_log_EMPS.txt",
+      "size_kb": 42.01
+    },
+    {
+      "from": "CNN\\DeepLabV3+\\train_log_MetalDAM_multi.txt",
+      "to": "training_logs\\CNN\\DeepLabV3+\\train_log_MetalDAM_multi.txt",
+      "size_kb": 56.84
+    },
+    {
+      "from": "CNN\\DeepLabV3+\\train_log_Super_mutil.txt",
+      "to": "training_logs\\CNN\\DeepLabV3+\\train_log_Super_mutil.txt",
+      "size_kb": 32.82
+    },
+    {
+      "from": "CNN\\DeepLabV3+\\train_log_UHCS.txt",
+      "to": "training_logs\\CNN\\DeepLabV3+\\train_log_UHCS.txt",
+      "size_kb": 23.0
+    },
+    {
+      "from": "CNN\\DeepLabV3+\\training_log.txt",
+      "to": "training_logs\\CNN\\DeepLabV3+\\training_log.txt",
+      "size_kb": 32.57
+    },
+    {
+      "from": "CNN\\U-net\\train_log_Aachen-Heerlen.txt",
+      "to": "training_logs\\CNN\\U-net\\train_log_Aachen-Heerlen.txt",
+      "size_kb": 20.69
+    },
+    {
+      "from": "CNN\\U-net\\train_log_EMPS.txt",
+      "to": "training_logs\\CNN\\U-net\\train_log_EMPS.txt",
+      "size_kb": 22.54
+    },
+    {
+      "from": "CNN\\U-net\\train_log_MetalDAM_multi.txt",
+      "to": "training_logs\\CNN\\U-net\\train_log_MetalDAM_multi.txt",
+      "size_kb": 33.45
+    },
+    {
+      "from": "CNN\\U-net\\train_log_Super_mutil.txt",
+      "to": "training_logs\\CNN\\U-net\\train_log_Super_mutil.txt",
+      "size_kb": 64.3
+    },
+    {
+      "from": "CNN\\U-net\\train_log_UHCS.txt",
+      "to": "training_logs\\CNN\\U-net\\train_log_UHCS.txt",
+      "size_kb": 42.12
+    },
+    {
+      "from": "CNN\\U-net\\training_log.txt",
+      "to": "training_logs\\CNN\\U-net\\training_log.txt",
+      "size_kb": 24.71
+    },
+    {
+      "from": "matsam\\train_log.txt",
+      "to": "training_logs\\matsam\\train_log.txt",
+      "size_kb": 6.62
+    },
+    {
+      "from": "matsam\\train_log_Aachen-Heerlen.txt",
+      "to": "training_logs\\matsam\\train_log_Aachen-Heerlen.txt",
+      "size_kb": 5.88
+    },
+    {
+      "from": "matsam\\train_log_decoder.txt",
+      "to": "training_logs\\matsam\\train_log_decoder.txt",
+      "size_kb": 6.75
+    },
+    {
+      "from": "matsam\\train_log_decoder_Super.txt",
+      "to": "training_logs\\matsam\\train_log_decoder_Super.txt",
+      "size_kb": 15.66
+    },
+    {
+      "from": "matsam\\train_log_decoder_uhcs.txt",
+      "to": "training_logs\\matsam\\train_log_decoder_uhcs.txt",
+      "size_kb": 15.03
+    },
+    {
+      "from": "matsam\\train_log_EBC.txt",
+      "to": "training_logs\\matsam\\train_log_EBC.txt",
+      "size_kb": 8.75
+    },
+    {
+      "from": "matsam\\train_log_EMPS.txt",
+      "to": "training_logs\\matsam\\train_log_EMPS.txt",
+      "size_kb": 11.0
+    },
+    {
+      "from": "matsam\\train_log_lora.txt",
+      "to": "training_logs\\matsam\\train_log_lora.txt",
+      "size_kb": 7.14
+    },
+    {
+      "from": "matsam\\train_log_lora_decoder.txt",
+      "to": "training_logs\\matsam\\train_log_lora_decoder.txt",
+      "size_kb": 6.72
+    },
+    {
+      "from": "matsam\\train_log_MetalDAM.txt",
+      "to": "training_logs\\matsam\\train_log_MetalDAM.txt",
+      "size_kb": 15.82
+    },
+    {
+      "from": "matsam\\train_log_semantic.txt",
+      "to": "training_logs\\matsam\\train_log_semantic.txt",
+      "size_kb": 10.94
+    },
+    {
+      "from": "matsam\\train_log_Super.txt",
+      "to": "training_logs\\matsam\\train_log_Super.txt",
+      "size_kb": 12.87
+    },
+    {
+      "from": "matsam\\train_log_token_uhcs.txt",
+      "to": "training_logs\\matsam\\train_log_token_uhcs.txt",
+      "size_kb": 6.23
+    },
+    {
+      "from": "matsam\\train_log_UHCS.txt",
+      "to": "training_logs\\matsam\\train_log_UHCS.txt",
+      "size_kb": 16.93
+    },
+    {
+      "from": "microsam\\train_log_Aachen-Heerlen.txt",
+      "to": "training_logs\\microsam\\train_log_Aachen-Heerlen.txt",
+      "size_kb": 5.13
+    },
+    {
+      "from": "microsam\\train_log_decoder.txt",
+      "to": "training_logs\\microsam\\train_log_decoder.txt",
+      "size_kb": 6.53
+    },
+    {
+      "from": "microsam\\train_log_decoder_uhcs.txt",
+      "to": "training_logs\\microsam\\train_log_decoder_uhcs.txt",
+      "size_kb": 9.21
+    },
+    {
+      "from": "microsam\\train_log_EMPS.txt",
+      "to": "training_logs\\microsam\\train_log_EMPS.txt",
+      "size_kb": 7.76
+    },
+    {
+      "from": "microsam\\train_log_lora.txt",
+      "to": "training_logs\\microsam\\train_log_lora.txt",
+      "size_kb": 6.07
+    },
+    {
+      "from": "microsam\\train_log_lora_decoder.txt",
+      "to": "training_logs\\microsam\\train_log_lora_decoder.txt",
+      "size_kb": 5.66
+    },
+    {
+      "from": "microsam\\train_log_MetalDAM.txt",
+      "to": "training_logs\\microsam\\train_log_MetalDAM.txt",
+      "size_kb": 8.85
+    },
+    {
+      "from": "microsam\\train_log_Super.txt",
+      "to": "training_logs\\microsam\\train_log_Super.txt",
+      "size_kb": 15.32
+    },
+    {
+      "from": "microsam\\train_log_token_Super.txt",
+      "to": "training_logs\\microsam\\train_log_token_Super.txt",
+      "size_kb": 14.9
+    },
+    {
+      "from": "microsam\\train_log_token_uhcs.txt",
+      "to": "training_logs\\microsam\\train_log_token_uhcs.txt",
+      "size_kb": 15.43
+    },
+    {
+      "from": "microsam\\train_log_UHCS.txt",
+      "to": "training_logs\\microsam\\train_log_UHCS.txt",
+      "size_kb": 16.29
+    },
+    {
+      "from": "sam2\\train_log.txt",
+      "to": "training_logs\\sam2\\train_log.txt",
+      "size_kb": 105.58
+    },
+    {
+      "from": "sam2\\train_log_Aachen-Heerlen.txt",
+      "to": "training_logs\\sam2\\train_log_Aachen-Heerlen.txt",
+      "size_kb": 12.32
+    },
+    {
+      "from": "sam2\\train_log_decoder.txt",
+      "to": "training_logs\\sam2\\train_log_decoder.txt",
+      "size_kb": 8.5
+    },
+    {
+      "from": "sam2\\train_log_decoder_uhcs.txt",
+      "to": "training_logs\\sam2\\train_log_decoder_uhcs.txt",
+      "size_kb": 8.23
+    },
+    {
+      "from": "sam2\\train_log_EBC.txt",
+      "to": "training_logs\\sam2\\train_log_EBC.txt",
+      "size_kb": 16.5
+    },
+    {
+      "from": "sam2\\train_log_EBC_change.txt",
+      "to": "training_logs\\sam2\\train_log_EBC_change.txt",
+      "size_kb": 11.18
+    },
+    {
+      "from": "sam2\\train_log_EMPS.txt",
+      "to": "training_logs\\sam2\\train_log_EMPS.txt",
+      "size_kb": 15.29
+    },
+    {
+      "from": "sam2\\train_log_EMPS_new.txt",
+      "to": "training_logs\\sam2\\train_log_EMPS_new.txt",
+      "size_kb": 16.21
+    },
+    {
+      "from": "sam2\\train_log_lora.txt",
+      "to": "training_logs\\sam2\\train_log_lora.txt",
+      "size_kb": 10.73
+    },
+    {
+      "from": "sam2\\train_log_lora_advanced.txt",
+      "to": "training_logs\\sam2\\train_log_lora_advanced.txt",
+      "size_kb": 11.5
+    },
+    {
+      "from": "sam2\\train_log_lora_decoder.txt",
+      "to": "training_logs\\sam2\\train_log_lora_decoder.txt",
+      "size_kb": 8.94
+    },
+    {
+      "from": "sam2\\train_log_lora_npoint.txt",
+      "to": "training_logs\\sam2\\train_log_lora_npoint.txt",
+      "size_kb": 11.2
+    },
+    {
+      "from": "sam2\\train_log_MetalDAM.txt",
+      "to": "training_logs\\sam2\\train_log_MetalDAM.txt",
+      "size_kb": 8.25
+    },
+    {
+      "from": "sam2\\train_log_MetalDAM_change.txt",
+      "to": "training_logs\\sam2\\train_log_MetalDAM_change.txt",
+      "size_kb": 8.09
+    },
+    {
+      "from": "sam2\\train_log_multi.txt",
+      "to": "training_logs\\sam2\\train_log_multi.txt",
+      "size_kb": 928.6
+    },
+    {
+      "from": "sam2\\train_log_Super.txt",
+      "to": "training_logs\\sam2\\train_log_Super.txt",
+      "size_kb": 16.26
+    },
+    {
+      "from": "sam2\\train_log_Super2.txt",
+      "to": "training_logs\\sam2\\train_log_Super2.txt",
+      "size_kb": 10.38
+    },
+    {
+      "from": "sam2\\train_log_Super_2.txt",
+      "to": "training_logs\\sam2\\train_log_Super_2.txt",
+      "size_kb": 16.51
+    },
+    {
+      "from": "sam2\\train_log_Super_change.txt",
+      "to": "training_logs\\sam2\\train_log_Super_change.txt",
+      "size_kb": 9.39
+    },
+    {
+      "from": "sam2\\train_log_token_uhcs.txt",
+      "to": "training_logs\\sam2\\train_log_token_uhcs.txt",
+      "size_kb": 15.88
+    },
+    {
+      "from": "sam2\\train_log_UHCS.txt",
+      "to": "training_logs\\sam2\\train_log_UHCS.txt",
+      "size_kb": 16.35
+    },
+    {
+      "from": "Swin-Unet\\train_log.txt",
+      "to": "training_logs\\Swin-Unet\\train_log.txt",
+      "size_kb": 59.81
+    },
+    {
+      "from": "Swin-Unet\\train_log_EMPS.txt",
+      "to": "training_logs\\Swin-Unet\\train_log_EMPS.txt",
+      "size_kb": 85.39
+    }
+  ]
+}

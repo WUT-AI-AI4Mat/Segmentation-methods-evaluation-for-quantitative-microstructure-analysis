@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.ipynb_checkpoints/
+
+# Local environments
+.env
+.venv/
+venv/
+env/
+
+# Model weights and generated artifacts
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+checkpoints/
+checkpoints_finetuned/
+pretrained_checkpoint/
+outputs/
+results/
+result*/
+logs/
+*.log
+*_log*.txt
+test_log*.txt
+train_log*.txt
+
+# Local data
+data/
+datasets/
+dataset_split/
+
+# Notebook outputs and OS files
+datasets_test.ipynb
+.DS_Store
+Thumbs.db
+114

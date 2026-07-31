@@ -1,0 +1,957 @@
+nohup: ignoring input
+🚀 启动 7 类多分类训练脚本...
+使用设备: cuda
+<conda-envs>/sam/lib/python3.9/site-packages/segmentation_models_pytorch/encoders/__init__.py:136: UserWarning: Error loading resnet50 `imagenet` weights from Hugging Face Hub, trying loading from original url...
+  warnings.warn(message, UserWarning)
+<conda-envs>/sam/lib/python3.9/site-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+<workspace>/CNN/U-net/train_multi.py:136: UserWarning: Argument(s) 'shift_limit' are not valid for transform OpticalDistortion
+  albu.OpticalDistortion(distort_limit=0.05, shift_limit=0.05, p=0.5),
+正在扫描 train 集匹配关系...
+[train] 加载完成: 411 张
+正在扫描 val 集匹配关系...
+[val] 加载完成: 26 张
+🚑 正在进行数据体检...
+<workspace>/CNN/U-net/train_multi.py:120: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  return image, torch.tensor(mask, dtype=torch.long)
+✅ 体检通过！检查图已保存至: <workspace>/CNN/U-net/train/UHCS_multiclass/sanity_check.png。请确保 Classes 包含 [0 2 3 4]
+开始训练，最大 Epochs: 500，早停耐心值: 50...
+
+========== Epoch 1/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 1.0829
+📊 Train Loss: 1.2023 | Val Loss: 1.5512 | Val Macro Dice: 0.3288
+🎉 发现更优模型! Best Macro Dice 更新为: 0.3288，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 2/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.9206
+📊 Train Loss: 0.9950 | Val Loss: 0.9876 | Val Macro Dice: 0.4728
+🎉 发现更优模型! Best Macro Dice 更新为: 0.4728，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 3/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.8907
+📊 Train Loss: 0.8649 | Val Loss: 0.7041 | Val Macro Dice: 0.6155
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6155，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 4/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.7313
+📊 Train Loss: 0.7538 | Val Loss: 0.6221 | Val Macro Dice: 0.6352
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6352，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 5/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.8049
+📊 Train Loss: 0.7063 | Val Loss: 0.5785 | Val Macro Dice: 0.6454
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6454，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 6/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.5977
+📊 Train Loss: 0.6290 | Val Loss: 0.5136 | Val Macro Dice: 0.6765
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6765，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 7/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.6033
+📊 Train Loss: 0.5881 | Val Loss: 0.4768 | Val Macro Dice: 0.6928
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6928，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 8/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.4578
+📊 Train Loss: 0.5445 | Val Loss: 0.4408 | Val Macro Dice: 0.6997
+🎉 发现更优模型! Best Macro Dice 更新为: 0.6997，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 9/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.5498
+📊 Train Loss: 0.5441 | Val Loss: 0.4643 | Val Macro Dice: 0.6663
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 10/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.5067
+📊 Train Loss: 0.4971 | Val Loss: 0.4129 | Val Macro Dice: 0.6904
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 11/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.4892
+📊 Train Loss: 0.4880 | Val Loss: 0.4485 | Val Macro Dice: 0.6629
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 12/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.4854
+📊 Train Loss: 0.4764 | Val Loss: 0.4056 | Val Macro Dice: 0.6826
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 13/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.3906
+📊 Train Loss: 0.4509 | Val Loss: 0.3954 | Val Macro Dice: 0.6718
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 14/500 [LR: 3.00e-04] ==========
+   [Batch 13/13] Loss: 0.5744
+📊 Train Loss: 0.4479 | Val Loss: 0.3986 | Val Macro Dice: 0.6861
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 15/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.3767
+📊 Train Loss: 0.4140 | Val Loss: 0.3908 | Val Macro Dice: 0.6989
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 16/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4225
+📊 Train Loss: 0.4056 | Val Loss: 0.3831 | Val Macro Dice: 0.6859
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 17/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4927
+📊 Train Loss: 0.4108 | Val Loss: 0.3692 | Val Macro Dice: 0.6892
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 18/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4254
+📊 Train Loss: 0.4028 | Val Loss: 0.3630 | Val Macro Dice: 0.6910
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 19/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4015
+📊 Train Loss: 0.4206 | Val Loss: 0.3480 | Val Macro Dice: 0.7036
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7036，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 20/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4199
+📊 Train Loss: 0.4148 | Val Loss: 0.3362 | Val Macro Dice: 0.7141
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7141，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 21/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.3847
+📊 Train Loss: 0.3844 | Val Loss: 0.3151 | Val Macro Dice: 0.7232
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7232，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 22/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4693
+📊 Train Loss: 0.4179 | Val Loss: 0.3092 | Val Macro Dice: 0.7263
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7263，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 23/500 [LR: 2.99e-04] ==========
+   [Batch 13/13] Loss: 0.4005
+📊 Train Loss: 0.3935 | Val Loss: 0.3137 | Val Macro Dice: 0.7326
+🎉 发现更优模型! Best Macro Dice 更新为: 0.7326，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 24/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.3713
+📊 Train Loss: 0.3746 | Val Loss: 0.2956 | Val Macro Dice: 0.8132
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8132，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 25/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.3464
+📊 Train Loss: 0.3783 | Val Loss: 0.3136 | Val Macro Dice: 0.7995
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 26/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.3496
+📊 Train Loss: 0.3389 | Val Loss: 0.3002 | Val Macro Dice: 0.7957
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 27/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.4523
+📊 Train Loss: 0.3452 | Val Loss: 0.2998 | Val Macro Dice: 0.8090
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 28/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.3022
+📊 Train Loss: 0.3371 | Val Loss: 0.2939 | Val Macro Dice: 0.8065
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 29/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.3795
+📊 Train Loss: 0.3396 | Val Loss: 0.3139 | Val Macro Dice: 0.7972
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 30/500 [LR: 2.98e-04] ==========
+   [Batch 13/13] Loss: 0.4018
+📊 Train Loss: 0.3586 | Val Loss: 0.2836 | Val Macro Dice: 0.8113
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 31/500 [LR: 2.97e-04] ==========
+   [Batch 13/13] Loss: 0.3129
+📊 Train Loss: 0.3255 | Val Loss: 0.2627 | Val Macro Dice: 0.8138
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8138，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 32/500 [LR: 2.97e-04] ==========
+   [Batch 13/13] Loss: 0.3270
+📊 Train Loss: 0.3380 | Val Loss: 0.2762 | Val Macro Dice: 0.8160
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8160，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 33/500 [LR: 2.97e-04] ==========
+   [Batch 13/13] Loss: 0.3534
+📊 Train Loss: 0.3290 | Val Loss: 0.3691 | Val Macro Dice: 0.7950
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 34/500 [LR: 2.97e-04] ==========
+   [Batch 13/13] Loss: 0.4312
+📊 Train Loss: 0.3329 | Val Loss: 0.2613 | Val Macro Dice: 0.8188
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8188，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 35/500 [LR: 2.97e-04] ==========
+   [Batch 13/13] Loss: 0.3724
+📊 Train Loss: 0.3202 | Val Loss: 0.2875 | Val Macro Dice: 0.8188
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8188，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 36/500 [LR: 2.96e-04] ==========
+   [Batch 13/13] Loss: 0.3558
+📊 Train Loss: 0.3162 | Val Loss: 0.2935 | Val Macro Dice: 0.8115
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 37/500 [LR: 2.96e-04] ==========
+   [Batch 13/13] Loss: 0.3968
+📊 Train Loss: 0.3124 | Val Loss: 0.2422 | Val Macro Dice: 0.8342
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8342，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 38/500 [LR: 2.96e-04] ==========
+   [Batch 13/13] Loss: 0.3011
+📊 Train Loss: 0.3262 | Val Loss: 0.2753 | Val Macro Dice: 0.8189
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 39/500 [LR: 2.96e-04] ==========
+   [Batch 13/13] Loss: 0.3388
+📊 Train Loss: 0.3058 | Val Loss: 0.2608 | Val Macro Dice: 0.8171
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 40/500 [LR: 2.96e-04] ==========
+   [Batch 13/13] Loss: 0.2897
+📊 Train Loss: 0.3042 | Val Loss: 0.2511 | Val Macro Dice: 0.8268
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 41/500 [LR: 2.95e-04] ==========
+   [Batch 13/13] Loss: 0.2846
+📊 Train Loss: 0.2923 | Val Loss: 0.2349 | Val Macro Dice: 0.8381
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8381，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 42/500 [LR: 2.95e-04] ==========
+   [Batch 13/13] Loss: 0.2551
+📊 Train Loss: 0.2905 | Val Loss: 0.2315 | Val Macro Dice: 0.8322
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 43/500 [LR: 2.95e-04] ==========
+   [Batch 13/13] Loss: 0.2680
+📊 Train Loss: 0.2916 | Val Loss: 0.2690 | Val Macro Dice: 0.8172
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 44/500 [LR: 2.95e-04] ==========
+   [Batch 13/13] Loss: 0.3136
+📊 Train Loss: 0.2930 | Val Loss: 0.2765 | Val Macro Dice: 0.8093
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 45/500 [LR: 2.94e-04] ==========
+   [Batch 13/13] Loss: 0.3696
+📊 Train Loss: 0.2938 | Val Loss: 0.2260 | Val Macro Dice: 0.8391
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8391，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 46/500 [LR: 2.94e-04] ==========
+   [Batch 13/13] Loss: 0.2672
+📊 Train Loss: 0.2695 | Val Loss: 0.2392 | Val Macro Dice: 0.8346
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 47/500 [LR: 2.94e-04] ==========
+   [Batch 13/13] Loss: 0.2841
+📊 Train Loss: 0.2777 | Val Loss: 0.2529 | Val Macro Dice: 0.8336
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 48/500 [LR: 2.94e-04] ==========
+   [Batch 13/13] Loss: 0.2646
+📊 Train Loss: 0.2805 | Val Loss: 0.2613 | Val Macro Dice: 0.8205
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 49/500 [LR: 2.93e-04] ==========
+   [Batch 13/13] Loss: 0.3031
+📊 Train Loss: 0.2970 | Val Loss: 0.2416 | Val Macro Dice: 0.8350
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 50/500 [LR: 2.93e-04] ==========
+   [Batch 13/13] Loss: 0.2600
+📊 Train Loss: 0.2766 | Val Loss: 0.2605 | Val Macro Dice: 0.8197
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 51/500 [LR: 2.93e-04] ==========
+   [Batch 13/13] Loss: 0.2490
+📊 Train Loss: 0.2885 | Val Loss: 0.2509 | Val Macro Dice: 0.8270
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 52/500 [LR: 2.92e-04] ==========
+   [Batch 13/13] Loss: 0.2555
+📊 Train Loss: 0.2813 | Val Loss: 0.2341 | Val Macro Dice: 0.8335
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 53/500 [LR: 2.92e-04] ==========
+   [Batch 13/13] Loss: 0.3065
+📊 Train Loss: 0.2808 | Val Loss: 0.2496 | Val Macro Dice: 0.8306
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 54/500 [LR: 2.92e-04] ==========
+   [Batch 13/13] Loss: 0.2680
+📊 Train Loss: 0.2598 | Val Loss: 0.2575 | Val Macro Dice: 0.8231
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 55/500 [LR: 2.91e-04] ==========
+   [Batch 13/13] Loss: 0.2967
+📊 Train Loss: 0.2689 | Val Loss: 0.2421 | Val Macro Dice: 0.8361
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 56/500 [LR: 2.91e-04] ==========
+   [Batch 13/13] Loss: 0.2972
+📊 Train Loss: 0.2690 | Val Loss: 0.2556 | Val Macro Dice: 0.8256
+⚠️ 验证集 Macro Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 57/500 [LR: 2.91e-04] ==========
+   [Batch 13/13] Loss: 0.2617
+📊 Train Loss: 0.2582 | Val Loss: 0.2508 | Val Macro Dice: 0.8300
+⚠️ 验证集 Macro Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 58/500 [LR: 2.91e-04] ==========
+   [Batch 13/13] Loss: 0.2011
+📊 Train Loss: 0.2502 | Val Loss: 0.2408 | Val Macro Dice: 0.8298
+⚠️ 验证集 Macro Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 59/500 [LR: 2.90e-04] ==========
+   [Batch 13/13] Loss: 0.2695
+📊 Train Loss: 0.2602 | Val Loss: 0.2445 | Val Macro Dice: 0.8326
+⚠️ 验证集 Macro Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 60/500 [LR: 2.90e-04] ==========
+   [Batch 13/13] Loss: 0.2489
+📊 Train Loss: 0.2589 | Val Loss: 0.2213 | Val Macro Dice: 0.8415
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8415，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 61/500 [LR: 2.90e-04] ==========
+   [Batch 13/13] Loss: 0.2274
+📊 Train Loss: 0.2581 | Val Loss: 0.2476 | Val Macro Dice: 0.8201
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 62/500 [LR: 2.89e-04] ==========
+   [Batch 13/13] Loss: 0.2247
+📊 Train Loss: 0.2493 | Val Loss: 0.2071 | Val Macro Dice: 0.8478
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8478，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 63/500 [LR: 2.89e-04] ==========
+   [Batch 13/13] Loss: 0.2780
+📊 Train Loss: 0.2642 | Val Loss: 0.2592 | Val Macro Dice: 0.8246
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 64/500 [LR: 2.88e-04] ==========
+   [Batch 13/13] Loss: 0.2799
+📊 Train Loss: 0.2496 | Val Loss: 0.2368 | Val Macro Dice: 0.8393
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 65/500 [LR: 2.88e-04] ==========
+   [Batch 13/13] Loss: 0.4109
+📊 Train Loss: 0.2589 | Val Loss: 0.2479 | Val Macro Dice: 0.8356
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 66/500 [LR: 2.88e-04] ==========
+   [Batch 13/13] Loss: 0.2463
+📊 Train Loss: 0.2686 | Val Loss: 0.2558 | Val Macro Dice: 0.8248
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 67/500 [LR: 2.87e-04] ==========
+   [Batch 13/13] Loss: 0.3523
+📊 Train Loss: 0.2628 | Val Loss: 0.2377 | Val Macro Dice: 0.8385
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 68/500 [LR: 2.87e-04] ==========
+   [Batch 13/13] Loss: 0.2295
+📊 Train Loss: 0.2576 | Val Loss: 0.2354 | Val Macro Dice: 0.8386
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 69/500 [LR: 2.87e-04] ==========
+   [Batch 13/13] Loss: 0.2202
+📊 Train Loss: 0.2470 | Val Loss: 0.2405 | Val Macro Dice: 0.8344
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 70/500 [LR: 2.86e-04] ==========
+   [Batch 13/13] Loss: 0.3740
+📊 Train Loss: 0.2633 | Val Loss: 0.2336 | Val Macro Dice: 0.8370
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 71/500 [LR: 2.86e-04] ==========
+   [Batch 13/13] Loss: 0.2650
+📊 Train Loss: 0.2470 | Val Loss: 0.2158 | Val Macro Dice: 0.8467
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 72/500 [LR: 2.85e-04] ==========
+   [Batch 13/13] Loss: 0.2404
+📊 Train Loss: 0.2387 | Val Loss: 0.2325 | Val Macro Dice: 0.8319
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 73/500 [LR: 2.85e-04] ==========
+   [Batch 13/13] Loss: 0.2685
+📊 Train Loss: 0.2491 | Val Loss: 0.2514 | Val Macro Dice: 0.8306
+⚠️ 验证集 Macro Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 74/500 [LR: 2.85e-04] ==========
+   [Batch 13/13] Loss: 0.3349
+📊 Train Loss: 0.2622 | Val Loss: 0.3053 | Val Macro Dice: 0.8108
+⚠️ 验证集 Macro Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 75/500 [LR: 2.84e-04] ==========
+   [Batch 13/13] Loss: 0.2864
+📊 Train Loss: 0.2483 | Val Loss: 0.2259 | Val Macro Dice: 0.8426
+⚠️ 验证集 Macro Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 76/500 [LR: 2.84e-04] ==========
+   [Batch 13/13] Loss: 0.2626
+📊 Train Loss: 0.2533 | Val Loss: 0.2335 | Val Macro Dice: 0.8322
+⚠️ 验证集 Macro Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 77/500 [LR: 2.83e-04] ==========
+   [Batch 13/13] Loss: 0.3400
+📊 Train Loss: 0.2532 | Val Loss: 0.2311 | Val Macro Dice: 0.8421
+⚠️ 验证集 Macro Dice 未提升。早停计数: 15 / 50
+
+========== Epoch 78/500 [LR: 2.83e-04] ==========
+   [Batch 13/13] Loss: 0.2473
+📊 Train Loss: 0.2454 | Val Loss: 0.2532 | Val Macro Dice: 0.8253
+⚠️ 验证集 Macro Dice 未提升。早停计数: 16 / 50
+
+========== Epoch 79/500 [LR: 2.82e-04] ==========
+   [Batch 13/13] Loss: 0.3172
+📊 Train Loss: 0.2515 | Val Loss: 0.2340 | Val Macro Dice: 0.8333
+⚠️ 验证集 Macro Dice 未提升。早停计数: 17 / 50
+
+========== Epoch 80/500 [LR: 2.82e-04] ==========
+   [Batch 13/13] Loss: 0.2931
+📊 Train Loss: 0.2787 | Val Loss: 0.3259 | Val Macro Dice: 0.7957
+⚠️ 验证集 Macro Dice 未提升。早停计数: 18 / 50
+
+========== Epoch 81/500 [LR: 2.82e-04] ==========
+   [Batch 13/13] Loss: 0.2857
+📊 Train Loss: 0.2709 | Val Loss: 0.2331 | Val Macro Dice: 0.8317
+⚠️ 验证集 Macro Dice 未提升。早停计数: 19 / 50
+
+========== Epoch 82/500 [LR: 2.81e-04] ==========
+   [Batch 13/13] Loss: 0.2662
+📊 Train Loss: 0.2531 | Val Loss: 0.2200 | Val Macro Dice: 0.8410
+⚠️ 验证集 Macro Dice 未提升。早停计数: 20 / 50
+
+========== Epoch 83/500 [LR: 2.81e-04] ==========
+   [Batch 13/13] Loss: 0.2801
+📊 Train Loss: 0.2553 | Val Loss: 0.2432 | Val Macro Dice: 0.8320
+⚠️ 验证集 Macro Dice 未提升。早停计数: 21 / 50
+
+========== Epoch 84/500 [LR: 2.80e-04] ==========
+   [Batch 13/13] Loss: 0.2520
+📊 Train Loss: 0.2665 | Val Loss: 0.2087 | Val Macro Dice: 0.8474
+⚠️ 验证集 Macro Dice 未提升。早停计数: 22 / 50
+
+========== Epoch 85/500 [LR: 2.80e-04] ==========
+   [Batch 13/13] Loss: 0.3930
+📊 Train Loss: 0.2627 | Val Loss: 0.2526 | Val Macro Dice: 0.8292
+⚠️ 验证集 Macro Dice 未提升。早停计数: 23 / 50
+
+========== Epoch 86/500 [LR: 2.79e-04] ==========
+   [Batch 13/13] Loss: 0.2411
+📊 Train Loss: 0.2358 | Val Loss: 0.2393 | Val Macro Dice: 0.8341
+⚠️ 验证集 Macro Dice 未提升。早停计数: 24 / 50
+
+========== Epoch 87/500 [LR: 2.79e-04] ==========
+   [Batch 13/13] Loss: 0.2330
+📊 Train Loss: 0.2432 | Val Loss: 0.2200 | Val Macro Dice: 0.8365
+⚠️ 验证集 Macro Dice 未提升。早停计数: 25 / 50
+
+========== Epoch 88/500 [LR: 2.78e-04] ==========
+   [Batch 13/13] Loss: 0.3029
+📊 Train Loss: 0.2435 | Val Loss: 0.2332 | Val Macro Dice: 0.8364
+⚠️ 验证集 Macro Dice 未提升。早停计数: 26 / 50
+
+========== Epoch 89/500 [LR: 2.78e-04] ==========
+   [Batch 13/13] Loss: 0.2632
+📊 Train Loss: 0.2405 | Val Loss: 0.2238 | Val Macro Dice: 0.8409
+⚠️ 验证集 Macro Dice 未提升。早停计数: 27 / 50
+
+========== Epoch 90/500 [LR: 2.77e-04] ==========
+   [Batch 13/13] Loss: 0.2278
+📊 Train Loss: 0.2325 | Val Loss: 0.2212 | Val Macro Dice: 0.8406
+⚠️ 验证集 Macro Dice 未提升。早停计数: 28 / 50
+
+========== Epoch 91/500 [LR: 2.77e-04] ==========
+   [Batch 13/13] Loss: 0.2453
+📊 Train Loss: 0.2529 | Val Loss: 0.2794 | Val Macro Dice: 0.8243
+⚠️ 验证集 Macro Dice 未提升。早停计数: 29 / 50
+
+========== Epoch 92/500 [LR: 2.76e-04] ==========
+   [Batch 13/13] Loss: 0.2541
+📊 Train Loss: 0.2454 | Val Loss: 0.2470 | Val Macro Dice: 0.8308
+⚠️ 验证集 Macro Dice 未提升。早停计数: 30 / 50
+
+========== Epoch 93/500 [LR: 2.76e-04] ==========
+   [Batch 13/13] Loss: 0.2239
+📊 Train Loss: 0.2481 | Val Loss: 0.2569 | Val Macro Dice: 0.8234
+⚠️ 验证集 Macro Dice 未提升。早停计数: 31 / 50
+
+========== Epoch 94/500 [LR: 2.75e-04] ==========
+   [Batch 13/13] Loss: 0.3176
+📊 Train Loss: 0.2484 | Val Loss: 0.2362 | Val Macro Dice: 0.8282
+⚠️ 验证集 Macro Dice 未提升。早停计数: 32 / 50
+
+========== Epoch 95/500 [LR: 2.75e-04] ==========
+   [Batch 13/13] Loss: 0.2691
+📊 Train Loss: 0.2582 | Val Loss: 0.2182 | Val Macro Dice: 0.8354
+⚠️ 验证集 Macro Dice 未提升。早停计数: 33 / 50
+
+========== Epoch 96/500 [LR: 2.74e-04] ==========
+   [Batch 13/13] Loss: 0.2207
+📊 Train Loss: 0.2518 | Val Loss: 0.2384 | Val Macro Dice: 0.8385
+⚠️ 验证集 Macro Dice 未提升。早停计数: 34 / 50
+
+========== Epoch 97/500 [LR: 2.74e-04] ==========
+   [Batch 13/13] Loss: 0.2703
+📊 Train Loss: 0.2399 | Val Loss: 0.2545 | Val Macro Dice: 0.8299
+⚠️ 验证集 Macro Dice 未提升。早停计数: 35 / 50
+
+========== Epoch 98/500 [LR: 2.73e-04] ==========
+   [Batch 13/13] Loss: 0.3290
+📊 Train Loss: 0.2379 | Val Loss: 0.2289 | Val Macro Dice: 0.8431
+⚠️ 验证集 Macro Dice 未提升。早停计数: 36 / 50
+
+========== Epoch 99/500 [LR: 2.73e-04] ==========
+   [Batch 13/13] Loss: 0.2417
+📊 Train Loss: 0.2436 | Val Loss: 0.2094 | Val Macro Dice: 0.8506
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8506，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 100/500 [LR: 2.72e-04] ==========
+   [Batch 13/13] Loss: 0.2434
+📊 Train Loss: 0.2286 | Val Loss: 0.2331 | Val Macro Dice: 0.8414
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 101/500 [LR: 2.71e-04] ==========
+   [Batch 13/13] Loss: 0.2440
+📊 Train Loss: 0.2436 | Val Loss: 0.2718 | Val Macro Dice: 0.8192
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 102/500 [LR: 2.71e-04] ==========
+   [Batch 13/13] Loss: 0.2296
+📊 Train Loss: 0.2541 | Val Loss: 0.2330 | Val Macro Dice: 0.8333
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 103/500 [LR: 2.70e-04] ==========
+   [Batch 13/13] Loss: 0.2338
+📊 Train Loss: 0.2393 | Val Loss: 0.2176 | Val Macro Dice: 0.8441
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 104/500 [LR: 2.70e-04] ==========
+   [Batch 13/13] Loss: 0.2709
+📊 Train Loss: 0.2249 | Val Loss: 0.2183 | Val Macro Dice: 0.8405
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 105/500 [LR: 2.69e-04] ==========
+   [Batch 13/13] Loss: 0.1910
+📊 Train Loss: 0.2285 | Val Loss: 0.2168 | Val Macro Dice: 0.8455
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 106/500 [LR: 2.69e-04] ==========
+   [Batch 13/13] Loss: 0.3202
+📊 Train Loss: 0.2234 | Val Loss: 0.2484 | Val Macro Dice: 0.8271
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 107/500 [LR: 2.68e-04] ==========
+   [Batch 13/13] Loss: 0.2420
+📊 Train Loss: 0.2330 | Val Loss: 0.2271 | Val Macro Dice: 0.8380
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 108/500 [LR: 2.67e-04] ==========
+   [Batch 13/13] Loss: 0.2847
+📊 Train Loss: 0.2316 | Val Loss: 0.2322 | Val Macro Dice: 0.8423
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 109/500 [LR: 2.67e-04] ==========
+   [Batch 13/13] Loss: 0.2399
+📊 Train Loss: 0.2338 | Val Loss: 0.2195 | Val Macro Dice: 0.8429
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 110/500 [LR: 2.66e-04] ==========
+   [Batch 13/13] Loss: 0.3323
+📊 Train Loss: 0.2288 | Val Loss: 0.2115 | Val Macro Dice: 0.8492
+⚠️ 验证集 Macro Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 111/500 [LR: 2.66e-04] ==========
+   [Batch 13/13] Loss: 0.1977
+📊 Train Loss: 0.2177 | Val Loss: 0.2656 | Val Macro Dice: 0.8288
+⚠️ 验证集 Macro Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 112/500 [LR: 2.65e-04] ==========
+   [Batch 13/13] Loss: 0.3547
+📊 Train Loss: 0.2320 | Val Loss: 0.2484 | Val Macro Dice: 0.8338
+⚠️ 验证集 Macro Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 113/500 [LR: 2.64e-04] ==========
+   [Batch 13/13] Loss: 0.3052
+📊 Train Loss: 0.2356 | Val Loss: 0.2037 | Val Macro Dice: 0.8498
+⚠️ 验证集 Macro Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 114/500 [LR: 2.64e-04] ==========
+   [Batch 13/13] Loss: 0.2737
+📊 Train Loss: 0.2338 | Val Loss: 0.2118 | Val Macro Dice: 0.8472
+⚠️ 验证集 Macro Dice 未提升。早停计数: 15 / 50
+
+========== Epoch 115/500 [LR: 2.63e-04] ==========
+   [Batch 13/13] Loss: 0.2200
+📊 Train Loss: 0.2221 | Val Loss: 0.2532 | Val Macro Dice: 0.8334
+⚠️ 验证集 Macro Dice 未提升。早停计数: 16 / 50
+
+========== Epoch 116/500 [LR: 2.63e-04] ==========
+   [Batch 13/13] Loss: 0.2361
+📊 Train Loss: 0.2196 | Val Loss: 0.2532 | Val Macro Dice: 0.8310
+⚠️ 验证集 Macro Dice 未提升。早停计数: 17 / 50
+
+========== Epoch 117/500 [LR: 2.62e-04] ==========
+   [Batch 13/13] Loss: 0.2544
+📊 Train Loss: 0.2262 | Val Loss: 0.2008 | Val Macro Dice: 0.8487
+⚠️ 验证集 Macro Dice 未提升。早停计数: 18 / 50
+
+========== Epoch 118/500 [LR: 2.61e-04] ==========
+   [Batch 13/13] Loss: 0.2115
+📊 Train Loss: 0.2245 | Val Loss: 0.2545 | Val Macro Dice: 0.8295
+⚠️ 验证集 Macro Dice 未提升。早停计数: 19 / 50
+
+========== Epoch 119/500 [LR: 2.61e-04] ==========
+   [Batch 13/13] Loss: 0.1810
+📊 Train Loss: 0.2212 | Val Loss: 0.2608 | Val Macro Dice: 0.8328
+⚠️ 验证集 Macro Dice 未提升。早停计数: 20 / 50
+
+========== Epoch 120/500 [LR: 2.60e-04] ==========
+   [Batch 13/13] Loss: 0.2350
+📊 Train Loss: 0.2215 | Val Loss: 0.2312 | Val Macro Dice: 0.8385
+⚠️ 验证集 Macro Dice 未提升。早停计数: 21 / 50
+
+========== Epoch 121/500 [LR: 2.59e-04] ==========
+   [Batch 13/13] Loss: 0.2713
+📊 Train Loss: 0.2388 | Val Loss: 0.2263 | Val Macro Dice: 0.8387
+⚠️ 验证集 Macro Dice 未提升。早停计数: 22 / 50
+
+========== Epoch 122/500 [LR: 2.59e-04] ==========
+   [Batch 13/13] Loss: 0.2236
+📊 Train Loss: 0.2297 | Val Loss: 0.2214 | Val Macro Dice: 0.8443
+⚠️ 验证集 Macro Dice 未提升。早停计数: 23 / 50
+
+========== Epoch 123/500 [LR: 2.58e-04] ==========
+   [Batch 13/13] Loss: 0.2911
+📊 Train Loss: 0.2255 | Val Loss: 0.2319 | Val Macro Dice: 0.8383
+⚠️ 验证集 Macro Dice 未提升。早停计数: 24 / 50
+
+========== Epoch 124/500 [LR: 2.58e-04] ==========
+   [Batch 13/13] Loss: 0.2216
+📊 Train Loss: 0.2268 | Val Loss: 0.2194 | Val Macro Dice: 0.8418
+⚠️ 验证集 Macro Dice 未提升。早停计数: 25 / 50
+
+========== Epoch 125/500 [LR: 2.57e-04] ==========
+   [Batch 13/13] Loss: 0.2484
+📊 Train Loss: 0.2224 | Val Loss: 0.2429 | Val Macro Dice: 0.8317
+⚠️ 验证集 Macro Dice 未提升。早停计数: 26 / 50
+
+========== Epoch 126/500 [LR: 2.56e-04] ==========
+   [Batch 13/13] Loss: 0.2675
+📊 Train Loss: 0.2233 | Val Loss: 0.2558 | Val Macro Dice: 0.8288
+⚠️ 验证集 Macro Dice 未提升。早停计数: 27 / 50
+
+========== Epoch 127/500 [LR: 2.56e-04] ==========
+   [Batch 13/13] Loss: 0.2590
+📊 Train Loss: 0.2211 | Val Loss: 0.2259 | Val Macro Dice: 0.8416
+⚠️ 验证集 Macro Dice 未提升。早停计数: 28 / 50
+
+========== Epoch 128/500 [LR: 2.55e-04] ==========
+   [Batch 13/13] Loss: 0.2392
+📊 Train Loss: 0.2291 | Val Loss: 0.2258 | Val Macro Dice: 0.8416
+⚠️ 验证集 Macro Dice 未提升。早停计数: 29 / 50
+
+========== Epoch 129/500 [LR: 2.54e-04] ==========
+   [Batch 13/13] Loss: 0.2377
+📊 Train Loss: 0.2231 | Val Loss: 0.3161 | Val Macro Dice: 0.8149
+⚠️ 验证集 Macro Dice 未提升。早停计数: 30 / 50
+
+========== Epoch 130/500 [LR: 2.54e-04] ==========
+   [Batch 13/13] Loss: 0.2543
+📊 Train Loss: 0.2180 | Val Loss: 0.3106 | Val Macro Dice: 0.8207
+⚠️ 验证集 Macro Dice 未提升。早停计数: 31 / 50
+
+========== Epoch 131/500 [LR: 2.53e-04] ==========
+   [Batch 13/13] Loss: 0.2444
+📊 Train Loss: 0.2187 | Val Loss: 0.2383 | Val Macro Dice: 0.8397
+⚠️ 验证集 Macro Dice 未提升。早停计数: 32 / 50
+
+========== Epoch 132/500 [LR: 2.52e-04] ==========
+   [Batch 13/13] Loss: 0.2361
+📊 Train Loss: 0.2174 | Val Loss: 0.2269 | Val Macro Dice: 0.8408
+⚠️ 验证集 Macro Dice 未提升。早停计数: 33 / 50
+
+========== Epoch 133/500 [LR: 2.51e-04] ==========
+   [Batch 13/13] Loss: 0.2570
+📊 Train Loss: 0.2118 | Val Loss: 0.2343 | Val Macro Dice: 0.8373
+⚠️ 验证集 Macro Dice 未提升。早停计数: 34 / 50
+
+========== Epoch 134/500 [LR: 2.51e-04] ==========
+   [Batch 13/13] Loss: 0.2247
+📊 Train Loss: 0.2191 | Val Loss: 0.2453 | Val Macro Dice: 0.8326
+⚠️ 验证集 Macro Dice 未提升。早停计数: 35 / 50
+
+========== Epoch 135/500 [LR: 2.50e-04] ==========
+   [Batch 13/13] Loss: 0.2471
+📊 Train Loss: 0.2100 | Val Loss: 0.2440 | Val Macro Dice: 0.8377
+⚠️ 验证集 Macro Dice 未提升。早停计数: 36 / 50
+
+========== Epoch 136/500 [LR: 2.49e-04] ==========
+   [Batch 13/13] Loss: 0.2300
+📊 Train Loss: 0.2059 | Val Loss: 0.2915 | Val Macro Dice: 0.8275
+⚠️ 验证集 Macro Dice 未提升。早停计数: 37 / 50
+
+========== Epoch 137/500 [LR: 2.49e-04] ==========
+   [Batch 13/13] Loss: 0.2868
+📊 Train Loss: 0.2060 | Val Loss: 0.2017 | Val Macro Dice: 0.8533
+🎉 发现更优模型! Best Macro Dice 更新为: 0.8533，已保存至 <workspace>/CNN/U-net/train/UHCS_multiclass/Best_Model.pth
+
+========== Epoch 138/500 [LR: 2.48e-04] ==========
+   [Batch 13/13] Loss: 0.1862
+📊 Train Loss: 0.2188 | Val Loss: 0.2955 | Val Macro Dice: 0.8167
+⚠️ 验证集 Macro Dice 未提升。早停计数: 1 / 50
+
+========== Epoch 139/500 [LR: 2.47e-04] ==========
+   [Batch 13/13] Loss: 0.1919
+📊 Train Loss: 0.2138 | Val Loss: 0.2425 | Val Macro Dice: 0.8333
+⚠️ 验证集 Macro Dice 未提升。早停计数: 2 / 50
+
+========== Epoch 140/500 [LR: 2.47e-04] ==========
+   [Batch 13/13] Loss: 0.2216
+📊 Train Loss: 0.2125 | Val Loss: 0.2393 | Val Macro Dice: 0.8343
+⚠️ 验证集 Macro Dice 未提升。早停计数: 3 / 50
+
+========== Epoch 141/500 [LR: 2.46e-04] ==========
+   [Batch 13/13] Loss: 0.1742
+📊 Train Loss: 0.2134 | Val Loss: 0.2366 | Val Macro Dice: 0.8402
+⚠️ 验证集 Macro Dice 未提升。早停计数: 4 / 50
+
+========== Epoch 142/500 [LR: 2.45e-04] ==========
+   [Batch 13/13] Loss: 0.2394
+📊 Train Loss: 0.2078 | Val Loss: 0.2135 | Val Macro Dice: 0.8440
+⚠️ 验证集 Macro Dice 未提升。早停计数: 5 / 50
+
+========== Epoch 143/500 [LR: 2.44e-04] ==========
+   [Batch 13/13] Loss: 0.2572
+📊 Train Loss: 0.2148 | Val Loss: 0.2337 | Val Macro Dice: 0.8404
+⚠️ 验证集 Macro Dice 未提升。早停计数: 6 / 50
+
+========== Epoch 144/500 [LR: 2.44e-04] ==========
+   [Batch 13/13] Loss: 0.1966
+📊 Train Loss: 0.2090 | Val Loss: 0.2298 | Val Macro Dice: 0.8383
+⚠️ 验证集 Macro Dice 未提升。早停计数: 7 / 50
+
+========== Epoch 145/500 [LR: 2.43e-04] ==========
+   [Batch 13/13] Loss: 0.2204
+📊 Train Loss: 0.1989 | Val Loss: 0.2831 | Val Macro Dice: 0.8247
+⚠️ 验证集 Macro Dice 未提升。早停计数: 8 / 50
+
+========== Epoch 146/500 [LR: 2.42e-04] ==========
+   [Batch 13/13] Loss: 0.1950
+📊 Train Loss: 0.1966 | Val Loss: 0.2388 | Val Macro Dice: 0.8368
+⚠️ 验证集 Macro Dice 未提升。早停计数: 9 / 50
+
+========== Epoch 147/500 [LR: 2.41e-04] ==========
+   [Batch 13/13] Loss: 0.2854
+📊 Train Loss: 0.1982 | Val Loss: 0.2538 | Val Macro Dice: 0.8390
+⚠️ 验证集 Macro Dice 未提升。早停计数: 10 / 50
+
+========== Epoch 148/500 [LR: 2.41e-04] ==========
+   [Batch 13/13] Loss: 0.2340
+📊 Train Loss: 0.2110 | Val Loss: 0.2106 | Val Macro Dice: 0.8496
+⚠️ 验证集 Macro Dice 未提升。早停计数: 11 / 50
+
+========== Epoch 149/500 [LR: 2.40e-04] ==========
+   [Batch 13/13] Loss: 0.2906
+📊 Train Loss: 0.2106 | Val Loss: 0.2655 | Val Macro Dice: 0.8358
+⚠️ 验证集 Macro Dice 未提升。早停计数: 12 / 50
+
+========== Epoch 150/500 [LR: 2.39e-04] ==========
+   [Batch 13/13] Loss: 0.2236
+📊 Train Loss: 0.2181 | Val Loss: 0.2480 | Val Macro Dice: 0.8306
+⚠️ 验证集 Macro Dice 未提升。早停计数: 13 / 50
+
+========== Epoch 151/500 [LR: 2.38e-04] ==========
+   [Batch 13/13] Loss: 0.2242
+📊 Train Loss: 0.2096 | Val Loss: 0.2301 | Val Macro Dice: 0.8427
+⚠️ 验证集 Macro Dice 未提升。早停计数: 14 / 50
+
+========== Epoch 152/500 [LR: 2.38e-04] ==========
+   [Batch 13/13] Loss: 0.1941
+📊 Train Loss: 0.2095 | Val Loss: 0.2415 | Val Macro Dice: 0.8403
+⚠️ 验证集 Macro Dice 未提升。早停计数: 15 / 50
+
+========== Epoch 153/500 [LR: 2.37e-04] ==========
+   [Batch 13/13] Loss: 0.2120
+📊 Train Loss: 0.2013 | Val Loss: 0.2367 | Val Macro Dice: 0.8362
+⚠️ 验证集 Macro Dice 未提升。早停计数: 16 / 50
+
+========== Epoch 154/500 [LR: 2.36e-04] ==========
+   [Batch 13/13] Loss: 0.3715
+📊 Train Loss: 0.2118 | Val Loss: 0.2532 | Val Macro Dice: 0.8317
+⚠️ 验证集 Macro Dice 未提升。早停计数: 17 / 50
+
+========== Epoch 155/500 [LR: 2.35e-04] ==========
+   [Batch 13/13] Loss: 0.1970
+📊 Train Loss: 0.2028 | Val Loss: 0.2735 | Val Macro Dice: 0.8221
+⚠️ 验证集 Macro Dice 未提升。早停计数: 18 / 50
+
+========== Epoch 156/500 [LR: 2.35e-04] ==========
+   [Batch 13/13] Loss: 0.2316
+📊 Train Loss: 0.2134 | Val Loss: 0.3118 | Val Macro Dice: 0.8146
+⚠️ 验证集 Macro Dice 未提升。早停计数: 19 / 50
+
+========== Epoch 157/500 [LR: 2.34e-04] ==========
+   [Batch 13/13] Loss: 0.3899
+📊 Train Loss: 0.2189 | Val Loss: 0.3163 | Val Macro Dice: 0.8133
+⚠️ 验证集 Macro Dice 未提升。早停计数: 20 / 50
+
+========== Epoch 158/500 [LR: 2.33e-04] ==========
+   [Batch 13/13] Loss: 0.2056
+📊 Train Loss: 0.2146 | Val Loss: 0.2174 | Val Macro Dice: 0.8456
+⚠️ 验证集 Macro Dice 未提升。早停计数: 21 / 50
+
+========== Epoch 159/500 [LR: 2.32e-04] ==========
+   [Batch 13/13] Loss: 0.2287
+📊 Train Loss: 0.2067 | Val Loss: 0.2482 | Val Macro Dice: 0.8416
+⚠️ 验证集 Macro Dice 未提升。早停计数: 22 / 50
+
+========== Epoch 160/500 [LR: 2.31e-04] ==========
+   [Batch 13/13] Loss: 0.2807
+📊 Train Loss: 0.2025 | Val Loss: 0.2678 | Val Macro Dice: 0.8365
+⚠️ 验证集 Macro Dice 未提升。早停计数: 23 / 50
+
+========== Epoch 161/500 [LR: 2.31e-04] ==========
+   [Batch 13/13] Loss: 0.2156
+📊 Train Loss: 0.2072 | Val Loss: 0.3034 | Val Macro Dice: 0.8228
+⚠️ 验证集 Macro Dice 未提升。早停计数: 24 / 50
+
+========== Epoch 162/500 [LR: 2.30e-04] ==========
+   [Batch 13/13] Loss: 0.2177
+📊 Train Loss: 0.2024 | Val Loss: 0.2301 | Val Macro Dice: 0.8424
+⚠️ 验证集 Macro Dice 未提升。早停计数: 25 / 50
+
+========== Epoch 163/500 [LR: 2.29e-04] ==========
+   [Batch 13/13] Loss: 0.2000
+📊 Train Loss: 0.1997 | Val Loss: 0.2765 | Val Macro Dice: 0.8316
+⚠️ 验证集 Macro Dice 未提升。早停计数: 26 / 50
+
+========== Epoch 164/500 [LR: 2.28e-04] ==========
+   [Batch 13/13] Loss: 0.1968
+📊 Train Loss: 0.2104 | Val Loss: 0.2779 | Val Macro Dice: 0.8305
+⚠️ 验证集 Macro Dice 未提升。早停计数: 27 / 50
+
+========== Epoch 165/500 [LR: 2.27e-04] ==========
+   [Batch 13/13] Loss: 0.2408
+📊 Train Loss: 0.2071 | Val Loss: 0.2879 | Val Macro Dice: 0.8276
+⚠️ 验证集 Macro Dice 未提升。早停计数: 28 / 50
+
+========== Epoch 166/500 [LR: 2.27e-04] ==========
+   [Batch 13/13] Loss: 0.1856
+📊 Train Loss: 0.2048 | Val Loss: 0.3290 | Val Macro Dice: 0.8155
+⚠️ 验证集 Macro Dice 未提升。早停计数: 29 / 50
+
+========== Epoch 167/500 [LR: 2.26e-04] ==========
+   [Batch 13/13] Loss: 0.1937
+📊 Train Loss: 0.1987 | Val Loss: 0.2544 | Val Macro Dice: 0.8424
+⚠️ 验证集 Macro Dice 未提升。早停计数: 30 / 50
+
+========== Epoch 168/500 [LR: 2.25e-04] ==========
+   [Batch 13/13] Loss: 0.2092
+📊 Train Loss: 0.2004 | Val Loss: 0.2699 | Val Macro Dice: 0.8358
+⚠️ 验证集 Macro Dice 未提升。早停计数: 31 / 50
+
+========== Epoch 169/500 [LR: 2.24e-04] ==========
+   [Batch 13/13] Loss: 0.2165
+📊 Train Loss: 0.1947 | Val Loss: 0.2827 | Val Macro Dice: 0.8388
+⚠️ 验证集 Macro Dice 未提升。早停计数: 32 / 50
+
+========== Epoch 170/500 [LR: 2.23e-04] ==========
+   [Batch 13/13] Loss: 0.1887
+📊 Train Loss: 0.2035 | Val Loss: 0.3128 | Val Macro Dice: 0.8221
+⚠️ 验证集 Macro Dice 未提升。早停计数: 33 / 50
+
+========== Epoch 171/500 [LR: 2.23e-04] ==========
+   [Batch 13/13] Loss: 0.1774
+📊 Train Loss: 0.1950 | Val Loss: 0.2918 | Val Macro Dice: 0.8283
+⚠️ 验证集 Macro Dice 未提升。早停计数: 34 / 50
+
+========== Epoch 172/500 [LR: 2.22e-04] ==========
+   [Batch 13/13] Loss: 0.1928
+📊 Train Loss: 0.2060 | Val Loss: 0.3127 | Val Macro Dice: 0.8252
+⚠️ 验证集 Macro Dice 未提升。早停计数: 35 / 50
+
+========== Epoch 173/500 [LR: 2.21e-04] ==========
+   [Batch 13/13] Loss: 0.1839
+📊 Train Loss: 0.1988 | Val Loss: 0.3039 | Val Macro Dice: 0.8239
+⚠️ 验证集 Macro Dice 未提升。早停计数: 36 / 50
+
+========== Epoch 174/500 [LR: 2.20e-04] ==========
+   [Batch 13/13] Loss: 0.2161
+📊 Train Loss: 0.1959 | Val Loss: 0.3135 | Val Macro Dice: 0.8234
+⚠️ 验证集 Macro Dice 未提升。早停计数: 37 / 50
+
+========== Epoch 175/500 [LR: 2.19e-04] ==========
+   [Batch 13/13] Loss: 0.1784
+📊 Train Loss: 0.1985 | Val Loss: 0.3196 | Val Macro Dice: 0.8235
+⚠️ 验证集 Macro Dice 未提升。早停计数: 38 / 50
+
+========== Epoch 176/500 [LR: 2.18e-04] ==========
+   [Batch 13/13] Loss: 0.1886
+📊 Train Loss: 0.1859 | Val Loss: 0.2814 | Val Macro Dice: 0.8336
+⚠️ 验证集 Macro Dice 未提升。早停计数: 39 / 50
+
+========== Epoch 177/500 [LR: 2.18e-04] ==========
+   [Batch 13/13] Loss: 0.2079
+📊 Train Loss: 0.1957 | Val Loss: 0.2839 | Val Macro Dice: 0.8350
+⚠️ 验证集 Macro Dice 未提升。早停计数: 40 / 50
+
+========== Epoch 178/500 [LR: 2.17e-04] ==========
+   [Batch 13/13] Loss: 0.2432
+📊 Train Loss: 0.1895 | Val Loss: 0.2375 | Val Macro Dice: 0.8456
+⚠️ 验证集 Macro Dice 未提升。早停计数: 41 / 50
+
+========== Epoch 179/500 [LR: 2.16e-04] ==========
+   [Batch 13/13] Loss: 0.1928
+📊 Train Loss: 0.1991 | Val Loss: 0.2197 | Val Macro Dice: 0.8466
+⚠️ 验证集 Macro Dice 未提升。早停计数: 42 / 50
+
+========== Epoch 180/500 [LR: 2.15e-04] ==========
+   [Batch 13/13] Loss: 0.2352
+📊 Train Loss: 0.1983 | Val Loss: 0.2287 | Val Macro Dice: 0.8429
+⚠️ 验证集 Macro Dice 未提升。早停计数: 43 / 50
+
+========== Epoch 181/500 [LR: 2.14e-04] ==========
+   [Batch 13/13] Loss: 0.2653
+📊 Train Loss: 0.1952 | Val Loss: 0.3093 | Val Macro Dice: 0.8267
+⚠️ 验证集 Macro Dice 未提升。早停计数: 44 / 50
+
+========== Epoch 182/500 [LR: 2.13e-04] ==========
+   [Batch 13/13] Loss: 0.2569
+📊 Train Loss: 0.2019 | Val Loss: 0.2943 | Val Macro Dice: 0.8229
+⚠️ 验证集 Macro Dice 未提升。早停计数: 45 / 50
+
+========== Epoch 183/500 [LR: 2.12e-04] ==========
+   [Batch 13/13] Loss: 0.2011
+📊 Train Loss: 0.1972 | Val Loss: 0.2614 | Val Macro Dice: 0.8377
+⚠️ 验证集 Macro Dice 未提升。早停计数: 46 / 50
+
+========== Epoch 184/500 [LR: 2.12e-04] ==========
+   [Batch 13/13] Loss: 0.3107
+📊 Train Loss: 0.1996 | Val Loss: 0.2349 | Val Macro Dice: 0.8417
+⚠️ 验证集 Macro Dice 未提升。早停计数: 47 / 50
+
+========== Epoch 185/500 [LR: 2.11e-04] ==========
+   [Batch 13/13] Loss: 0.2119
+📊 Train Loss: 0.1924 | Val Loss: 0.2392 | Val Macro Dice: 0.8400
+⚠️ 验证集 Macro Dice 未提升。早停计数: 48 / 50
+
+========== Epoch 186/500 [LR: 2.10e-04] ==========
+   [Batch 13/13] Loss: 0.1947
+📊 Train Loss: 0.1938 | Val Loss: 0.2554 | Val Macro Dice: 0.8335
+⚠️ 验证集 Macro Dice 未提升。早停计数: 49 / 50
+
+========== Epoch 187/500 [LR: 2.09e-04] ==========
+   [Batch 13/13] Loss: 0.2243
+📊 Train Loss: 0.1964 | Val Loss: 0.3012 | Val Macro Dice: 0.8347
+⚠️ 验证集 Macro Dice 未提升。早停计数: 50 / 50
+
+🛑 连续 50 个 epoch 验证集性能无提升，触发早停机制，训练提前结束！
+📊 训练曲线图已保存至: <workspace>/CNN/U-net/train/UHCS_multiclass/training_curve.png
+✅ 所有任务结束！
