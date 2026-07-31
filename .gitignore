@@ -16,9 +16,7 @@ env/
 train_log*.txt
 test_log*.txt
 training_log.txt
-!training_logs/
-!training_logs/**/*.txt
-!training_logs/**/*.json
+/training_logs/
 work_dirs/
 outputs/
 output*/
