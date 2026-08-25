@@ -179,8 +179,9 @@ and checkpoint links separately when available.
 The public experiment interface is limited to:
 
 - binary and multiclass training/testing for U-Net and DeepLabV3+;
-- original inference and class-token fine-tuning/inference for the
-  Segment Anything based models;
+- original inference, binary LoRA+decoder fine-tuning/inference, and
+  multiclass class-token fine-tuning/inference for the Segment Anything based
+  models;
 - `train_standalone.py` and `test_data.py` for Swin-Unet;
 - the custom SegFormer configs and `tools/test_segformer_dataset.py`;
 - metric, visualization, and paper figure utilities in `Myutils`.

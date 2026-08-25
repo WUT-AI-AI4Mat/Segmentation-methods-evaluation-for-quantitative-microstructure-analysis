@@ -67,7 +67,7 @@ conda activate sam2
 pip install torch torchvision
 cd sam2
 pip install -e ".[notebooks]"
-pip install peft opencv-python pandas openpyxl tifffile
+pip install peft segment-anything opencv-python pandas openpyxl tifffile
 ```
 
 If the SAM2 CUDA extension fails to build on the server, it can be skipped:
@@ -144,7 +144,8 @@ DATASET_NAME/
 
 Mask files are read as label maps. Binary experiments use foreground/background labels, and multi-class experiments use integer class IDs.
 
-CNN, Swin-Unet, and SegFormer training use a batch size of `32`. The SAM-family fine-tuning scripts process one image per optimizer step because their class-token decoder wrappers operate on a single image at a time.
+CNN, Swin-Unet, and SegFormer training use a batch size of `32`. The
+SAM-family fine-tuning scripts process one image per optimizer step.
 
 ## 4. Model Overview
 
@@ -161,7 +162,12 @@ The model descriptions below follow the manuscript text. If an implementation de
 | micro-sam | Uses `vit_b_lm` in automatic instance segmentation mode. Parameters include `min_size=10`, `center_distance_threshold=0.5`, and `boundary_distance_threshold=0.5`. |
 | MatSAM | Uses the MatSAM `vit_h` model with a custom `PromptGenerator`; `method_type=1` for grain data and `method_type=2` for metallographic data, with `n_per_side_base=54`, `pred_iou_thresh=0.88`, `stability_score_thresh=0.9`, and `box_nms_thresh=0.7`. |
 
-Fine-tuned SAM-family models use class tokens for semantic prediction. LoRA is applied to the image encoder, the mask decoder is fully unfrozen, and the prompt encoder remains frozen. The optimizer is AdamW, training runs for up to `200` epochs, and the current training functions use cross-entropy plus Dice loss. The LoRA setting is `rank=8`, `alpha=16`, and `dropout=0.05`, targeting the `qkv` and `proj` modules.
+The SAM-family experiments use two fine-tuning routes. Aachen-Heerlen, EMPS,
+and Grain are binary datasets and use image-encoder LoRA plus a fully
+trainable mask decoder with point prompts. EBC, Super, MetalDAM, and UHCS use
+class tokens for multiclass semantic prediction. In both routes the prompt
+encoder remains frozen and LoRA uses `rank=8`, `alpha=16`, and
+`dropout=0.05`, targeting the `qkv` and `proj` modules.
 
 ### Hyperparameter Summary
 
@@ -171,10 +177,10 @@ Fine-tuned SAM-family models use class tokens for semantic prediction. LoRA is a
 | DeepLabV3+ | encoder `ResNet-50`; encoder weights `ImageNet`; input size `512 x 512`; batch size `32`; epochs `500`; optimizer `AdamW`; learning rate `0.0003`; weight decay `0.001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; binary loss `Dice + BCEWithLogits`; multi-class loss `Dice + cross-entropy`; early-stopping patience `50` |
 | SegFormer | backbone `MiT-B0`; input size `512 x 512`; training batch size `32`; validation/test batch size `16`; epochs `200`; optimizer `AdamW`; learning rate `0.00006`; Adam betas `(0.9, 0.999)`; weight decay `0.01`; scheduler `5`-epoch linear warm-up followed by polynomial decay |
 | Swin-Unet | backbone `Swin-Tiny`; ImageNet pretrained weights; input size `224 x 224`; patch size `4`; window size `7`; batch size `32`; epochs `500`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; loss `0.5 x cross-entropy + 0.5 x Dice`; early-stopping patience `50` |
-| MatSAM | model `ViT-H`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; loss `cross-entropy + Dice`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `method_type=1` for grain data and `method_type=2` for metallographic data; `n_per_side_base=54`; `pred_iou_thresh=0.88`; `stability_score_thresh=0.9`; `box_nms_thresh=0.7`; `crop_n_layers=0` |
-| HQ-SAM | model `ViT-B`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; loss `cross-entropy + Dice`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; `pred_iou_thresh=0.85`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
-| SAM2 | model `sam2.1_hiera_base_plus`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; loss `cross-entropy + Dice`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; `points_per_batch=64`; `pred_iou_thresh=0.8`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
-| micro-sam | model `ViT-B-LM`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; loss `cross-entropy + Dice`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `min_size=10`; `center_distance_threshold=0.5`; `boundary_distance_threshold=0.5` |
+| MatSAM | model `ViT-H`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `method_type=1` for grain data and `method_type=2` for metallographic data; `n_per_side_base=54`; multiclass `pred_iou_thresh=0.88`, `stability_score_thresh=0.9`; binary `pred_iou_thresh=0.7`, `stability_score_thresh=0.7`; `box_nms_thresh=0.7`; `crop_n_layers=0` |
+| HQ-SAM | model `ViT-B`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; multiclass `pred_iou_thresh=0.85`; binary `pred_iou_thresh=0.78`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
+| SAM2 | model `sam2.1_hiera_base_plus`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; `points_per_batch=64`; `pred_iou_thresh=0.8`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
+| micro-sam | model `ViT-B-LM`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `min_size=10`; `center_distance_threshold=0.5`; `boundary_distance_threshold=0.5` |
 
 ## 5. Weights and Checkpoints
 
@@ -274,8 +280,9 @@ python "CNN/DeepLabV3+/test_multi.py" --dataset-root /path/to/EBC --checkpoint o
 For MatSAM, HQ-SAM, SAM2, and micro-sam, the public version keeps:
 
 - one original test script for the base model;
-- one semantic fine-tuning training script;
-- one semantic fine-tuning test script.
+- binary LoRA+decoder training and test scripts for Aachen-Heerlen, EMPS, and
+  Grain;
+- class-token training and test scripts for EBC, Super, MetalDAM, and UHCS.
 
 The architecture descriptions follow the manuscript. The experiment settings below follow the current public training and testing functions.
 
@@ -290,6 +297,8 @@ matsam
 | Script | Purpose |
 | --- | --- |
 | `datasets_test.py` | Original MatSAM testing |
+| `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
+| `test_lora_decoder.py` | Binary LoRA+decoder testing |
 | `train_semantic_matsam.py` | MatSAM semantic fine-tuning |
 | `test_semantic_matsam.py` | MatSAM semantic testing |
 
@@ -315,6 +324,8 @@ Example:
 
 ```bash
 python matsam/datasets_test.py --dataset-root /path/to/MetalDAM --checkpoint weights/sam_vit_h_4b8939.pth --output-dir results/matsam_original --method-type 2
+python matsam/train_lora_decoder.py --dataset-root /path/to/EMPS --checkpoint weights/sam_vit_h_4b8939.pth --output-dir outputs/matsam_emps
+python matsam/test_lora_decoder.py --dataset-root /path/to/EMPS --checkpoint weights/sam_vit_h_4b8939.pth --finetuned-checkpoint outputs/matsam_emps/matsam_lora_decoder_best.pth --output-dir results/matsam_emps --method-type 2
 python matsam/train_semantic_matsam.py --dataset-root /path/to/MetalDAM --checkpoint weights/sam_vit_h_4b8939.pth --output-dir outputs/matsam --num-classes 5
 python matsam/test_semantic_matsam.py --dataset-root /path/to/MetalDAM --checkpoint weights/sam_vit_h_4b8939.pth --finetuned-checkpoint outputs/matsam/semantic_matsam_best.pth --output-dir results/matsam --num-classes 5
 ```
@@ -330,6 +341,8 @@ hqsam
 | Script | Purpose |
 | --- | --- |
 | `test_hqsam.py` | Original HQ-SAM testing |
+| `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
+| `test_lora_decoder.py` | Binary LoRA+decoder testing |
 | `train_semantic_hqsam.py` | HQ-SAM semantic fine-tuning |
 | `test_semantic_hqsam.py` | HQ-SAM semantic testing |
 
@@ -354,6 +367,8 @@ Example:
 
 ```bash
 python hqsam/test_hqsam.py --dataset-root /path/to/EBC --checkpoint weights/sam_hq_vit_b.pth --output-dir results/hqsam_original
+python hqsam/train_lora_decoder.py --dataset-root /path/to/EMPS --checkpoint weights/sam_hq_vit_b.pth --output-dir outputs/hqsam_emps
+python hqsam/test_lora_decoder.py --dataset-root /path/to/EMPS --checkpoint weights/sam_hq_vit_b.pth --finetuned-checkpoint outputs/hqsam_emps/hqsam_lora_decoder_best.pth --output-dir results/hqsam_emps
 python hqsam/train_semantic_hqsam.py --dataset-root /path/to/EBC --checkpoint weights/sam_hq_vit_b.pth --output-dir outputs/hqsam --num-classes 3
 python hqsam/test_semantic_hqsam.py --dataset-root /path/to/EBC --checkpoint weights/sam_hq_vit_b.pth --finetuned-checkpoint outputs/hqsam/semantic_hqsam_best.pth --output-dir results/hqsam --num-classes 3
 ```
@@ -369,6 +384,8 @@ sam2
 | Script | Purpose |
 | --- | --- |
 | `test_sam2.py` | Original SAM2 testing |
+| `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
+| `test_lora_decoder.py` | Binary LoRA+decoder testing |
 | `train_semantic_sam2.py` | SAM2 semantic fine-tuning |
 | `test_semantic_sam2.py` | SAM2 semantic testing |
 
@@ -397,6 +414,8 @@ Example:
 
 ```bash
 python sam2/test_sam2.py --dataset-root /path/to/EBC --checkpoint weights/sam2.1_hiera_base_plus.pt --output-dir results/sam2_original
+python sam2/train_lora_decoder.py --dataset-root /path/to/EMPS --checkpoint weights/sam2.1_hiera_base_plus.pt --output-dir outputs/sam2_emps
+python sam2/test_lora_decoder.py --dataset-root /path/to/EMPS --checkpoint weights/sam2.1_hiera_base_plus.pt --finetuned-checkpoint outputs/sam2_emps/sam2_lora_decoder_best.pth --output-dir results/sam2_emps
 python sam2/train_semantic_sam2.py --dataset-root /path/to/EBC --checkpoint weights/sam2.1_hiera_base_plus.pt --output-dir outputs/sam2 --num-classes 3
 python sam2/test_semantic_sam2.py --dataset-root /path/to/EBC --checkpoint weights/sam2.1_hiera_base_plus.pt --finetuned-checkpoint outputs/sam2/semantic_sam2_best.pth --output-dir results/sam2 --num-classes 3
 ```
@@ -412,6 +431,8 @@ microsam
 | Script | Purpose |
 | --- | --- |
 | `data_test.py` | Original micro-sam testing |
+| `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
+| `test_lora_decoder.py` | Binary LoRA+decoder testing |
 | `train_semantic_microsam.py` | micro-sam semantic fine-tuning |
 | `test_semantic_microsam.py` | micro-sam semantic testing |
 
@@ -436,6 +457,8 @@ Example:
 
 ```bash
 python microsam/data_test.py --dataset-root /path/to/EBC --checkpoint weights/vit_b.pt --output-dir results/microsam_original
+python microsam/train_lora_decoder.py --dataset-root /path/to/EMPS --output-dir outputs/microsam_emps
+python microsam/test_lora_decoder.py --dataset-root /path/to/EMPS --finetuned-checkpoint outputs/microsam_emps/microsam_lora_decoder_best.pth --output-dir results/microsam_emps
 python microsam/train_semantic_microsam.py --dataset-root /path/to/EBC --output-dir outputs/microsam --num-classes 3
 python microsam/test_semantic_microsam.py --dataset-root /path/to/EBC --finetuned-checkpoint outputs/microsam/semantic_microsam_best.pth --output-dir results/microsam --num-classes 3
 ```

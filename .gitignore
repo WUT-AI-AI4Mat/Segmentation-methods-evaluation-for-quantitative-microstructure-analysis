@@ -16,6 +16,8 @@ env/
 train_log*.txt
 test_log*.txt
 training_log.txt
+**/*_log*.txt
+**/log_*.txt
 /training_logs/
 work_dirs/
 outputs/
@@ -44,6 +46,20 @@ sanity_check.png
 threshold_search.png
 dataset_check_report.*
 *_compare.png
+*.docx
+
+# Local experiment variants and one-off diagnostics
+**/*_iter.py
+**/*_debug.py
+**/*_scratch.py
+**/*_backup.py
+**/*_old.py
+**/test_lora.py
+**/train_lora.py
+**/test_decoder.py
+**/train_decoder.py
+**/check_dataset*.py
+**/dataset_check*.py
 
 # Local datasets and checkpoints
 /dataset/
@@ -70,6 +86,7 @@ _public_clean/
 
 # Upstream content outside the public reproduction scope
 /matsam/dataset/
+/matsam/assets/
 /matsam/gala/
 /matsam/notebooks/
 /matsam/supervised_method/
@@ -89,6 +106,14 @@ _public_clean/
 /sam2/sav_dataset/
 /sam2/tools/
 /sam2/training/
+/sam2/.github/
+/sam2/.clang-format
+/sam2/.watchmanconfig
+/sam2/backend.Dockerfile
+/sam2/docker-compose.yaml
+/sam2/CODE_OF_CONDUCT.md
+/sam2/CONTRIBUTING.md
+/sam2/RELEASE_NOTES.md
 
 /microsam/deployment/
 /microsam/development/
@@ -99,6 +124,9 @@ _public_clean/
 /microsam/scripts/
 /microsam/test/
 /microsam/workshops/
+/microsam/.github/
+/microsam/RELEASE_OVERVIEW.md
+/microsam/requirements-dev.txt
 /microsam/torch-em/*
 !/microsam/torch-em/LICENSE
 !/microsam/torch-em/README.md
@@ -109,6 +137,13 @@ _public_clean/
 !/microsam/torch-em/torch_em/
 
 /mmsegmentation/benchmark/
+/mmsegmentation/.circleci/
+/mmsegmentation/.dev_scripts/
+/mmsegmentation/.github/
+/mmsegmentation/.owners.yml
+/mmsegmentation/.pre-commit-config.yaml
+/mmsegmentation/CITATION.cff
+/mmsegmentation/README_zh-CN.md
 /mmsegmentation/demo/
 /mmsegmentation/docker/
 /mmsegmentation/docs/
@@ -119,3 +154,36 @@ _public_clean/
 /mmsegmentation/configs/*
 !/mmsegmentation/configs/_base_/
 !/mmsegmentation/configs/segformer/
+/mmsegmentation/configs/_base_/datasets/*
+!/mmsegmentation/configs/_base_/datasets/ade20k.py
+/mmsegmentation/configs/_base_/models/*
+!/mmsegmentation/configs/_base_/models/segformer_mit-b0.py
+/mmsegmentation/configs/_base_/schedules/*
+!/mmsegmentation/configs/_base_/schedules/schedule_160k.py
+/mmsegmentation/configs/segformer/*
+!/mmsegmentation/configs/segformer/segformer_mit-b0_8xb2-160k_ade20k-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_multisuffix_base.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_aachen-heerlen-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_ebc-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_emps-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_grain-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_super-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-200e_uhcs-512x512.py
+!/mmsegmentation/configs/segformer/segformer_mit-b0_1xb2-2k_metaldam-512x512.py
+/mmsegmentation/tools/*
+!/mmsegmentation/tools/train.py
+!/mmsegmentation/tools/test_segformer_dataset.py
+!/mmsegmentation/tools/test_aachen_heerlen_segformer.py
+!/mmsegmentation/tools/test_ebc_segformer.py
+!/mmsegmentation/tools/test_emps_segformer.py
+!/mmsegmentation/tools/test_grain_segformer.py
+!/mmsegmentation/tools/test_metaldam_segformer.py
+!/mmsegmentation/tools/test_super_segformer.py
+!/mmsegmentation/tools/test_uhcs_segformer.py
+
+# Upstream examples not used by the material experiments
+/Swin-Unet/lists/
+/Swin-Unet/train.sh
+/Swin-Unet/test.sh
+/Swin-Unet/datasets/dataset_synapse.py
+/Swin-Unet/datasets/README.md
