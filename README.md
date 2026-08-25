@@ -46,7 +46,7 @@ following versions were read directly from the tested environments:
 
 | Models | Conda environment | Python | PyTorch | PyTorch CUDA | Main framework | Complete package list |
 | --- | --- | ---: | ---: | ---: | --- | --- |
-| U-Net and DeepLabV3+ | `sam` | 3.9.25 | 2.8.0 | 12.8 | SMP 0.5.0 | [`sam.txt`](environment_reports/sam.txt) |
+| U-Net and DeepLabV3+ | `cnn` | 3.9.25 | 2.8.0 | 12.8 | SMP 0.5.0 | [`cnn.txt`](environment_reports/cnn.txt) |
 | MatSAM | `matsam` | 3.9.25 | 2.5.1 | 12.1 | PEFT 0.17.1 | [`matsam.txt`](environment_reports/matsam.txt) |
 | HQ-SAM | `hqsam` | 3.9.25 | 2.8.0 | 12.8 | PEFT 0.17.1 | [`hqsam.txt`](environment_reports/hqsam.txt) |
 | SAM2 | `sam2` | 3.10.19 | 2.10.0 | 12.8 | PEFT 0.18.1 | [`sam2.txt`](environment_reports/sam2.txt) |

@@ -22,15 +22,20 @@ included. The CPU demo contains one test image-mask pair from each dataset.
 
 ## 2. Environment
 
-The experiments were run on Ubuntu 22.04.3 LTS with separate environments for different model families. U-Net and DeepLabV3+ shared the `sam` environment because both rely on `segmentation_models_pytorch`. Exact tested package versions are stored in [`environment_reports`](environment_reports/README.md).
+The experiments were run on Ubuntu 22.04.3 LTS with separate environments for
+different model families. U-Net and DeepLabV3+ originally reused an existing
+environment named `sam` for convenience. The public reproduction environment
+is named `cnn` because these baselines only require
+`segmentation_models_pytorch` and do not depend on a SAM model. Exact tested
+package versions are stored in [`environment_reports`](environment_reports/README.md).
 
 Use the official environment requirements shipped with each upstream project first, then install the extra packages used by the experiment scripts.
 
 ### CNN Baselines
 
 ```bash
-conda create -n sam python=3.9
-conda activate sam
+conda create -n cnn python=3.9
+conda activate cnn
 
 pip install torch torchvision
 pip install segmentation-models-pytorch albumentations opencv-python numpy pandas matplotlib tqdm pillow tifffile openpyxl scikit-image scikit-learn scipy

@@ -1,4 +1,5 @@
-# Environment: sam
+# Environment: cnn
+# Package versions captured from the original environment named sam.
 # Collected: 2026-08-25
 # Command: python -m pip list --format=freeze
 

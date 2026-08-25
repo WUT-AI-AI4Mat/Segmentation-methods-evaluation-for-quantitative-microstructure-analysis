@@ -6,7 +6,7 @@ hardware configuration.
 
 | Models | Conda environment | Complete package list |
 | --- | --- | --- |
-| U-Net and DeepLabV3+ | `sam` | [`sam.txt`](sam.txt) |
+| U-Net and DeepLabV3+ | `cnn` | [`cnn.txt`](cnn.txt) |
 | MatSAM | `matsam` | [`matsam.txt`](matsam.txt) |
 | HQ-SAM | `hqsam` | [`hqsam.txt`](hqsam.txt) |
 | SAM2 | `sam2` | [`sam2.txt`](sam2.txt) |
@@ -14,7 +14,10 @@ hardware configuration.
 | Swin-Unet | `swinunet` | [`swinunet.txt`](swinunet.txt) |
 | SegFormer | `segformer` | [`segformer.txt`](segformer.txt) |
 
-The package lists were generated with `python -m pip list --format=freeze` on
+The CNN package list was captured from the original environment named `sam`;
+the public reproduction environment is named `cnn` to reflect its actual
+purpose. The package lists were generated with
+`python -m pip list --format=freeze` on
 25 August 2026. They contain package names and installed versions only; local
 paths, usernames, hostnames, dataset paths, and package-index credentials are
 not included.
