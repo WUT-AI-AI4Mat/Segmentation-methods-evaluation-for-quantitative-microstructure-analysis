@@ -21,15 +21,15 @@ Datasets, pretrained weights, and fine-tuned checkpoints are not included in the
 
 ## 2. Environment
 
-The experiments were run on cloud servers with separate environments for different model families. U-Net and DeepLabV3+ can share one CNN environment because both mainly rely on `segmentation_models_pytorch`.
+The experiments were run on Ubuntu 22.04.3 LTS with separate environments for different model families. U-Net and DeepLabV3+ shared the `sam` environment because both rely on `segmentation_models_pytorch`. Exact tested package versions are stored in [`environment_reports`](environment_reports/README.md).
 
 Use the official environment requirements shipped with each upstream project first, then install the extra packages used by the experiment scripts.
 
 ### CNN Baselines
 
 ```bash
-conda create -n cnn_seg python=3.10
-conda activate cnn_seg
+conda create -n sam python=3.9
+conda activate sam
 
 pip install torch torchvision
 pip install segmentation-models-pytorch albumentations opencv-python numpy pandas matplotlib tqdm pillow tifffile openpyxl scikit-image scikit-learn scipy
@@ -38,7 +38,7 @@ pip install segmentation-models-pytorch albumentations opencv-python numpy panda
 ### MatSAM
 
 ```bash
-conda create -n matsam python=3.8
+conda create -n matsam python=3.9
 conda activate matsam
 pip install -r matsam/requirements.txt
 pip install peft openpyxl
@@ -49,7 +49,7 @@ pip install peft openpyxl
 Follow the official requirements in `hqsam/requirements.txt` and, for the SAM2-based HQ-SAM submodule, `hqsam/sam-hq2/INSTALL.md`.
 
 ```bash
-conda create -n hqsam python=3.10
+conda create -n hqsam python=3.9
 conda activate hqsam
 pip install torch torchvision
 pip install -r hqsam/requirements.txt
@@ -91,8 +91,8 @@ pip install peft pandas openpyxl
 ### Swin-Unet
 
 ```bash
-conda create -n swin_unet python=3.8
-conda activate swin_unet
+conda create -n swinunet python=3.9
+conda activate swinunet
 pip install torch torchvision
 pip install -r Swin-Unet/requirements.txt
 ```
@@ -102,8 +102,8 @@ pip install -r Swin-Unet/requirements.txt
 Use the official MMSegmentation dependency chain.
 
 ```bash
-conda create -n mmseg python=3.10
-conda activate mmseg
+conda create -n segformer python=3.9
+conda activate segformer
 pip install torch torchvision
 cd mmsegmentation
 pip install -U openmim

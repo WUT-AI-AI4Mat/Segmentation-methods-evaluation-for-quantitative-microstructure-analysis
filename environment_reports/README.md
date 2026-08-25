@@ -1,32 +1,29 @@
 # Tested Cloud Environments
 
-The software checklist requires the exact operating system, GPU, CUDA, Python,
-PyTorch, and dependency versions used for the experiments. Generate one report
-inside each activated cloud environment:
+This directory records the exact software environments used on the tested
+cloud server. See [`SERVER.md`](SERVER.md) for the operating system and
+hardware configuration.
+
+| Models | Conda environment | Complete package list |
+| --- | --- | --- |
+| U-Net and DeepLabV3+ | `sam` | [`sam.txt`](sam.txt) |
+| MatSAM | `matsam` | [`matsam.txt`](matsam.txt) |
+| HQ-SAM | `hqsam` | [`hqsam.txt`](hqsam.txt) |
+| SAM2 | `sam2` | [`sam2.txt`](sam2.txt) |
+| micro-sam | `microsam` | [`microsam.txt`](microsam.txt) |
+| Swin-Unet | `swinunet` | [`swinunet.txt`](swinunet.txt) |
+| SegFormer | `segformer` | [`segformer.txt`](segformer.txt) |
+
+The package lists were generated with `python -m pip list --format=freeze` on
+25 August 2026. They contain package names and installed versions only; local
+paths, usernames, hostnames, dataset paths, and package-index credentials are
+not included.
+
+To capture a fresh report after changing an environment, activate it and run:
 
 ```bash
-conda activate cnn_seg
-bash scripts/collect_environment.sh cnn
-
-conda activate matsam
-bash scripts/collect_environment.sh matsam
-
-conda activate hqsam
-bash scripts/collect_environment.sh hqsam
-
-conda activate sam2
-bash scripts/collect_environment.sh sam2
-
-conda activate microsam
-bash scripts/collect_environment.sh microsam
-
-conda activate swin_unet
-bash scripts/collect_environment.sh swin_unet
-
-conda activate mmseg
-bash scripts/collect_environment.sh segformer
+bash scripts/collect_environment.sh ENVIRONMENT_NAME
 ```
 
-Each command writes a text report to this directory. Review reports for local
-paths or private package indexes before committing them. The report does not
-collect dataset paths, usernames, or the machine hostname.
+Review generated reports for private paths or package indexes before
+committing them.

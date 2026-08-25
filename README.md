@@ -38,20 +38,20 @@ configuration.
 
 ### Full Benchmark
 
-The model experiments were run on Linux cloud servers. A separate conda
-environment is used for each model family, except that U-Net and DeepLabV3+
-share the CNN environment. The reference Python versions and dependency files
-are:
+The model experiments were run on an Ubuntu 22.04.3 LTS cloud server with two
+NVIDIA GeForce RTX 4090 GPUs. A separate conda environment was used for each
+model family, except that U-Net and DeepLabV3+ shared the CNN environment. The
+following versions were read directly from the tested environments:
 
-| Model family | Operating system | Python | Dependency specification |
-| --- | --- | ---: | --- |
-| U-Net and DeepLabV3+ | Linux | 3.10 | [CNN environment](REPRODUCTION.md#cnn-baselines) |
-| MatSAM | Linux | 3.8 | [`matsam/requirements.txt`](matsam/requirements.txt) |
-| HQ-SAM | Linux | 3.10 | [`hqsam/requirements.txt`](hqsam/requirements.txt) |
-| SAM2 | Linux | 3.10 or later | [`sam2/INSTALL.md`](sam2/INSTALL.md) |
-| micro-sam | Linux | 3.10 | [`microsam/environment.yaml`](microsam/environment.yaml) |
-| Swin-Unet | Linux | 3.8 | [`Swin-Unet/requirements.txt`](Swin-Unet/requirements.txt) |
-| SegFormer | Linux | 3.10 | [`mmsegmentation/requirements`](mmsegmentation/requirements) |
+| Models | Conda environment | Python | PyTorch | PyTorch CUDA | Main framework | Complete package list |
+| --- | --- | ---: | ---: | ---: | --- | --- |
+| U-Net and DeepLabV3+ | `sam` | 3.9.25 | 2.8.0 | 12.8 | SMP 0.5.0 | [`sam.txt`](environment_reports/sam.txt) |
+| MatSAM | `matsam` | 3.9.25 | 2.5.1 | 12.1 | PEFT 0.17.1 | [`matsam.txt`](environment_reports/matsam.txt) |
+| HQ-SAM | `hqsam` | 3.9.25 | 2.8.0 | 12.8 | PEFT 0.17.1 | [`hqsam.txt`](environment_reports/hqsam.txt) |
+| SAM2 | `sam2` | 3.10.19 | 2.10.0 | 12.8 | PEFT 0.18.1 | [`sam2.txt`](environment_reports/sam2.txt) |
+| micro-sam | `microsam` | 3.10.19 | 2.9.1 | 12.8 | micro-sam 1.6.2 | [`microsam.txt`](environment_reports/microsam.txt) |
+| Swin-Unet | `swinunet` | 3.9.25 | 2.8.0 | 12.8 | timm 1.0.24 | [`swinunet.txt`](environment_reports/swinunet.txt) |
+| SegFormer | `segformer` | 3.9.25 | 2.1.2 | 12.1 | MMSegmentation 1.2.2 | [`segformer.txt`](environment_reports/segformer.txt) |
 
 Full training and GPU inference require an NVIDIA CUDA-capable GPU. At least
 24 GB of GPU memory and 32 GB of system memory are recommended for the
@@ -60,11 +60,12 @@ memory use depends on the configured batch size; reduce the batch size if the
 available GPU memory is lower. Model checkpoints require several additional
 gigabytes of disk space and are not stored in this repository.
 
-Exact operating-system, driver, CUDA, GPU, PyTorch, and installed-package
-versions should be captured from every cloud environment with
-[`scripts/collect_environment.sh`](scripts/collect_environment.sh). The
-commands for all seven environments are listed in
-[`environment_reports/README.md`](environment_reports/README.md).
+The complete tested server specification is recorded in
+[`environment_reports/SERVER.md`](environment_reports/SERVER.md). Exact
+installed-package versions for all seven environments are available in
+[`environment_reports`](environment_reports/README.md). Use
+[`scripts/collect_environment.sh`](scripts/collect_environment.sh) to capture
+a fresh report after changing an environment.
 
 ## Installation Guide
 
