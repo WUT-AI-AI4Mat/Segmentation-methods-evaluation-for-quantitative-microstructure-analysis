@@ -1,9 +1,13 @@
 # Reproduction Guide
 
-This repository contains the implementation code for material image segmentation comparison experiments. Selected source files from the official upstream projects are retained together with the experiment-specific training, testing, configuration, metric, and plotting code.
+This repository contains the implementation code for material image
+segmentation comparison experiments. Licensed source files from selected
+official upstream projects are retained together with the experiment-specific
+training, testing, configuration, metric, and plotting code. MatSAM and
+Swin-Unet are installed from separate upstream clones.
 
-The full datasets, pretrained weights, and fine-tuned checkpoints are not
-included. The CPU demo contains one test image-mask pair from each dataset.
+The research datasets, pretrained weights, and fine-tuned checkpoints are not
+included. The CPU demo uses three deterministic simulated image-mask pairs.
 
 ## 1. Repository Layout
 
@@ -11,11 +15,11 @@ included. The CPU demo contains one test image-mask pair from each dataset.
 | --- | --- |
 | `CNN/U-net` | U-Net baseline |
 | `CNN/DeepLabV3+` | DeepLabV3+ baseline |
-| `matsam` | MatSAM upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
+| `matsam` | MatSAM experiment scripts; the upstream runtime is cloned separately into `matsam/upstream` |
 | `hqsam` | HQ-SAM upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
 | `sam2` | SAM2 upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
 | `microsam` | micro-sam upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
-| `Swin-Unet` | Swin-Unet baseline |
+| `Swin-Unet` | Swin-Unet experiment scripts; the upstream runtime is cloned separately into `Swin-Unet/upstream` |
 | `mmsegmentation` | SegFormer configs based on MMSegmentation |
 | `Myutils` | Metric calculation, prediction visualization, and paper figure utilities |
 | `WEIGHTS.md` | External weight/checkpoint placement notes |
@@ -46,8 +50,10 @@ pip install segmentation-models-pytorch albumentations opencv-python numpy panda
 ```bash
 conda create -n matsam python=3.9
 conda activate matsam
-pip install -r matsam/requirements.txt
-pip install peft openpyxl
+git clone https://github.com/USTB-AI3DVIP/matsam.git matsam/upstream
+git -C matsam/upstream checkout cbea7edaada991d88d7dfee656bd7e3dac09863f
+pip install -r matsam/upstream/requirements.txt
+pip install peft pandas openpyxl tifffile
 ```
 
 ### HQ-SAM
@@ -104,8 +110,11 @@ is not already resolved from `environment.yaml`.
 ```bash
 conda create -n swinunet python=3.9
 conda activate swinunet
+git clone https://github.com/HuCaoFighting/Swin-Unet.git Swin-Unet/upstream
+git -C Swin-Unet/upstream checkout f48f623e226e25b6e395c37207915c50aaa9c776
 pip install torch torchvision
-pip install -r Swin-Unet/requirements.txt
+pip install -r Swin-Unet/upstream/requirements.txt
+pip install albumentations pandas openpyxl matplotlib opencv-python
 ```
 
 ### SegFormer / MMSegmentation
@@ -335,6 +344,10 @@ Folder:
 matsam
 ```
 
+Clone the official MatSAM repository into `matsam/upstream` before running
+these scripts. This directory is ignored by Git and is not redistributed by
+this repository.
+
 | Script | Purpose |
 | --- | --- |
 | `datasets_test.py` | Original MatSAM testing |
@@ -539,8 +552,10 @@ Experiment settings:
 | `PATIENCE` | `50` |
 | pretrained model | ImageNet-pretrained Swin-Tiny, patch size `4`, window size `7` |
 
-The official Swin-Unet source and examples are retained. The experiment entry
-scripts use `config.py`, `networks/`, and `datasets/dataset_material.py`.
+Clone the official Swin-Unet repository into `Swin-Unet/upstream` before
+running these scripts. The experiment entry scripts import `config.py` and
+`networks/` from that ignored directory; dataset loading remains in the two
+experiment scripts.
 
 Example:
 
@@ -674,6 +689,7 @@ python Myutils/drawn_sup_3.py --input-dir results/per_model --output-xlsx figure
 ## 12. Notes Before Public Release
 
 - Large model weights and generated checkpoints are intentionally excluded from the repository.
-- Review `THIRD_PARTY_LICENSES.md` before redistribution. The recorded MatSAM
-  and Swin-Unet upstream repositories do not provide an explicit source-code
+- MatSAM and Swin-Unet upstream source is intentionally excluded. Clone each
+  project as described above and review its terms before use or redistribution;
+  the recorded upstream repositories do not provide an explicit source-code
   license.

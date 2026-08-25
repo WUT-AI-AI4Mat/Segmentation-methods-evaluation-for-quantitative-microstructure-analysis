@@ -4,9 +4,9 @@ This repository contains the code used to compare CNN, Transformer, and
 Segment Anything based models for material image segmentation.
 
 The evaluated datasets are MetalDAM, UHCS, EBC, Super, Aachen-Heerlen, EMPS,
-and Grain. The full datasets, pretrained weights, and fine-tuned checkpoints
-are not included. The CPU demo contains one test image-mask pair from each
-dataset.
+and Grain. The research datasets, pretrained weights, and fine-tuned
+checkpoints are not included. The CPU demo uses a small simulated dataset that
+can be regenerated locally.
 
 ## Models
 
@@ -95,9 +95,9 @@ Complete model-specific commands are provided in
 
 ## Demo
 
-The repository includes one test image-mask pair from each of the seven
-evaluation datasets. The pairs are converted losslessly to PNG and their
-original relative paths are recorded in `demo/data/test/samples.csv`.
+The repository includes three deterministic, simulated microscopy-like images
+and binary masks. They are independent of the seven research datasets and are
+provided only to verify the data-loading and metric pipeline.
 
 Run the CPU-only smoke test:
 
@@ -105,23 +105,19 @@ Run the CPU-only smoke test:
 python demo/run_demo.py --verify
 ```
 
-Expected terminal output reports that seven images were processed and that the
+Expected terminal output reports that three images were processed and that the
 computed values match `demo/expected_metrics.csv`. The command creates:
 
 ```text
 demo/output/
   metrics.csv
   predicted_masks/
-    aachen_heerlen_IMG_00004.png
-    ebc_010417_4_S2480009.png
-    emps_01ac659240.png
-    grain_A_01_04.png
-    metaldam_micrograph1.png
-    super_45kx_SE_15kV-etched_0.png
-    uhcs_A_micrograph1006.png
+    synthetic_01.png
+    synthetic_02.png
+    synthetic_03.png
 ```
 
-The demo completed in approximately 2 seconds in a clean environment on the
+The demo completed in approximately 3 seconds in a clean environment on the
 tested desktop. It validates data loading, mask generation, and the shared
 metric implementation; it does not reproduce a manuscript result. See
 [`demo/README.md`](demo/README.md) for details.
@@ -196,10 +192,11 @@ The public experiment interface is limited to:
 - the custom SegFormer configs and `tools/test_segformer_dataset.py`;
 - metric, visualization, and paper figure utilities in `Myutils`.
 
-Some model directories contain code derived from upstream research
-repositories. The selected upstream source files and original notices are
-retained alongside the experiment-specific training and test scripts. Logs,
-checkpoints, datasets, and generated results are excluded. See
+Licensed upstream source needed by HQ-SAM, SAM2, micro-sam, and
+MMSegmentation is retained with its original license notices. MatSAM and
+Swin-Unet upstream source is not redistributed; clone it into the ignored
+`upstream/` directory by following the corresponding subdirectory README.
+Logs, checkpoints, research datasets, and generated results are excluded. See
 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) before redistribution.
 
 ## Citation

@@ -15,6 +15,15 @@ import albumentations as albu
 from torch.cuda.amp import autocast, GradScaler
 import matplotlib.pyplot as plt
 
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+UPSTREAM_DIR = os.path.join(CURRENT_DIR, "upstream")
+if not os.path.isdir(UPSTREAM_DIR):
+    print("Swin-Unet upstream source was not found at Swin-Unet/upstream.")
+    print("Run: git clone https://github.com/HuCaoFighting/Swin-Unet.git Swin-Unet/upstream")
+    print("Then follow Swin-Unet/README.md to check out the recorded revision.")
+    sys.exit(1)
+if UPSTREAM_DIR not in sys.path:
+    sys.path.insert(0, UPSTREAM_DIR)
 
 from networks.vision_transformer import SwinUnet as ViT_seg
 from config import get_config
@@ -38,7 +47,9 @@ IMG_SIZE = 224
 PATIENCE = 50
 
 class Args:
-    cfg = "configs/swin_tiny_patch4_window7_224_lite.yaml"
+    cfg = os.path.join(
+        UPSTREAM_DIR, "configs", "swin_tiny_patch4_window7_224_lite.yaml"
+    )
     opts = None
     zip = False
     cache_mode = 'part'

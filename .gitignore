@@ -85,9 +85,9 @@ _public_clean/
 **/.git-upstream-metadata/
 
 # Upstream content outside the public reproduction scope
+/matsam/upstream/
 /matsam/dataset/
-/matsam/assets/*
-!/matsam/assets/framework.jpg
+/matsam/assets/
 /matsam/gala/
 /matsam/notebooks/
 /matsam/supervised_method/
@@ -185,6 +185,7 @@ _public_clean/
 !/mmsegmentation/tools/test_uhcs_segformer.py
 
 # Upstream examples not used by the material experiments
+/Swin-Unet/upstream/
 /Swin-Unet/lists/
 /Swin-Unet/train.sh
 /Swin-Unet/test.sh

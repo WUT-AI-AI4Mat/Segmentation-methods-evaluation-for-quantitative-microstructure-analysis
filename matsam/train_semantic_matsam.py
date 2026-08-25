@@ -28,11 +28,15 @@ except ImportError as e:
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
 project_root = os.path.dirname(current_dir)
+upstream_dir = os.path.join(current_dir, "upstream")
 
-if current_dir not in sys.path: sys.path.append(current_dir)
-if project_root not in sys.path: sys.path.append(project_root)
-workspace_root = os.path.dirname(project_root)
-if workspace_root not in sys.path: sys.path.insert(0, workspace_root)
+if not os.path.isdir(upstream_dir):
+    print("MatSAM upstream source was not found at matsam/upstream.")
+    print("Run: git clone https://github.com/USTB-AI3DVIP/matsam.git matsam/upstream")
+    print("Then follow matsam/README.md to check out the recorded revision.")
+    sys.exit(1)
+if upstream_dir not in sys.path: sys.path.insert(0, upstream_dir)
+if project_root not in sys.path: sys.path.insert(0, project_root)
 
 try:
     from utils.segment_anything_ import sam_model_registry

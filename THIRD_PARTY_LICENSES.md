@@ -1,9 +1,10 @@
 # Third-Party Software
 
-This repository combines experiment code with source code derived from several
+This repository combines experiment code with source code from several
 research repositories. The root MIT License applies only to code for which the
 repository authors hold the relevant rights. It does not replace the terms of
-third-party components.
+third-party components. MatSAM and Swin-Unet upstream source is intentionally
+not redistributed.
 
 | Local path | Upstream project | Recorded revision | License status |
 | --- | --- | --- | --- |
@@ -12,9 +13,9 @@ third-party components.
 | `microsam/` | [computational-cell-analytics/micro-sam](https://github.com/computational-cell-analytics/micro-sam) | Upstream source copy | MIT License; local `microsam/LICENSE` retained |
 | `microsam/torch-em/` | [constantinpape/torch-em](https://github.com/constantinpape/torch-em) | Upstream source copy | MIT License; local `microsam/torch-em/LICENSE` retained |
 | `mmsegmentation/` | [open-mmlab/mmsegmentation](https://github.com/open-mmlab/mmsegmentation) | Upstream source copy | Apache License 2.0; local `mmsegmentation/LICENSE` retained |
-| `matsam/` | [USTB-AI3DVIP/matsam](https://github.com/USTB-AI3DVIP/matsam) | `cbea7edaada991d88d7dfee656bd7e3dac09863f` plus experiment changes | No license file was present in the recorded upstream copy; obtain permission or clarification before redistributing this source |
+| `matsam/upstream/` (not tracked) | [USTB-AI3DVIP/matsam](https://github.com/USTB-AI3DVIP/matsam) | External clone; experiments were based on `cbea7edaada991d88d7dfee656bd7e3dac09863f` | Not redistributed; no license file was present in the recorded upstream revision, so review the upstream terms before use |
 | MatSAM `gala` dependency | [janelia-flyem/gala](https://github.com/janelia-flyem/gala) | External dependency | BSD-style license; the dependency source is excluded from the public experiment repository |
-| `Swin-Unet/` | [HuCaoFighting/Swin-Unet](https://github.com/HuCaoFighting/Swin-Unet) | `f48f623e226e25b6e395c37207915c50aaa9c776` plus experiment changes | No license file is published in the recorded upstream repository; obtain permission or publish changes through an authorized upstream fork |
+| `Swin-Unet/upstream/` (not tracked) | [HuCaoFighting/Swin-Unet](https://github.com/HuCaoFighting/Swin-Unet) | External clone; experiments were based on `f48f623e226e25b6e395c37207915c50aaa9c776` | Not redistributed; no license file is published in the recorded upstream repository, so review its terms before use |
 
 ## External Python Dependencies
 

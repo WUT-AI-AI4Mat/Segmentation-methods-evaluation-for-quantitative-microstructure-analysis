@@ -1,8 +1,0 @@
-dataset,filename,num_classes,source_image,source_mask
-UHCS,uhcs_A_micrograph1006.png,7,UHCS/test/images/A_micrograph1006.tif,UHCS/test/masks/A_micrograph1006.tif
-Super,super_45kx_SE_15kV-etched_0.png,3,Super/test/images/45kx_SE_15kV-etched_0.tif,Super/test/masks/45kx_SE_15kV-etched_0.tif
-EBC,ebc_010417_4_S2480009.png,3,EBC/test/images/010417#4_S2480009.tif,EBC/test/masks/010417#4_S2480009.tif
-MetalDAM,metaldam_micrograph1.png,5,MetalDAM/test/images/micrograph1.jpg,MetalDAM/test/masks/micrograph1.png
-Aachen-Heerlen,aachen_heerlen_IMG_00004.png,2,Aachen-Heerlen/test/images/IMG_00004.png,Aachen-Heerlen/test/masks/IMG_00004.png
-EMPS,emps_01ac659240.png,2,EMPS/test/images/01ac659240.png,EMPS/test/masks/01ac659240.png
-Grain,grain_A_01_04.png,2,Grain/test/images/A_01_04.png,Grain/test/masks/A_01_04.png

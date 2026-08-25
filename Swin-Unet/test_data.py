@@ -3,7 +3,16 @@ import os
 import argparse
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
+upstream_dir = os.path.join(current_dir, "upstream")
+if not os.path.isdir(upstream_dir):
+    print("Swin-Unet upstream source was not found at Swin-Unet/upstream.")
+    print("Run: git clone https://github.com/HuCaoFighting/Swin-Unet.git Swin-Unet/upstream")
+    print("Then follow Swin-Unet/README.md to check out the recorded revision.")
+    sys.exit(1)
+if upstream_dir not in sys.path:
+    sys.path.insert(0, upstream_dir)
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
 from Myutils.visualizer import Visualizer
 from Myutils.metrics import Metric
 import cv2
@@ -25,7 +34,9 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 IMG_SIZE = 224
 
 class Args:
-    cfg = "configs/swin_tiny_patch4_window7_224_lite.yaml"
+    cfg = os.path.join(
+        upstream_dir, "configs", "swin_tiny_patch4_window7_224_lite.yaml"
+    )
     opts = None
     zip = False
     cache_mode = 'part'
