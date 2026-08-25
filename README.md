@@ -4,8 +4,9 @@ This repository contains the code used to compare CNN, Transformer, and
 Segment Anything based models for material image segmentation.
 
 The evaluated datasets are MetalDAM, UHCS, EBC, Super, Aachen-Heerlen, EMPS,
-and Grain. Dataset images, annotations, pretrained weights, and fine-tuned
-checkpoints are not included.
+and Grain. The full datasets, pretrained weights, and fine-tuned checkpoints
+are not included. The CPU demo contains one test image-mask pair from each
+dataset.
 
 ## Models
 
@@ -94,9 +95,9 @@ Complete model-specific commands are provided in
 
 ## Demo
 
-The repository includes three deterministic simulated microscopy-like images
-and masks. They are independent of the seven research datasets and can be
-redistributed with this repository.
+The repository includes one test image-mask pair from each of the seven
+evaluation datasets. The pairs are converted losslessly to PNG and their
+original relative paths are recorded in `demo/data/test/samples.csv`.
 
 Run the CPU-only smoke test:
 
@@ -104,19 +105,23 @@ Run the CPU-only smoke test:
 python demo/run_demo.py --verify
 ```
 
-Expected terminal output reports that three images were processed and that the
+Expected terminal output reports that seven images were processed and that the
 computed values match `demo/expected_metrics.csv`. The command creates:
 
 ```text
 demo/output/
   metrics.csv
   predicted_masks/
-    synthetic_01.png
-    synthetic_02.png
-    synthetic_03.png
+    aachen_heerlen_IMG_00004.png
+    ebc_010417_4_S2480009.png
+    emps_01ac659240.png
+    grain_A_01_04.png
+    metaldam_micrograph1.png
+    super_45kx_SE_15kV-etched_0.png
+    uhcs_A_micrograph1006.png
 ```
 
-The demo completed in approximately 3 seconds in a clean environment on the
+The demo completed in approximately 2 seconds in a clean environment on the
 tested desktop. It validates data loading, mask generation, and the shared
 metric implementation; it does not reproduce a manuscript result. See
 [`demo/README.md`](demo/README.md) for details.

@@ -2,7 +2,8 @@
 
 This repository contains the implementation code for material image segmentation comparison experiments. Selected source files from the official upstream projects are retained together with the experiment-specific training, testing, configuration, metric, and plotting code.
 
-Datasets, pretrained weights, and fine-tuned checkpoints are not included in the repository.
+The full datasets, pretrained weights, and fine-tuned checkpoints are not
+included. The CPU demo contains one test image-mask pair from each dataset.
 
 ## 1. Repository Layout
 
