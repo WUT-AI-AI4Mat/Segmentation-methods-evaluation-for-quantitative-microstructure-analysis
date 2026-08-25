@@ -25,16 +25,13 @@ project_root = os.path.dirname(parent_dir)
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-print(f" 当前执行路径: {current_dir}")
-print(f" 识别到的项目根目录: {project_root}")
 
 try:
     from Myutils.visualizer import Visualizer
     from Myutils.metrics import Metric
-    print(" 成功导入: Myutils")
+    print("Loaded evaluation utilities.")
 except ImportError as e:
-    print(f" 导入失败: {e}")
-    print(f" 当前 sys.path 中的路径搜索列表: {sys.path[:3]} ...")
+    print(f"Failed to import evaluation utilities: {e}")
 
 
 IMG_DIR = None
@@ -107,14 +104,14 @@ def main():
     DEVICE = args.device
 
     print("Starting multiclass U-Net evaluation.")
-    print(f" 结果保存至: {RESULT_ROOT}")
+    print(f"Saving results to {RESULT_ROOT}")
 
     save_plot_dir = os.path.join(RESULT_ROOT, "plots")
     excel_path = os.path.join(RESULT_ROOT, "metrics_summary.xlsx")
     os.makedirs(save_plot_dir, exist_ok=True)
 
 
-    print(f" 加载模型: {ENCODER} ...")
+    print(f"Loading U-Net with {ENCODER} encoder.")
     model = smp.Unet(
         encoder_name=ENCODER,
         encoder_weights=None,
@@ -130,14 +127,14 @@ def main():
         model.load_state_dict(state_dict)
         model.to(DEVICE)
         model.eval()
-        print(" 权重加载成功")
+        print("Loaded checkpoint.")
     else:
-        print(f" 错误: 找不到权重文件 {MODEL_PATH}")
+        print(f"Checkpoint not found: {MODEL_PATH}")
         return
 
     valid_exts = ('.jpg', '.jpeg', '.png', '.tif', '.tiff', '.bmp')
     img_files = [f for f in os.listdir(IMG_DIR) if f.lower().endswith(valid_exts)]
-    print(f" 找到 {len(img_files)} 张图片")
+    print(f"Found {len(img_files)} test images.")
 
     all_metrics = []
     preprocessing_fn = get_preprocessing()
@@ -191,7 +188,7 @@ def main():
                 current_metric['filename'] = img_file
                 all_metrics.append(current_metric)
             else:
-                print(f"\n 警告: 找不到 {img_file} 的对应标签文件，跳过指标计算。")
+                print(f"No label found for {img_file}; metrics were skipped.")
 
 
             base_name = os.path.splitext(img_file)[0]
@@ -207,7 +204,7 @@ def main():
                 torch.cuda.empty_cache()
 
         except Exception as e:
-            print(f"\n 处理出错 {img_file}: {e}")
+            print(f"Evaluation failed for {img_file}: {e}")
             import traceback
             traceback.print_exc()
             continue
@@ -216,10 +213,9 @@ def main():
     total_processing_time = end_time - start_time
     avg_time_per_img = total_processing_time / len(img_files) if len(img_files) > 0 else 0
 
-    print(f"\n 预测完成！总耗时: {total_processing_time:.2f} 秒 (平均 {avg_time_per_img:.2f} 秒/张)")
+    print(f"Evaluation completed in {total_processing_time:.2f} s ({avg_time_per_img:.2f} s/image).")
 
 
-    print("\n 正在导出 Excel 报告...")
     if len(all_metrics) > 0:
         df = pd.DataFrame(all_metrics)
         cols = ['filename'] + [c for c in df.columns if c != 'filename']
@@ -234,12 +230,12 @@ def main():
         df_final = pd.concat([df, pd.DataFrame([mean_row.to_dict()])], ignore_index=True)
 
         df_final.to_excel(excel_path, index=False)
-        print(f" Excel 已保存至: {excel_path}")
-        print(f"   平均指标 (U-Net Multi-class):\n{mean_row}")
+        print(f"Saved metrics to {excel_path}")
+        print(f"Average metrics:\n{mean_row}")
     else:
-        print(" 未生成有效数据 (可能是没找到标签)。")
+        print("No metrics were generated.")
 
-    print(" U-Net 测试结束！")
+    print("Evaluation completed.")
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,6 @@
 # Reproduction Guide
 
-This repository contains the implementation code for material image segmentation comparison experiments. The public version keeps only the entry scripts needed for reproduction.
+This repository contains the implementation code for material image segmentation comparison experiments. Selected source files from the official upstream projects are retained together with the experiment-specific training, testing, configuration, metric, and plotting code.
 
 Datasets, pretrained weights, and fine-tuned checkpoints are not included in the repository.
 
@@ -10,10 +10,10 @@ Datasets, pretrained weights, and fine-tuned checkpoints are not included in the
 | --- | --- |
 | `CNN/U-net` | U-Net baseline |
 | `CNN/DeepLabV3+` | DeepLabV3+ baseline |
-| `matsam` | MatSAM original test and semantic fine-tuning experiment |
-| `hqsam` | HQ-SAM original test and semantic fine-tuning experiment |
-| `sam2` | SAM2 original test and semantic fine-tuning experiment |
-| `microsam` | micro-sam original test and semantic fine-tuning experiment |
+| `matsam` | MatSAM upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
+| `hqsam` | HQ-SAM upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
+| `sam2` | SAM2 upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
+| `microsam` | micro-sam upstream runtime plus original, binary LoRA, and multi-class class-token experiment scripts |
 | `Swin-Unet` | Swin-Unet baseline |
 | `mmsegmentation` | SegFormer configs based on MMSegmentation |
 | `Myutils` | Metric calculation, prediction visualization, and paper figure utilities |
@@ -46,7 +46,7 @@ pip install peft openpyxl
 
 ### HQ-SAM
 
-Follow the official requirements in `hqsam/requirements.txt` and, for the SAM2-based HQ-SAM submodule, `hqsam/sam-hq2/INSTALL.md`.
+Follow the official requirements in `hqsam/requirements.txt`.
 
 ```bash
 conda create -n hqsam python=3.9
@@ -83,10 +83,15 @@ Use `microsam/environment.yaml` and the upstream editable install.
 ```bash
 conda env create -f microsam/environment.yaml -n microsam
 conda activate microsam
+conda install -c conda-forge vigra
 cd microsam
 pip install -e .
 pip install peft pandas openpyxl
 ```
+
+`vigra` is distributed through conda-forge and is required by the bundled
+`torch-em`/`elf` dependency chain. Install it with conda rather than pip if it
+is not already resolved from `environment.yaml`.
 
 ### Swin-Unet
 
@@ -107,11 +112,13 @@ conda activate segformer
 pip install torch torchvision
 cd mmsegmentation
 pip install -U openmim
-mim install mmengine mmcv
+mim install mmengine==0.10.7 mmcv==2.1.0
 pip install -e .
 ```
 
-If a package is missing during reproduction, install it with `pip` in the corresponding model environment.
+The tested editable checkout reports MMSegmentation `1.2.2`. `mmcv` must
+include its compiled operators; a plain or incompatible installation that
+cannot import `mmcv._ext` is not sufficient.
 
 ## 3. Dataset Structure
 
@@ -143,6 +150,33 @@ DATASET_NAME/
 ```
 
 Mask files are read as label maps. Binary experiments use foreground/background labels, and multi-class experiments use integer class IDs.
+
+### Command-Line Input Convention
+
+`--dataset-root` always points to one `DATASET_NAME` directory, not to the
+parent directory containing all datasets. Training scripts consume the
+`train` and `val` splits, while test scripts consume the `test` split. Use the
+same filename stem for each image-mask pair whenever possible. The loaders
+also support common mask suffixes such as `RGMask`, `_mask`, `_label`, and
+`_seg` for compatibility with the original datasets.
+
+The common path arguments are:
+
+| Argument | Meaning |
+| --- | --- |
+| `--dataset-root` | One dataset directory with the documented split structure |
+| `--output-dir` | Directory created for checkpoints, metrics, and predictions |
+| `--checkpoint` | Official base weight for original inference, or the trained model weight for CNN/Swin-Unet testing |
+| `--finetuned-checkpoint` | LoRA/decoder or class-token checkpoint produced by a SAM-family fine-tuning script |
+| `--num-classes` | Total number of label IDs, including background |
+| `--device` | PyTorch device such as `cuda:0` or `cpu` |
+
+All experiment test scripts save raw class-index or instance-index masks under
+`OUTPUT_DIR/plots/` and export image-level metrics to
+`OUTPUT_DIR/metrics_summary.xlsx`. Swin-Unet adds a dataset-name subdirectory
+below `OUTPUT_DIR`. The raw masks retain the original image dimensions and are
+intended for quantitative analysis; comparison figures can be generated
+separately with `Myutils/visualizer.py`.
 
 CNN, Swin-Unet, and SegFormer training use a batch size of `32`. The
 SAM-family fine-tuning scripts process one image per optimizer step.
@@ -191,7 +225,7 @@ command-line arguments; no fixed checkpoint directory is required.
 
 ## 6. CNN Baselines
 
-Only the binary and multi-class training/testing scripts are kept.
+The experiment-specific CNN entry points are:
 
 ### U-Net
 
@@ -204,9 +238,9 @@ CNN/U-net
 | Script | Purpose |
 | --- | --- |
 | `train.py` | Binary U-Net training |
-| `predict.py` | Binary U-Net testing and visualization |
+| `predict.py` | Binary U-Net testing, metric export, and raw-mask saving |
 | `train_multi.py` | Multi-class U-Net training |
-| `test_mutil.py` | Multi-class U-Net testing and metric export |
+| `test_mutil.py` | Multi-class U-Net testing, metric export, and raw-mask saving |
 
 Experiment settings:
 
@@ -245,9 +279,9 @@ CNN/DeepLabV3+
 | Script | Purpose |
 | --- | --- |
 | `train.py` | Binary DeepLabV3+ training |
-| `test.py` | Binary DeepLabV3+ testing |
+| `test.py` | Binary DeepLabV3+ testing, metric export, and raw-mask saving |
 | `train_multi.py` | Multi-class DeepLabV3+ training |
-| `test_multi.py` | Multi-class DeepLabV3+ testing and metric export |
+| `test_multi.py` | Multi-class DeepLabV3+ testing, metric export, and raw-mask saving |
 
 Experiment settings:
 
@@ -277,7 +311,8 @@ python "CNN/DeepLabV3+/test_multi.py" --dataset-root /path/to/EBC --checkpoint o
 
 ## 7. SAM-Family Experiments
 
-For MatSAM, HQ-SAM, SAM2, and micro-sam, the public version keeps:
+For MatSAM, HQ-SAM, SAM2, and micro-sam, the custom experiment entry points
+are:
 
 - one original test script for the base model;
 - binary LoRA+decoder training and test scripts for Aachen-Heerlen, EMPS, and
@@ -299,8 +334,8 @@ matsam
 | `datasets_test.py` | Original MatSAM testing |
 | `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
 | `test_lora_decoder.py` | Binary LoRA+decoder testing |
-| `train_semantic_matsam.py` | MatSAM semantic fine-tuning |
-| `test_semantic_matsam.py` | MatSAM semantic testing |
+| `train_semantic_matsam.py` | Multi-class LoRA+decoder fine-tuning with semantic class tokens |
+| `test_semantic_matsam.py` | Testing with the fine-tuned semantic class-token model |
 
 Main settings:
 
@@ -314,7 +349,8 @@ Main settings:
 | optimizer | AdamW |
 | weight decay | `0.0001` |
 | learning-rate scheduler | cosine annealing, minimum learning rate `0.000001` |
-| loss | cross-entropy + Dice |
+| binary loss | BCE + Dice + IoU MSE |
+| multi-class loss | cross-entropy + Dice |
 | `PATIENCE` | `50` |
 | LoRA | rank `8`, alpha `16`, dropout `0.05`; targets `qkv` and `proj` |
 | prompt generation | `method_type=1` for grain data; `method_type=2` for metallographic data; `n_per_side_base=54` |
@@ -343,8 +379,8 @@ hqsam
 | `test_hqsam.py` | Original HQ-SAM testing |
 | `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
 | `test_lora_decoder.py` | Binary LoRA+decoder testing |
-| `train_semantic_hqsam.py` | HQ-SAM semantic fine-tuning |
-| `test_semantic_hqsam.py` | HQ-SAM semantic testing |
+| `train_semantic_hqsam.py` | Multi-class LoRA+decoder fine-tuning with semantic class tokens |
+| `test_semantic_hqsam.py` | Testing with the fine-tuned semantic class-token model |
 
 Main settings:
 
@@ -358,7 +394,8 @@ Main settings:
 | optimizer | AdamW |
 | weight decay | `0.0001` |
 | learning-rate scheduler | cosine annealing, minimum learning rate `0.000001` |
-| loss | cross-entropy + Dice |
+| binary loss | BCE + Dice + IoU MSE |
+| multi-class loss | cross-entropy + Dice |
 | `PATIENCE` | `50` |
 | LoRA | rank `8`, alpha `16`, dropout `0.05`; targets `qkv` and `proj` |
 | automatic mask generation | `points_per_side=32`, `pred_iou_thresh=0.85`, `stability_score_thresh=0.8`, `crop_n_layers=0` |
@@ -386,8 +423,8 @@ sam2
 | `test_sam2.py` | Original SAM2 testing |
 | `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
 | `test_lora_decoder.py` | Binary LoRA+decoder testing |
-| `train_semantic_sam2.py` | SAM2 semantic fine-tuning |
-| `test_semantic_sam2.py` | SAM2 semantic testing |
+| `train_semantic_sam2.py` | Multi-class LoRA+decoder fine-tuning with semantic class tokens |
+| `test_semantic_sam2.py` | Testing with the fine-tuned semantic class-token model |
 
 Main settings:
 
@@ -401,7 +438,8 @@ Main settings:
 | optimizer | AdamW |
 | weight decay | `0.0001` |
 | learning-rate scheduler | cosine annealing, minimum learning rate `0.000001` |
-| loss | cross-entropy + Dice |
+| binary loss | BCE + Dice + IoU MSE |
+| multi-class loss | cross-entropy + Dice |
 | `PATIENCE` | `50` |
 | LoRA | rank `8`, alpha `16`, dropout `0.05`; targets `qkv` and `proj` |
 | automatic mask generation | `points_per_side=32`, `points_per_batch=64`, `pred_iou_thresh=0.8`, `stability_score_thresh=0.8`, `crop_n_layers=0` |
@@ -433,8 +471,8 @@ microsam
 | `data_test.py` | Original micro-sam testing |
 | `train_lora_decoder.py` | Binary LoRA+decoder fine-tuning |
 | `test_lora_decoder.py` | Binary LoRA+decoder testing |
-| `train_semantic_microsam.py` | micro-sam semantic fine-tuning |
-| `test_semantic_microsam.py` | micro-sam semantic testing |
+| `train_semantic_microsam.py` | Multi-class LoRA+decoder fine-tuning with semantic class tokens |
+| `test_semantic_microsam.py` | Testing with the fine-tuned semantic class-token model |
 
 Main settings:
 
@@ -448,7 +486,8 @@ Main settings:
 | optimizer | AdamW |
 | weight decay | `0.0001` |
 | learning-rate scheduler | cosine annealing, minimum learning rate `0.000001` |
-| loss | cross-entropy + Dice |
+| binary loss | BCE + Dice + IoU MSE |
+| multi-class loss | cross-entropy + Dice |
 | `PATIENCE` | `50` |
 | LoRA | rank `8`, alpha `16`, dropout `0.05`; targets `qkv` and `proj` |
 | automatic instance segmentation | `min_size=10`, `center_distance_threshold=0.5`, `boundary_distance_threshold=0.5` |
@@ -471,7 +510,7 @@ Folder:
 Swin-Unet
 ```
 
-Only these entry scripts are kept:
+The experiment-specific entry scripts are:
 
 | Script | Purpose |
 | --- | --- |
@@ -494,7 +533,8 @@ Experiment settings:
 | `PATIENCE` | `50` |
 | pretrained model | ImageNet-pretrained Swin-Tiny, patch size `4`, window size `7` |
 
-`config.py`, `networks/`, and `datasets/` are retained because they are required by the two entry scripts.
+The official Swin-Unet source and examples are retained. The experiment entry
+scripts use `config.py`, `networks/`, and `datasets/dataset_material.py`.
 
 Example:
 
@@ -580,7 +620,8 @@ Myutils
 | `drawn_sup_3.py` | Evaluates metric-ranking robustness under repeated random sample removal using a fixed reference ranking |
 | `drawn_sup_3_new.py` | Evaluates metric-ranking robustness under repeated random sample removal using a dynamically recomputed reference ranking |
 
-The test scripts call these utilities to export metrics and save predicted masks/visual comparisons.
+The test scripts call these utilities to export metrics and save raw predicted
+masks. Comparison figures are optional post-processing outputs.
 
 ### Paper Figure and Robustness Analysis
 

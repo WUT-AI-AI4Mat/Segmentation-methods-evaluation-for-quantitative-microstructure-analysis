@@ -24,36 +24,31 @@ micro_sam_repo_path = os.path.join(current_dir, "micro_sam")
 if os.path.exists(micro_sam_repo_path):
     if micro_sam_repo_path not in sys.path:
         sys.path.insert(0, micro_sam_repo_path)
-    print(f" 已添加库路径: {micro_sam_repo_path}")
 else:
-    print(f" 警告: 找不到文件夹 {micro_sam_repo_path}")
-    print(f"   请确认你的目录里有一个叫 'micro_sam' 的文件夹")
+    print(f"micro-sam source directory not found: {micro_sam_repo_path}")
 
 torch_em_repo_path = os.path.join(current_dir, "torch-em")
 
 if os.path.exists(torch_em_repo_path):
     if torch_em_repo_path not in sys.path:
         sys.path.insert(0, torch_em_repo_path)
-    print(f" 已添加库路径: {torch_em_repo_path}")
 else:
-    print(f" 警告: 找不到 'torch-em' 文件夹。如果你的环境里没装 torch_em，下一步可能会报错。")
+    print(f"torch-em source directory not found: {torch_em_repo_path}")
 
 print("-" * 30)
 try:
     from Myutils.visualizer import Visualizer
     from Myutils.metrics import Metric
-    print(" 成功导入 Myutils.visualizer 和 Metric")
+    print("Loaded evaluation utilities.")
 except ImportError as e:
-    print(f" 导入 Myutils 失败: {e}")
+    print(f"Failed to import evaluation utilities: {e}")
     sys.exit(1)
 try:
     from micro_sam.automatic_segmentation import get_predictor_and_segmenter, automatic_instance_segmentation
     from micro_sam.util import get_device
-    print(" 成功导入 micro_sam 库")
+    print("Loaded micro-sam.")
 except ImportError as e:
-    print(f" 导入 micro_sam 失败: {e}")
-    print("    常见原因: 缺少依赖库 'torch_em'。")
-    print("   如果报错说 No module named 'torch_em'，请确保你下载了 torch-em 源码并放在了 MicroSAM 目录下。")
+    print(f"Failed to import micro-sam: {e}")
     sys.exit(1)
 print("-" * 30)
 
@@ -208,7 +203,7 @@ def main():
     os.makedirs(SAVE_PLOT_DIR, exist_ok=True)
 
 
-    print(f" 加载模型中...")
+    print(f"Loading {MODEL_TYPE} base model.")
     predictor, segmenter = get_predictor_and_segmenter(
         model_type=MODEL_TYPE,
         checkpoint=CHECKPOINT_PATH,
@@ -219,7 +214,7 @@ def main():
 
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tif', '.tiff', '.bmp')
     img_files = [f for f in os.listdir(IMG_DIR) if f.lower().endswith(valid_extensions)]
-    print(f" 找到 {len(img_files)} 张图片")
+    print(f"Found {len(img_files)} test images.")
 
     all_metrics_list = []
     start_time = time.time()
@@ -233,7 +228,7 @@ def main():
 
             image = cv_imread(img_path, cv2.IMREAD_COLOR)
             if image is None:
-                print(f"\n 读图失败: {img_file}")
+                print(f"Could not read image: {img_file}")
                 continue
             image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -281,7 +276,7 @@ def main():
 
 
             if pred_mask is None:
-                print(f"\n 警告: {img_file} 预测结果为空")
+                print(f"Prediction is empty for {img_file}.")
                 continue
 
 
@@ -303,7 +298,7 @@ def main():
                 current_metrics['filename'] = img_file
                 all_metrics_list.append(current_metrics)
             else:
-                print(f"\n 警告: 找不到 {img_file} 的对应标签文件，跳过指标计算。")
+                print(f"No label found for {img_file}; metrics were skipped.")
 
 
             base_name = os.path.splitext(img_file)[0]
@@ -330,10 +325,9 @@ def main():
     total_processing_time = end_time - start_time
     avg_time_per_img = total_processing_time / len(img_files) if len(img_files) > 0 else 0
 
-    print(f"\n 预测完成！总耗时: {total_processing_time:.2f} 秒 (平均 {avg_time_per_img:.2f} 秒/张)")
+    print(f"Evaluation completed in {total_processing_time:.2f} s ({avg_time_per_img:.2f} s/image).")
 
 
-    print("\n 正在导出 Excel 报告...")
     if len(all_metrics_list) > 0:
         df = pd.DataFrame(all_metrics_list)
         cols = ['filename'] + [c for c in df.columns if c != 'filename']
@@ -348,11 +342,11 @@ def main():
         df_final = pd.concat([df, pd.DataFrame([mean_row])], ignore_index=True)
 
         df_final.to_excel(EXCEL_PATH, index=False)
-        print(f" Excel 已保存至: {EXCEL_PATH}")
+        print(f"Saved metrics to {EXCEL_PATH}")
     else:
-        print(" 没有产生有效数据")
+        print("No metrics were generated.")
 
-    print(" 测试结束！")
+    print("Evaluation completed.")
 
 if __name__ == "__main__":
     main()

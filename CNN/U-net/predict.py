@@ -21,16 +21,14 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 
-print(f" 脚本位置: {current_dir}")
-print(f" 项目根目录 (已挂载): {project_root}")
 
 
 try:
     from Myutils.visualizer import Visualizer
     from Myutils.metrics import Metric
-    print(" 成功导入: Myutils")
+    print("Loaded evaluation utilities.")
 except ImportError as e:
-    print(f" 导入失败: {e}")
+    print(f"Failed to import evaluation utilities: {e}")
     sys.exit(1)
 
 
@@ -79,7 +77,7 @@ def find_label_file(img_name, label_dir):
     return None
 
 def get_preprocessing():
-    """ U-Net 预处理: Resize -> Normalize -> Tensor """
+    """Resize and normalize an image before U-Net inference."""
     return albu.Compose([
         albu.Resize(INPUT_SIZE, INPUT_SIZE),
         albu.Normalize(),
@@ -108,7 +106,7 @@ def main():
     DEVICE = args.device
 
     print("Starting binary U-Net evaluation.")
-    print(f" 结果保存至: {RESULT_ROOT}")
+    print(f"Saving results to {RESULT_ROOT}")
 
 
     save_plot_dir = os.path.join(RESULT_ROOT, "plots")
@@ -116,7 +114,7 @@ def main():
     os.makedirs(save_plot_dir, exist_ok=True)
 
 
-    print(f" 加载模型: {ENCODER} ...")
+    print(f"Loading U-Net with {ENCODER} encoder.")
     model = smp.Unet(
         encoder_name=ENCODER,
         encoder_weights=None,
@@ -130,15 +128,15 @@ def main():
         model.load_state_dict(state_dict)
         model.to(DEVICE)
         model.eval()
-        print(" 权重加载成功")
+        print("Loaded checkpoint.")
     else:
-        print(f" 错误: 找不到权重文件 {MODEL_PATH}")
+        print(f"Checkpoint not found: {MODEL_PATH}")
         return
 
 
     valid_exts = ('.jpg', '.jpeg', '.png', '.tif', '.bmp')
     img_files = [f for f in os.listdir(IMG_DIR) if f.lower().endswith(valid_exts)]
-    print(f" 找到 {len(img_files)} 张图片")
+    print(f"Found {len(img_files)} test images.")
 
     all_metrics = []
     preprocessing_fn = get_preprocessing()
@@ -195,29 +193,26 @@ def main():
                 all_metrics.append(current_metric)
 
 
-            save_path = os.path.join(save_plot_dir, f"{os.path.splitext(img_file)[0]}_unet.png")
-
-
-            Visualizer.show_result(
-                model_name="U-Net (ResNet50)",
-                image=image_rgb_raw,
-                gt_label=gt_label,
+            save_path = os.path.join(
+                save_plot_dir,
+                f"{os.path.splitext(img_file)[0]}_raw_mask.png",
+            )
+            Visualizer.save_raw_prediction(
+                image_shape=image_rgb_raw.shape,
                 pred_result=pred_mask_binary,
                 save_path=save_path,
-                save_separately=0
             )
 
 
             plt.close('all')
 
         except Exception as e:
-            print(f"\n 处理出错 {img_file}: {e}")
+            print(f"Evaluation failed for {img_file}: {e}")
             import traceback
             traceback.print_exc()
             continue
 
 
-    print("\n 正在导出 Excel 报告...")
     if len(all_metrics) > 0:
         df = pd.DataFrame(all_metrics)
         cols = ['filename'] + [c for c in df.columns if c != 'filename']
@@ -229,12 +224,12 @@ def main():
         df_final = pd.concat([df, pd.DataFrame([mean_row])], ignore_index=True)
 
         df_final.to_excel(excel_path, index=False)
-        print(f" Excel 已保存至: {excel_path}")
-        print(f"   平均指标 (U-Net):\n{mean_row}")
+        print(f"Saved metrics to {excel_path}")
+        print(f"Average metrics:\n{mean_row}")
     else:
-        print(" 未生成有效数据 (可能是没找到标签)。")
+        print("No metrics were generated.")
 
-    print(" U-Net 测试结束！")
+    print("Evaluation completed.")
 
 if __name__ == "__main__":
     main()

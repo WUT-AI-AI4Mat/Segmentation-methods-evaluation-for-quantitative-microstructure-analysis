@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import torch
 import torch.nn.functional as F
+from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 
@@ -30,6 +31,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 EPOCHS = 200
 LR = 1e-4
+MIN_LR = 1e-6
+WEIGHT_DECAY = 1e-4
 MAX_PROMPTS_PER_IMAGE = 32
 PATIENCE = 50
 
@@ -217,7 +220,8 @@ def main():
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, collate_fn=custom_collate, num_workers=2, pin_memory=True)
 
     trainable_params = [p for p in sam.parameters() if p.requires_grad]
-    optimizer = torch.optim.AdamW(trainable_params, lr=LR, weight_decay=1e-4)
+    optimizer = torch.optim.AdamW(trainable_params, lr=LR, weight_decay=WEIGHT_DECAY)
+    scheduler = CosineAnnealingLR(optimizer, T_max=EPOCHS, eta_min=MIN_LR)
 
     best_loss = float('inf')
     early_stop_counter = 0
@@ -242,6 +246,7 @@ def main():
                 pbar.set_postfix({"Loss": f"{loss.item():.4f}"})
 
         avg_train_loss = train_loss / len(train_loader)
+        scheduler.step()
 
         sam.eval()
         val_loss = 0.0

@@ -78,7 +78,7 @@ def test_single_dataset(dataset_name, dataset_root, train_num_classes):
 
 
     MAX_MASK_AREA = 2000000
-    print(f" 面积过滤上限: {MAX_MASK_AREA} px")
+    print(f"Maximum retained mask area: {MAX_MASK_AREA} pixels.")
 
 
     img_dir = os.path.join(dataset_root, "test", "images")
@@ -183,7 +183,7 @@ def test_single_dataset(dataset_name, dataset_root, train_num_classes):
                     current_metric['filename'] = img_file
                     all_metrics.append(current_metric)
             else:
-                print(f"\n 警告: 找不到 {img_file} 的对应标签文件，跳过指标计算。")
+                print(f"No label found for {img_file}; metrics were skipped.")
 
 
             base_name = os.path.splitext(img_file)[0]
@@ -209,7 +209,7 @@ def test_single_dataset(dataset_name, dataset_root, train_num_classes):
     total_processing_time = end_time - start_time
     avg_time_per_img = total_processing_time / len(img_files) if len(img_files) > 0 else 0
 
-    print(f"\n 预测完成！总耗时: {total_processing_time:.2f} 秒 (平均 {avg_time_per_img:.2f} 秒/张)")
+    print(f"Evaluation completed in {total_processing_time:.2f} s ({avg_time_per_img:.2f} s/image).")
 
 
     if len(all_metrics) > 0:

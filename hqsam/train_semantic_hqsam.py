@@ -14,7 +14,7 @@ from tqdm import tqdm
 try:
     from peft import LoraConfig, get_peft_model
 except ImportError:
-    print(" 缺少 peft 库，请先执行: pip install peft")
+    print("PEFT is required. Install it with: pip install peft")
     sys.exit(1)
 
 from segment_anything.utils.transforms import ResizeLongestSide
@@ -122,7 +122,7 @@ class SemanticHQSAMWrapper(nn.Module):
     def forward(self, images):
         B = images.shape[0]
         if B > 1:
-            raise ValueError("由于 SAM Decoder 的底层架构限制，此 Wrapper 当前仅支持 batch_size=1。")
+            raise ValueError("This model supports batch size 1 only.")
 
 
         encoder_out = self.sam_model.image_encoder(images)
@@ -231,7 +231,7 @@ def main():
     print("Starting HQ-SAM semantic class-token fine-tuning.")
     is_terminal = sys.stdout.isatty()
 
-    print(f" 正在加载官方基础权重: {CHECKPOINT_PATH} ...")
+    print(f"Loading base checkpoint: {CHECKPOINT_PATH}")
     base_sam = sam_model_registry[MODEL_TYPE](checkpoint=CHECKPOINT_PATH).to(DEVICE)
 
     lora_config = LoraConfig(
@@ -310,7 +310,7 @@ def main():
         print(status_msg)
 
         if early_stop_counter >= PATIENCE:
-            print(f"\n 触发早停机制！")
+            print("Early stopping triggered.")
             break
 
 if __name__ == "__main__":

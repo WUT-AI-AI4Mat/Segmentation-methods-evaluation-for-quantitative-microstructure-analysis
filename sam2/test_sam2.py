@@ -25,10 +25,9 @@ try:
 
     from Myutils.visualizer import Visualizer
     from Myutils.metrics import Metric
-    print(" 成功导入: SAM 2 & Myutils")
+    print("Loaded SAM2 and evaluation dependencies.")
 except ImportError as e:
-    print(f" 导入失败: {e}")
-    print(" 请确保已安装 'sam2' 且 'Myutils' 在 python 路径中。")
+    print(f"Failed to import a required dependency: {e}")
     sys.exit(1)
 
 
@@ -111,8 +110,8 @@ def main():
     DEVICE = args.device
 
     print("Starting SAM2 evaluation.")
-    print(f"  配置: {MODEL_CFG} | 筛选上限: {MAX_MASK_AREA} px")
-    print(f" 结果保存至: {RESULT_ROOT}")
+    print(f"Config: {MODEL_CFG}; maximum mask area: {MAX_MASK_AREA} pixels.")
+    print(f"Saving results to {RESULT_ROOT}")
 
 
     save_plot_dir = os.path.join(RESULT_ROOT, "plots")
@@ -120,16 +119,15 @@ def main():
     os.makedirs(save_plot_dir, exist_ok=True)
 
 
-    print(f" 加载权重: {CHECKPOINT_PATH} ...")
+    print(f"Loading checkpoint: {CHECKPOINT_PATH}")
     if not os.path.exists(CHECKPOINT_PATH):
-        print(f" 错误: 找不到权重文件，请检查路径！")
+        print(f"Checkpoint not found: {CHECKPOINT_PATH}")
         return
 
     try:
         sam2_model = build_sam2(MODEL_CFG, CHECKPOINT_PATH, device=DEVICE, apply_postprocessing=False)
     except Exception as e:
-        print(f" 模型加载失败: {e}")
-        print(" 提示: 请检查 MODEL_CFG 路径是否正确 (应为 configs/... 开头的相对路径)")
+        print(f"Failed to build SAM2: {e}")
         return
 
 
@@ -146,7 +144,7 @@ def main():
 
     valid_exts = ('.jpg', '.jpeg', '.png', '.tif', '.bmp')
     img_files = [f for f in os.listdir(IMG_DIR) if f.lower().endswith(valid_exts)]
-    print(f" 找到 {len(img_files)} 张图片")
+    print(f"Found {len(img_files)} test images.")
 
     all_metrics = []
 
@@ -161,7 +159,7 @@ def main():
 
             image = cv_imread(img_path, cv2.IMREAD_COLOR)
             if image is None:
-                print(f" 读取失败: {img_file}")
+                print(f"Could not read image: {img_file}")
                 continue
             image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -227,7 +225,7 @@ def main():
                 torch.cuda.empty_cache()
 
         except Exception as e:
-            print(f"\n 处理出错 {img_file}: {e}")
+            print(f"Evaluation failed for {img_file}: {e}")
             import traceback
             traceback.print_exc()
             continue
@@ -236,10 +234,9 @@ def main():
     total_processing_time = end_time - start_time
     avg_time_per_img = total_processing_time / len(img_files) if len(img_files) > 0 else 0
 
-    print(f"\n 预测完成！总耗时: {total_processing_time:.2f} 秒 (平均 {avg_time_per_img:.2f} 秒/张)")
+    print(f"Evaluation completed in {total_processing_time:.2f} s ({avg_time_per_img:.2f} s/image).")
 
 
-    print("\n 正在导出 Excel 报告...")
     if len(all_metrics) > 0:
         df = pd.DataFrame(all_metrics)
         cols = ['filename'] + [c for c in df.columns if c != 'filename']
@@ -253,12 +250,12 @@ def main():
         df_final = pd.concat([df, pd.DataFrame([mean_row])], ignore_index=True)
 
         df_final.to_excel(excel_path, index=False)
-        print(f" Excel 已保存至: {excel_path}")
-        print(f"   平均指标:\n{mean_row}")
+        print(f"Saved metrics to {excel_path}")
+        print(f"Average metrics:\n{mean_row}")
     else:
-        print(" 未生成有效数据。")
+        print("No metrics were generated.")
 
-    print(" SAM 2 测试结束！")
+    print("Evaluation completed.")
 
 if __name__ == "__main__":
     main()

@@ -56,7 +56,7 @@ class UniversalDataset(Dataset):
             lambda x: x,
         ]
 
-        print(f"正在扫描 {mode} 集匹配关系...", flush=True)
+        print(f"Matching {mode} images and masks.", flush=True)
         for img_name in self.image_names:
             img_path = os.path.join(self.images_dir, img_name)
             img_stem = os.path.splitext(img_name)[0]
@@ -77,7 +77,7 @@ class UniversalDataset(Dataset):
                 self.images_fps.append(img_path)
                 self.masks_fps.append(os.path.join(self.masks_dir, found_mask_filename))
 
-        print(f"[{mode}] 加载完成: {len(self.images_fps)} 张", flush=True)
+        print(f"Loaded {len(self.images_fps)} {mode} samples.", flush=True)
         self.augmentation = augmentation
         self.preprocessing = preprocessing
 
@@ -138,7 +138,7 @@ def get_training_augmentation():
         albu.OneOf([
             albu.ElasticTransform(p=0.5, alpha=120, sigma=120 * 0.05),
             albu.GridDistortion(p=0.5),
-            albu.OpticalDistortion(distort_limit=0.05, shift_limit=0.05, p=0.5),
+            albu.OpticalDistortion(distort_limit=0.05, p=0.5),
         ], p=0.3),
         albu.RandomBrightnessContrast(p=0.2),
         albu.GaussNoise(p=0.2),
@@ -168,7 +168,7 @@ class CompoundLoss(nn.Module):
 
 
 def check_sanity(dataset, save_dir):
-    print(" 正在进行数据体检...", flush=True)
+    print("Running the dataset sanity check.", flush=True)
     idx = np.random.randint(0, len(dataset))
     image, mask = dataset[idx]
 
@@ -189,7 +189,7 @@ def check_sanity(dataset, save_dir):
 
     save_path = os.path.join(save_dir, 'sanity_check.png')
     plt.savefig(save_path)
-    print(f" 体检通过！检查图已保存至: {save_path}", flush=True)
+    print(f"Saved the sanity-check image to {save_path}", flush=True)
     plt.close()
 
 def plot_history(history, save_path):
@@ -209,7 +209,7 @@ def plot_history(history, save_path):
 
     plt.tight_layout()
     plt.savefig(save_path)
-    print(f" 训练曲线图已保存至: {save_path}", flush=True)
+    print(f"Saved the training curve to {save_path}", flush=True)
     plt.close()
 
 
@@ -288,7 +288,7 @@ def main():
     os.makedirs(SAVE_DIR, exist_ok=True)
 
     print("Starting binary U-Net training.", flush=True)
-    print(f"使用设备: {DEVICE}", flush=True)
+    print(f"Using device: {DEVICE}", flush=True)
 
     model = smp.Unet(
         encoder_name=ENCODER,
@@ -321,7 +321,7 @@ def main():
 
     epochs_no_improve = 0
 
-    print(f"开始训练，最大 Epochs: {EPOCHS}，早停耐心值: {PATIENCE}...", flush=True)
+    print(f"Starting training for up to {EPOCHS} epochs (patience: {PATIENCE}).", flush=True)
 
     for i in range(EPOCHS):
         current_epoch = i + 1
@@ -344,19 +344,19 @@ def main():
             epochs_no_improve = 0
             save_path = os.path.join(SAVE_DIR, f'Best_Model.pth')
             torch.save(model.state_dict(), save_path)
-            print(f" 发现更优模型! Best Dice 更新为: {best_dice:.4f}，已保存至 {save_path}", flush=True)
+            print(f"Saved best checkpoint to {save_path} (Dice: {best_dice:.4f}).", flush=True)
         else:
             epochs_no_improve += 1
-            print(f" 验证集 Dice 未提升。早停计数: {epochs_no_improve} / {PATIENCE}", flush=True)
+            print(f"Validation Dice did not improve ({epochs_no_improve}/{PATIENCE}).", flush=True)
 
         if epochs_no_improve >= PATIENCE:
-            print(f"\n 连续 {PATIENCE} 个 epoch 验证集性能无提升，触发早停机制，训练提前结束！", flush=True)
+            print(f"Early stopping after {PATIENCE} epochs without improvement.", flush=True)
             break
 
 
     plot_path = os.path.join(SAVE_DIR, f'training_curve.png')
     plot_history(history, plot_path)
-    print(" 所有任务结束！", flush=True)
+    print("Training completed.", flush=True)
 
 if __name__ == '__main__':
     main()

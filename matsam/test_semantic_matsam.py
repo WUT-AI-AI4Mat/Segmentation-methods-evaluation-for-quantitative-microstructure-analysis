@@ -31,9 +31,9 @@ try:
     from peft import LoraConfig, get_peft_model
     from Myutils.visualizer import Visualizer
     from Myutils.metrics import Metric
-    print(" 依赖与自定义库加载成功！")
+    print("Loaded MatSAM and evaluation dependencies.")
 except ImportError as e:
-    print(f" 导入失败: {e}")
+    print(f"Failed to import a required dependency: {e}")
     sys.exit(1)
 
 
@@ -64,7 +64,7 @@ class SemanticMatSAMWrapper(nn.Module):
 
     def forward(self, images):
         B = images.shape[0]
-        if B > 1: raise ValueError("仅支持 batch_size=1")
+        if B > 1: raise ValueError("This model supports batch size 1 only.")
 
         image_embeddings = self.sam_model.image_encoder(images)
 
@@ -163,7 +163,7 @@ def main():
         model.load_state_dict(checkpoint, strict=False)
         print("Loaded LoRA, decoder, and class-token parameters.")
     else:
-        print(f" 找不到权重: {FINETUNED_WEIGHT_PATH}")
+        print(f"Checkpoint not found: {FINETUNED_WEIGHT_PATH}")
         return
 
     model.eval()
@@ -176,7 +176,7 @@ def main():
 
     valid_exts = ('.jpg', '.jpeg', '.png', '.tif', '.bmp')
     img_files = [f for f in os.listdir(IMG_DIR) if f.lower().endswith(valid_exts)]
-    print(f" 找到 {len(img_files)} 张测试图片")
+    print(f"Found {len(img_files)} test images.")
 
     all_metrics = []
     start_time = time.time()
@@ -259,7 +259,7 @@ def main():
                 plt.close('all')
 
             except Exception as e:
-                print(f"\n 处理出错 {img_file}: {e}")
+                print(f"Evaluation failed for {img_file}: {e}")
                 import traceback
                 traceback.print_exc()
                 continue
@@ -277,7 +277,7 @@ def main():
 
         df_final = pd.concat([df, pd.DataFrame([mean_row])], ignore_index=True)
         df_final.to_excel(EXCEL_PATH, index=False)
-        print(f" Excel 已保存至: {EXCEL_PATH}")
+        print(f"Saved metrics to {EXCEL_PATH}")
         print(mean_row[['miou', 'mbss', 'dice', 'hd95', 'nsd']])
 
 if __name__ == "__main__":

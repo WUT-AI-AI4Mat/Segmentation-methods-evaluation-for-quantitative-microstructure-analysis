@@ -27,9 +27,9 @@ try:
     from micro_sam.util import get_sam_model
     from peft import LoraConfig, get_peft_model
     from segment_anything.utils.transforms import ResizeLongestSide
-    print(" 成功导入: MicroSAM, PEFT (LoRA) & Transforms")
+    print("Loaded micro-sam and PEFT.")
 except ImportError as e:
-    print(f" 导入失败: {e}")
+    print(f"Failed to import a required dependency: {e}")
     sys.exit(1)
 
 
@@ -154,7 +154,7 @@ class SemanticMicroSAMWrapper(nn.Module):
     def forward(self, images):
         B = images.shape[0]
         if B > 1:
-            raise ValueError("由于 SAM Decoder 的底层并发机制限制，当前仅支持 batch_size=1。")
+            raise ValueError("This model supports batch size 1 only.")
 
         image_embeddings = self.sam_model.image_encoder(images)
 
@@ -332,7 +332,7 @@ def main():
         print(status_msg)
 
         if no_improve_count >= PATIENCE:
-            print(f"\n 触发早停机制！验证集 Loss 已经连续 {PATIENCE} 轮没有下降。")
+            print(f"Early stopping after {PATIENCE} epochs without validation improvement.")
             break
 
 if __name__ == "__main__":

@@ -161,6 +161,11 @@ Run an entry script with `--help` to see its required paths and optional
 parameters. Paths to datasets, checkpoints, and output directories are
 provided at runtime and are not tied to a particular workstation.
 
+`--dataset-root` must point to one dataset directory, for example
+`/data/datasets/UHCS`, rather than the parent directory containing all seven
+datasets. Training scripts read `train/images`, `train/masks`, `val/images`,
+and `val/masks`; test scripts read `test/images` and `test/masks`.
+
 The seven research datasets use the directory layout shown above. Detailed
 commands for running every model on a user-provided dataset are listed in
 [REPRODUCTION.md](REPRODUCTION.md). Official pretrained checkpoint links and
@@ -187,7 +192,9 @@ The public experiment interface is limited to:
 - metric, visualization, and paper figure utilities in `Myutils`.
 
 Some model directories contain code derived from upstream research
-repositories. Their original notices remain in those directories. See
+repositories. The selected upstream source files and original notices are
+retained alongside the experiment-specific training and test scripts. Logs,
+checkpoints, datasets, and generated results are excluded. See
 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) before redistribution.
 
 ## Citation

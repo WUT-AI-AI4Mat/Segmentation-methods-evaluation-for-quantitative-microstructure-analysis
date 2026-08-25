@@ -86,7 +86,8 @@ _public_clean/
 
 # Upstream content outside the public reproduction scope
 /matsam/dataset/
-/matsam/assets/
+/matsam/assets/*
+!/matsam/assets/framework.jpg
 /matsam/gala/
 /matsam/notebooks/
 /matsam/supervised_method/
@@ -151,6 +152,8 @@ _public_clean/
 /mmsegmentation/resources/
 /mmsegmentation/tests/
 /mmsegmentation/tools/check_metaldam_dataset.py
+/mmsegmentation/tools/analyze_metaldam_class_distribution.py
+/mmsegmentation/tools/test_deeplabv3plus.py
 /mmsegmentation/configs/*
 !/mmsegmentation/configs/_base_/
 !/mmsegmentation/configs/segformer/

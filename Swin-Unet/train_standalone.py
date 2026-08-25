@@ -328,7 +328,7 @@ def run_training_for_dataset(dataset_name, dataset_path, num_classes):
             print(f" [Ep {epoch+1}] T_Loss: {avg_train_loss:.4f} | V_Loss: {avg_val_loss:.4f} | V_mDice: {avg_val_mdice:.4f} | {save_msg}", flush=True)
 
             if epochs_no_improve >= PATIENCE:
-                print(f"\n 连续 {PATIENCE} 个 epoch 验证集性能无提升，触发早停机制，任务 {dataset_name} 训练提前结束！", flush=True)
+                print(f"Early stopping {dataset_name} after {PATIENCE} epochs without validation improvement.", flush=True)
                 break
 
         print(f"\n {dataset_name} Finished. Best mDice: {best_mdice:.4f}", flush=True)
