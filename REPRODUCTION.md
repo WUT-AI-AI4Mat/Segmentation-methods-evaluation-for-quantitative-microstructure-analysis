@@ -6,8 +6,8 @@ official upstream projects are retained together with the experiment-specific
 training, testing, configuration, metric, and plotting code. MatSAM and
 Swin-Unet are installed from separate upstream clones.
 
-The research datasets, pretrained weights, and fine-tuned checkpoints are not
-included. The CPU demo uses three deterministic simulated image-mask pairs.
+The research datasets and model weights are not included directly in this
+repository. The CPU demo uses three deterministic simulated image-mask pairs.
 
 ## 1. Repository Layout
 
@@ -149,13 +149,12 @@ EMPS
 Grain
 ```
 
-The complete research dataset archive will be available from Zenodo upon
-publication:
+The complete research dataset archive is available from Zenodo:
 
 - [Dataset archive](https://doi.org/10.5281/zenodo.22039777)
 
-The Zenodo record is currently private. After downloading the archive, arrange
-each dataset using the split structure below.
+After downloading the archive, arrange each dataset using the split structure
+below.
 
 Each dataset should use this structure:
 
@@ -246,9 +245,10 @@ filenames, and checkpoint compatibility notes are listed in
 [`WEIGHTS.md`](WEIGHTS.md). Public scripts accept checkpoint locations through
 command-line arguments; no fixed checkpoint directory is required.
 
-Fine-tuned checkpoints for the model-dataset combinations will be available
-upon publication from the [Hugging Face model collection](https://huggingface.co/collections/WUT-AI-AI4Mat/segmentation-methods-for-quantitative-microstructure-analysi).
-The collection is currently private.
+Model weights for the evaluated model-dataset combinations are available from
+the [Hugging Face model collection](https://huggingface.co/collections/WUT-AI-AI4Mat/segmentation-methods-for-quantitative-microstructure-analysi).
+The collection contains trained CNN and Transformer weights as well as
+fine-tuned foundation-model weights.
 
 ## 6. CNN Baselines
 

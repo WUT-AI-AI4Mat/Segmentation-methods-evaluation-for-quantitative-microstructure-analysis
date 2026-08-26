@@ -4,9 +4,9 @@ This repository contains the code used to compare CNN, Transformer, and
 Segment Anything based models for material image segmentation.
 
 The evaluated datasets are MetalDAM, UHCS, EBC, Super, Aachen-Heerlen, EMPS,
-and Grain. The research datasets, pretrained weights, and fine-tuned
-checkpoints are not included. The CPU demo uses a small simulated dataset that
-can be regenerated locally.
+and Grain. The research datasets and model weights are not included directly
+in this repository. The CPU demo uses a small simulated dataset that can be
+regenerated locally.
 
 ## Models
 
@@ -133,25 +133,24 @@ metric implementation; it does not reproduce a manuscript result. See
 
 ## Data Availability
 
-The seven research datasets used in this benchmark will be available from the
-following Zenodo record upon publication:
+The seven research datasets used in this benchmark are available from the
+following Zenodo record:
 
 - [Dataset archive](https://doi.org/10.5281/zenodo.22039777)
 
-The Zenodo record is currently private and will be made publicly accessible
-upon publication. The simulated dataset under `demo/data` remains available
-directly in this repository.
+The simulated dataset under `demo/data` remains available directly in this
+repository.
 
 ## Model Collection
 
-Fine-tuned checkpoints for the evaluated model-dataset combinations will be
-available from the following Hugging Face model collection:
+Model weights for the evaluated model-dataset combinations are available from
+the following Hugging Face model collection. It contains trained CNN and
+Transformer weights as well as fine-tuned foundation-model weights.
 
 - [Segmentation methods for quantitative microstructure analysis](https://huggingface.co/collections/WUT-AI-AI4Mat/segmentation-methods-for-quantitative-microstructure-analysi)
 
-The model collection is currently private and will be made publicly
-accessible upon publication. Official pretrained weights and checkpoint usage
-instructions are documented in [WEIGHTS.md](WEIGHTS.md).
+Official pretrained weights and model-weight usage instructions are documented
+in [WEIGHTS.md](WEIGHTS.md).
 
 ## Dataset Layout
 
@@ -198,9 +197,9 @@ expected filenames are listed in [WEIGHTS.md](WEIGHTS.md).
 
 The optional full reproduction workflow, model hyperparameters, training and
 test entry points, and paper-figure utilities are documented in
-[REPRODUCTION.md](REPRODUCTION.md). The research datasets and fine-tuned
-checkpoints are intentionally excluded from Git and are deposited separately
-in the Zenodo dataset archive and Hugging Face model collection listed above.
+[REPRODUCTION.md](REPRODUCTION.md). The research datasets and model weights are
+intentionally excluded from Git and are deposited separately in the Zenodo
+dataset archive and Hugging Face model collection listed above.
 
 ## Scope
 
