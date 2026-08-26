@@ -131,6 +131,28 @@ metric implementation; it does not reproduce a manuscript result. See
 - [Third-party software](THIRD_PARTY_LICENSES.md): upstream repositories,
   revisions, and license status.
 
+## Data Availability
+
+The seven research datasets used in this benchmark will be available from the
+following Zenodo record upon publication:
+
+- [Dataset archive](https://doi.org/10.5281/zenodo.22039777)
+
+The Zenodo record is currently private and will be made publicly accessible
+upon publication. The simulated dataset under `demo/data` remains available
+directly in this repository.
+
+## Model Collection
+
+Fine-tuned checkpoints for the evaluated model-dataset combinations will be
+available from the following Hugging Face model collection:
+
+- [Segmentation methods for quantitative microstructure analysis](https://huggingface.co/collections/WUT-AI-AI4Mat/segmentation-methods-for-quantitative-microstructure-analysi)
+
+The model collection is currently private and will be made publicly
+accessible upon publication. Official pretrained weights and checkpoint usage
+instructions are documented in [WEIGHTS.md](WEIGHTS.md).
+
 ## Dataset Layout
 
 Each dataset must use the following structure:
@@ -176,9 +198,9 @@ expected filenames are listed in [WEIGHTS.md](WEIGHTS.md).
 
 The optional full reproduction workflow, model hyperparameters, training and
 test entry points, and paper-figure utilities are documented in
-[REPRODUCTION.md](REPRODUCTION.md). The full research datasets and fine-tuned
-checkpoints are intentionally excluded from Git; publish their permanent data
-and checkpoint links separately when available.
+[REPRODUCTION.md](REPRODUCTION.md). The research datasets and fine-tuned
+checkpoints are intentionally excluded from Git and are deposited separately
+in the Zenodo dataset archive and Hugging Face model collection listed above.
 
 ## Scope
 

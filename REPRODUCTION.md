@@ -149,6 +149,14 @@ EMPS
 Grain
 ```
 
+The complete research dataset archive will be available from Zenodo upon
+publication:
+
+- [Dataset archive](https://doi.org/10.5281/zenodo.22039777)
+
+The Zenodo record is currently private. After downloading the archive, arrange
+each dataset using the split structure below.
+
 Each dataset should use this structure:
 
 ```text
@@ -237,6 +245,10 @@ Weights are not stored in this repository. Official download links, expected
 filenames, and checkpoint compatibility notes are listed in
 [`WEIGHTS.md`](WEIGHTS.md). Public scripts accept checkpoint locations through
 command-line arguments; no fixed checkpoint directory is required.
+
+Fine-tuned checkpoints for the model-dataset combinations will be available
+upon publication from the [Hugging Face model collection](https://huggingface.co/collections/WUT-AI-AI4Mat/segmentation-methods-for-quantitative-microstructure-analysi).
+The collection is currently private.
 
 ## 6. CNN Baselines
 
