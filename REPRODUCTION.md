@@ -233,8 +233,8 @@ encoder remains frozen and LoRA uses `rank=8`, `alpha=16`, and
 | DeepLabV3+ | encoder `ResNet-50`; encoder weights `ImageNet`; input size `512 x 512`; batch size `32`; epochs `500`; optimizer `AdamW`; learning rate `0.0003`; weight decay `0.001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; binary loss `Dice + BCEWithLogits`; multi-class loss `Dice + cross-entropy`; early-stopping patience `50` |
 | SegFormer | backbone `MiT-B0`; input size `512 x 512`; training batch size `32`; validation/test batch size `16`; epochs `200`; optimizer `AdamW`; learning rate `0.00006`; Adam betas `(0.9, 0.999)`; weight decay `0.01`; scheduler `5`-epoch linear warm-up followed by polynomial decay |
 | Swin-Unet | backbone `Swin-Tiny`; ImageNet pretrained weights; input size `224 x 224`; patch size `4`; window size `7`; batch size `32`; epochs `500`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; loss `0.5 x cross-entropy + 0.5 x Dice`; early-stopping patience `50` |
-| MatSAM | model `ViT-H`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `method_type=1` for grain data and `method_type=2` for metallographic data; `n_per_side_base=54`; multiclass `pred_iou_thresh=0.88`, `stability_score_thresh=0.9`; binary `pred_iou_thresh=0.7`, `stability_score_thresh=0.7`; `box_nms_thresh=0.7`; `crop_n_layers=0` |
-| HQ-SAM | model `ViT-B`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; multiclass `pred_iou_thresh=0.85`; binary `pred_iou_thresh=0.78`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
+| MatSAM | model `ViT-H`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `method_type=1` for grain data and `method_type=2` for metallographic data; `n_per_side_base=54`; original inference `pred_iou_thresh=0.88`, `stability_score_thresh=0.9`; binary fine-tuned inference `pred_iou_thresh=0.7`, `stability_score_thresh=0.7`; `box_nms_thresh=0.7`; `crop_n_layers=0` |
+| HQ-SAM | model `ViT-B`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; original inference `pred_iou_thresh=0.85`; binary fine-tuned inference `pred_iou_thresh=0.78`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
 | SAM2 | model `sam2.1_hiera_base_plus`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `points_per_side=32`; `points_per_batch=64`; `pred_iou_thresh=0.8`; `stability_score_thresh=0.8`; `crop_n_layers=0` |
 | micro-sam | model `ViT-B-LM`; training batch size `1`; epochs `200`; optimizer `AdamW`; learning rate `0.0001`; weight decay `0.0001`; multiclass scheduler `CosineAnnealingLR`, minimum learning rate `0.000001`; multiclass loss `cross-entropy + Dice`; binary loss `BCE + Dice + IoU MSE`; early-stopping patience `50`; LoRA rank `8`, alpha `16`, dropout `0.05`, targets `qkv` and `proj`; `min_size=10`; `center_distance_threshold=0.5`; `boundary_distance_threshold=0.5` |
 
@@ -385,7 +385,7 @@ Main settings:
 | `PATIENCE` | `50` |
 | LoRA | rank `8`, alpha `16`, dropout `0.05`; targets `qkv` and `proj` |
 | prompt generation | `method_type=1` for grain data; `method_type=2` for metallographic data; `n_per_side_base=54` |
-| mask filtering | `pred_iou_thresh=0.88`, `stability_score_thresh=0.9`, `box_nms_thresh=0.7`, `crop_n_layers=0` |
+| original inference mask filtering | `pred_iou_thresh=0.88`, `stability_score_thresh=0.9`, `box_nms_thresh=0.7`, `crop_n_layers=0` |
 
 Example:
 
@@ -429,7 +429,7 @@ Main settings:
 | multi-class loss | cross-entropy + Dice |
 | `PATIENCE` | `50` |
 | LoRA | rank `8`, alpha `16`, dropout `0.05`; targets `qkv` and `proj` |
-| automatic mask generation | `points_per_side=32`, `pred_iou_thresh=0.85`, `stability_score_thresh=0.8`, `crop_n_layers=0` |
+| original inference automatic mask generation | `points_per_side=32`, `pred_iou_thresh=0.85`, `stability_score_thresh=0.8`, `crop_n_layers=0` |
 
 Example:
 
